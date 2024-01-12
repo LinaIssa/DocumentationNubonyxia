@@ -6,12 +6,16 @@
 Bienvenue dans la documentation de Nubonyxia!
 ===================================
 
-**Lumache** (/lu'make/) is a Python library for cooks and food lovers that
-creates recipes mixing random ingredients.  It pulls data from the `Open Food
-Facts database <https://world.openfoodfacts.org/>`_ and offers a *simple* and
-*intuitive* API.
-Check out the :doc:`usage` section for further information, including how to
-:ref:`install <installation>` the project.
+**Nubonyxia** est une plateforme de data science à destination des experts numériques de l'Etat. 
+
+
+
+En combinant le datalab interministériel développé par l'INSEE, `Onyxia <https://www.onyxia.sh>`_, au cloud souverain opéré par la DGFiP `Nubo <https://www.numerique.gouv.fr/services/cloud/cloud-interne/>`_ , **Nubonyxia** permet d'exploiter la donnée dans un environnement cloud *isolé*, *sécurisé* et porté par des solutions *open-source*. 
+
+
+
+.. Check out the :doc:`usage` section for further information, including how to
+.. :ref:`install <installation>` the project.
 
 
 .. note::

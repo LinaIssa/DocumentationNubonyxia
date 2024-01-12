@@ -1,5 +1,4 @@
-Lumache
+Nubonyxia 
 =======
 
-**Lumache** (/lu'make/) is a Python library for cooks and food lovers that
-creates recipes mixing random ingredients.
+**Nubonyxia** est une plateforme data-science sécurisée à destination des experts numériques de l'Etat. 
