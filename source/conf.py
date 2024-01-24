@@ -19,9 +19,9 @@ sys.path.insert(0, os.path.abspath('.'))
 
 # -- Project information -----------------------------------------------------
 
-project = 'Lumache'
-copyright = '2024, Loulou'
-author = 'Loulou'
+project = 'Nubonyxia'
+copyright = '2024, Bercy Hub'
+author = 'Bercy Hub'
 
 # The full version, including alpha/beta/rc tags
 release = '0.1'
