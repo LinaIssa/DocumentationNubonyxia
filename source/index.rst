@@ -1,4 +1,4 @@
-.. Lumache documentation master file, created by
+.. Nubonyxia documentation master file, created by Lina Issa
    sphinx-quickstart on Thu Jan  4 16:04:26 2024.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
