@@ -27,9 +27,13 @@ Contents
 .. toctree::
    :maxdepth: 2
    
-   usage
-   api
-   
+   firststeps
+   services 
+   methode  
+   app
+   proxy 
+   minio
+   usecase
 
 
 
