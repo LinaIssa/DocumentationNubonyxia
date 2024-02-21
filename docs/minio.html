@@ -200,20 +200,44 @@
         <article role="main">
           <section id="stockage-de-donnees-dans-nubonyxia">
 <h1>Stockage de données dans Nubonyxia<a class="headerlink" href="#stockage-de-donnees-dans-nubonyxia" title="Link to this heading">#</a></h1>
-<p>exemples : création de liens permanents, lignes de commande mc utiles</p>
-<section id="principes-de-fonctionnement">
-<h2>Principes de fonctionnement<a class="headerlink" href="#principes-de-fonctionnement" title="Link to this heading">#</a></h2>
+<p>mettre comment créer  des tokens d’accès permanents, lignes de commande mc utiles</p>
+<section id="les-espaces-de-stockages-sur-nubonyxia">
+<h2>Les espaces de stockages sur Nubonyxia<a class="headerlink" href="#les-espaces-de-stockages-sur-nubonyxia" title="Link to this heading">#</a></h2>
 <p>def espace de stockage S3
 attribution d’un bucket S3 personnel accessible dans la plateforme, dans l’onglet Mon Compte</p>
-<p>La création d’un compte Nubonyxia donne accès à un <em>bucket S3</em> personnel, porté par <a class="reference external" href="https://min.io">MinIO</a>.
-Ce dernier correspond à une solution de stockage de données de type objets compatible avec l’API S3 d’Amazon.</p>
+<p>La plateforme Nubonyxia utilise <a class="reference external" href="https://min.io">MinIO</a> comme solution cloud de stockage objet. Cette dernière, compatible avec  l’API S3 d’Amazon, offre la possibilité d’intéragir avec les fichiers stockés depuis n’importe quel service lancé sur la plateforme.</p>
+<p>La création d’un compte Nubonyxia donne accès à un <em>bucket S3</em> individuel. Sur demande uniquement, nous pouvons créer un bucket S3 partagé.</p>
+<p>De plus,chaque service de développement (VSCode, etc) dispose d’un espace de stockage <strong>NFS</strong> (<em>Network File System</em>). Ce dernier, par construction local et temporaire, a la même durée de vie que le service.</p>
+<p>Enfin, il est possible de créer des services de base de données comme <strong>PostgreSQL</strong>, qui ouvre accès à un espace de stockage persistent <strong>PVC</strong> (<em>Permanent Virtual Circuit</em>)</p>
 </section>
 <section id="gestion-de-son-bucket-s3">
 <h2>Gestion de son bucket S3<a class="headerlink" href="#gestion-de-son-bucket-s3" title="Link to this heading">#</a></h2>
-<p>Il est possible d’intéragir avec son espace de stockage en se rendant dans l’onglet <cite>Mes fichiers</cite> : on peut téléverser directement des données depuis son ordinateur local et télécharger des données.</p>
+<section id="espace-de-stockage-s3">
+<h3>Espace de stockage S3<a class="headerlink" href="#espace-de-stockage-s3" title="Link to this heading">#</a></h3>
+<p>La plateforme dispose d’un <cite>explorateur de fichiers</cite> accessible dans l’onglet <span class="menuselection">Mes fichers</span> où est représenté le bucket S3 de l’utilisateur.</p>
+<dl class="simple">
+<dt>A partir de cet onglet, il est possible d’intéragir avec son espace de stockage en :</dt><dd><ul class="simple">
+<li><p>important des données depuis son repo local vers son bucket S3</p></li>
+<li><p>créant des dossiers</p></li>
+<li><p>téléchargeant de la donnée</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="partage-des-donnees">
+<h3>Partage des données<a class="headerlink" href="#partage-des-donnees" title="Link to this heading">#</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>TO DO : vérifier partage de liste de diffusion sur Nubonyxia comme sur Onyxia :<a class="reference external" href="https://docs.sspcloud.fr/onyxia-guide/stockage-de-donnees#partager-des-donnees">https://docs.sspcloud.fr/onyxia-guide/stockage-de-donnees#partager-des-donnees</a></p>
+</div>
 </section>
 <section id="utilisation-des-donnees-depuis-un-service">
-<h2>Utilisation des données depuis un service<a class="headerlink" href="#utilisation-des-donnees-depuis-un-service" title="Link to this heading">#</a></h2>
+<h3>Utilisation des données depuis un service<a class="headerlink" href="#utilisation-des-donnees-depuis-un-service" title="Link to this heading">#</a></h3>
+<p>La connexion à son espace de stockage S3 depuis un service se fait grâce à un <cite>token</cite> d’accès. Ce dernier est intégré sous forme de <cite>variable d’environnement</cite> dans le service.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Le token d’accès à MinIO expire au bout de ….</p>
+</div>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-0">
@@ -222,36 +246,70 @@ R</label><div class="sd-tab-content docutils">
 <div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">aws.s3</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Then, we can initialise the <code class="xref py py-class docutils literal notranslate"><span class="pre">CigaleSED</span></code> object as follows:</p>
 </div>
 <input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-1">
 Python</label><div class="sd-tab-content docutils">
 <p>En Python, l’interaction avec un système de fichiers compatible S3 est rendu possible par deux librairies :</p>
+<ul>
+<li><p><code class="code highlight python docutils literal highlight-python"><span class="n">Boto3</span></code>, une librairie créée et maintenue par Amazon</p></li>
+<li><p><code class="code highlight python docutils literal highlight-python"><span class="n">S3Fs</span></code> une librairie qui permet d’interagir avec les fichiers stockés à l’instar d’un <em>filesystem</em> classique.</p>
 <blockquote>
-<div><ul class="simple">
-<li><p>[Boto3](<a class="reference external" href="https://boto3.amazonaws.com/v1/documentation/api/latest/index.html">https://boto3.amazonaws.com/v1/documentation/api/latest/index.html</a>), une librairie créée et maintenue par Amazon ;</p></li>
-<li><p>[S3Fs](<a class="reference external" href="https://s3fs.readthedocs.io/en/latest/">https://s3fs.readthedocs.io/en/latest/</a>), une librairie qui permet d’interagir avec les fichiers stockés à l’instar d’un _filesystem_ classique.</p></li>
-</ul>
-<p>Pour cette raison et parce que S3Fs est utilisée par défaut par la librairie [pandas](<a class="reference external" href="https://pandas.pydata.org">https://pandas.pydata.org</a>) pour gérer les connections S3, nous allons présenter la gestion du stockage sur MinIO via Python à travers cette librairie.</p>
+<div><p>Pour cette raison et parce que S3Fs est utilisée par défaut par la librairie <code class="code highlight python docutils literal highlight-python"><span class="n">pandas</span></code> pour gérer les connections S3, nous allons présenter la gestion du stockage sur MinIO via Python à travers cette librairie.
+&lt;<a class="reference external" href="https://boto3.amazonaws.com/v1/documentation/api/latest/index.html">https://boto3.amazonaws.com/v1/documentation/api/latest/index.html</a>&gt;
+&lt;<a class="reference external" href="https://s3fs.readthedocs.io/en/latest/">https://s3fs.readthedocs.io/en/latest/</a>&gt;
+&lt;<a class="reference external" href="https://pandas.pydata.org">https://pandas.pydata.org</a>&gt;</p>
 </div></blockquote>
+</li>
+</ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-            <span class="kn">import</span> <span class="nn">s3fs</span>
-
-            <span class="c1"># Create filesystem object</span>
-            <span class="n">S3_ENDPOINT_URL</span> <span class="o">=</span> <span class="s2">&quot;https://&quot;</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;AWS_S3_ENDPOINT&quot;</span><span class="p">]</span>
-            <span class="n">fs</span> <span class="o">=</span> <span class="n">s3fs</span><span class="o">.</span><span class="n">S3FileSystem</span><span class="p">(</span><span class="n">client_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;endpoint_url&#39;</span><span class="p">:</span> <span class="n">S3_ENDPOINT_URL</span><span class="p">})</span>
+<span class="kn">import</span> <span class="nn">s3fs</span>
 </pre></div>
 </div>
-<p>where <a href="#id1"><span class="problematic" id="id2">:python:`'example'`</span></a> is the name of the directory within which the output files will be stored, <a href="#id3"><span class="problematic" id="id4">:python:`['F435W', 'F606W', 'F775W']`</span></a> is the list of filters to use for the SED fitting. The argument <a href="#id5"><span class="problematic" id="id6">:python:`uncertainties`</span></a> can be used to define for which filters the uncertainties should be used in the fit.</p>
+<p>Create filesystem object</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">S3_ENDPOINT_URL</span> <span class="o">=</span> <span class="s2">&quot;https://&quot;</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;AWS_S3_ENDPOINT&quot;</span><span class="p">]</span>
+<span class="n">fs</span> <span class="o">=</span> <span class="n">s3fs</span><span class="o">.</span><span class="n">S3FileSystem</span><span class="p">(</span><span class="n">client_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;endpoint_url&#39;</span><span class="p">:</span> <span class="n">S3_ENDPOINT_URL</span><span class="p">})</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Pour lister les fichiers d’un bucket:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">BUCKET</span> <span class="o">=</span> <span class="s2">&quot;donnees-insee&quot;</span>
+<span class="n">fs</span><span class="o">.</span><span class="n">ls</span><span class="p">(</span><span class="n">BUCKET</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Importer des données dans Python</p>
+<blockquote>
+<div><p>Le package <code class="code highlight python docutils literal highlight-python"><span class="n">S3Fs</span></code> permet d’interagir avec les fichiers stockés sur MinIO comme s’il s’agissait de fichiers locaux. La syntaxe est donc très familière pour les utilisateurs de Python. Par exemple, pour importer/exporter des données tabulaires via <code class="code highlight python docutils literal highlight-python"><span class="n">pandas</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">BUCKET</span> <span class="o">=</span> <span class="s2">&quot;donnees-insee&quot;</span>
+    <span class="n">FILE_KEY_S3</span> <span class="o">=</span> <span class="s2">&quot;BPE/2019/BPE_ENS.csv&quot;</span>
+    <span class="n">FILE_PATH_S3</span> <span class="o">=</span> <span class="n">BUCKET</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">FILE_KEY_S3</span>
+
+    <span class="k">with</span> <span class="n">fs</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">FILE_PATH_S3</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_in</span><span class="p">:</span>
+<span class="n">df_bpe</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_in</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Exporter des données vers MinIO</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">BUCKET_OUT</span> <span class="o">=</span> <span class="s2">&quot;&lt;mon_bucket&gt;&quot;</span>
+    <span class="n">FILE_KEY_OUT_S3</span> <span class="o">=</span> <span class="s2">&quot;mon_dossier/BPE_ENS.csv&quot;</span>
+    <span class="n">FILE_PATH_OUT_S3</span> <span class="o">=</span> <span class="n">BUCKET_OUT</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">FILE_KEY_OUT_S3</span>
+
+    <span class="k">with</span> <span class="n">fs</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">FILE_PATH_OUT_S3</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_out</span><span class="p">:</span>
+<span class="n">df_bpe</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">file_out</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
 </div>
 <input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-2">
 mc</label><div class="sd-tab-content docutils">
-<p>MinIO propose un client en ligne de commande (<cite>ùc</cite>) qui permet d’interagir avec le système de stockage à la manière d’un _filesystem_ UNIX classique. Ce client est installé par défaut et accessible via un terminal dans les différents services du Datalab.</p>
+<p>MinIO propose un client en ligne de commande (<cite>mc</cite>) qui permet d’interagir avec le système de stockage à la manière d’un <em>filesystem</em> UNIX classique. Ce client est installé par défaut et accessible via un terminal dans les différents services du Datalab.</p>
 <p>Le client MinIO propose les commandes UNIX de base, telles que ls, cat, cp, etc. La liste complète est disponible dans la [documentation du client](<a class="reference external" href="https://docs.min.io/docs/minio-client-complete-guide.html">https://docs.min.io/docs/minio-client-complete-guide.html</a>).</p>
 </div>
 </div>
+</section>
 </section>
 </section>
 
@@ -311,9 +369,13 @@ mc</label><div class="sd-tab-content docutils">
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Stockage de données dans Nubonyxia</a><ul>
-<li><a class="reference internal" href="#principes-de-fonctionnement">Principes de fonctionnement</a></li>
-<li><a class="reference internal" href="#gestion-de-son-bucket-s3">Gestion de son bucket S3</a></li>
+<li><a class="reference internal" href="#les-espaces-de-stockages-sur-nubonyxia">Les espaces de stockages sur Nubonyxia</a></li>
+<li><a class="reference internal" href="#gestion-de-son-bucket-s3">Gestion de son bucket S3</a><ul>
+<li><a class="reference internal" href="#espace-de-stockage-s3">Espace de stockage S3</a></li>
+<li><a class="reference internal" href="#partage-des-donnees">Partage des données</a></li>
 <li><a class="reference internal" href="#utilisation-des-donnees-depuis-un-service">Utilisation des données depuis un service</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

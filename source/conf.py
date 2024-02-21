@@ -25,6 +25,9 @@ author = 'Bercy Hub'
 
 # The full version, including alpha/beta/rc tags
 release = '0.1'
+highlight_options  = {'default': {'lexers.python.PythonLexer'},
+                     }
+
 
 
 # -- General configuration ---------------------------------------------------
@@ -67,4 +70,8 @@ extensions = [
   #  'sphinxcontrib.osexample',
     'sphinx_tabs.tabs'
 ]
-
+rst_prolog = """
+.. role:: python(code)
+  :language: python
+  :class: highlight
+"""
