@@ -1,17 +1,14 @@
 Stockage de données dans Nubonyxia 
 ====================================
 
-mettre comment créer  des tokens d'accès permanents, lignes de commande mc utiles 
 
 Les espaces de stockages sur Nubonyxia 
 -------------------------------------------
 
-def espace de stockage S3 
-attribution d'un bucket S3 personnel accessible dans la plateforme, dans l'onglet Mon Compte 
 
 La plateforme Nubonyxia utilise `MinIO <https://min.io>`_ comme solution cloud de stockage objet. Cette dernière, compatible avec  l'API S3 d'Amazon, offre la possibilité d'intéragir avec les fichiers stockés depuis n'importe quel service lancé sur la plateforme.  
 
-La création d'un compte Nubonyxia donne accès à un *bucket S3* individuel. Sur demande uniquement, nous pouvons créer un bucket S3 partagé. 
+La création d'un compte Nubonyxia donne accès à un *bucket S3* individuel. 
 
 De plus,chaque service de développement (VSCode, etc) dispose d'un espace de stockage **NFS** (*Network File System*). Ce dernier, par construction local et temporaire, a la même durée de vie que le service.
 
@@ -25,7 +22,7 @@ Gestion de son bucket S3
 Espace de stockage S3 
 #####################
 
-La plateforme dispose d'un `explorateur de fichiers` accessible dans l'onglet :menuselection:`Mes fichers` où est représenté le bucket S3 de l'utilisateur. 
+La plateforme dispose d'un `explorateur de fichiers` accessible dans l'onglet :menuselection:`Mes fichers` qui permet de visualiser le bucket S3 de l'utilisateur. 
 
 A partir de cet onglet, il est possible d'intéragir avec son espace de stockage en : 
 	* important des données depuis son repo local vers son bucket S3
@@ -35,9 +32,46 @@ A partir de cet onglet, il est possible d'intéragir avec son espace de stockage
 Partage des données 
 #####################################
 
-.. note::
-        
-    TO DO : vérifier partage de liste de diffusion sur Nubonyxia comme sur Onyxia :https://docs.sspcloud.fr/onyxia-guide/stockage-de-donnees#partager-des-donnees  
+
+Il est possible de partager de façon ponctuelle un fichier en partageant l'url du serveur *minio.lab.incubateur.finances.rie.gouv.fr*. Cette dernière s'obtient en cliquant sur un fichier dans son bucket personnel, puis en se rendant sur le menu déroulant contenant la ligne de commande :program:mc. Ce lien est partageable à toute personne ayant accès au RIE.
+
+
+
+Espace de stockage commun
+***************************
+
+Si vous souhaitez disposer d'un **espace de stockage commun**, n'hésitez pas à nous écrire car nous pouvons créer un bucket S3 partagé **sur demande uniquement**.  
+
+.. note:: 
+	Le bucket partagé n'est pas accessible depuis l'explorateur de fichiers se trouvant dans l'onglet :menuselection:`Mes fichers` de la plateforme.  L’accès se fait uniquement une fois le service lancé, en ligne de commande.
+
+
+Une fois le bucket partagé crée, un **bucket name**, **Access Key**  et **Secret Key** vous seront communiqués. La connexion se fait dans le terminal de n'importe quel service lancé. La configuration se fait comme pour accéder à son MinIO personnel, en s’aidant des scripts disponibles dans l’onglet :menuselection:`Mon Compte --> Connexion de stockage`. 
+Voici un exemple, en utilisant la librairie :py:class:`~.Boto3` avec python:
+
+.. code:: python
+
+	s3 = boto3.client("s3",
+	endpoint_url="https://"+os.environ["AWS_S3_ENDPOINT"],
+	aws_access_key_id= os.environ["AWS_ACCESS_KEY_ID"],
+	aws_secret_access_key= os.environ["AWS_SECRET_ACCESS_KEY"],
+	aws_session_token = "",
+	verify=False)
+
+    # Construction de l'objet
+ 
+	BUCKET = "my_bucket_name" # à remplacer par le bucket name fourni 
+	FILE_PATH_S3 = "rie" + "/" + file_name
+	obj = s3.get_object(Bucket=BUCKET, Key=FILE_PATH_S3)
+
+
+
+avec **AWS_ACCESS_KEY_ID** correspond à l’Access Key fourni et **AWS_SECRET_ACCESS_KEY** à **Secret Key**
+
+.. note:: 
+	A la différence du bucket personnel, on ne met rien dans session token.
+ 
+
 
 
 Utilisation des données depuis un service 
@@ -47,7 +81,7 @@ La connexion à son espace de stockage S3 depuis un service se fait grâce à un
 
 .. warning::
         
-    Le token d'accès à MinIO expire au bout de .... 
+    Le token d'accès à MinIO expire au bout de **24 heures**. Les variables d'environnement sont automatiquement mises à jour. 
 
 
 
@@ -57,7 +91,7 @@ La connexion à son espace de stockage S3 depuis un service se fait grâce à un
 
     .. tab-item:: R
 
-       	En R, l'interaction avec un système de fichiers compatible S3 est rendu possible par la librairie `aws.s3`.
+       	En R, l'interaction avec un système de fichiers compatible S3 est rendue possible grâce à la librairie `aws.s3`.
                 
         .. code:: R
 
@@ -68,71 +102,58 @@ La connexion à son espace de stockage S3 depuis un service se fait grâce à un
 
     .. tab-item:: Python
 
-    	En Python, l'interaction avec un système de fichiers compatible S3 est rendu possible par deux librairies :
+    	En Python, l'interaction avec un système de fichiers compatible S3 est rendue possible par deux librairies :
 
-    	* :python:`Boto3`, une librairie créée et maintenue par Amazon
-    	* :python:`S3Fs` une librairie qui permet d'interagir avec les fichiers stockés à l'instar d'un *filesystem* classique.
+    	* :py:class:`~.Boto3`, une librairie créée et maintenue par Amazon 
+    	* :py:class:`~.S3Fs` une librairie qui permet d'interagir avec les fichiers stockés à l'instar d'un *filesystem* classique. S3Fs est utilisée par défaut par la librairie `pandas <https://pandas.pydata.org>`_ pour gérer les connections S3.
 
-		Pour cette raison et parce que S3Fs est utilisée par défaut par la librairie :python:`pandas` pour gérer les connections S3, nous allons présenter la gestion du stockage sur MinIO via Python à travers cette librairie.
-		<https://boto3.amazonaws.com/v1/documentation/api/latest/index.html>
-		<https://s3fs.readthedocs.io/en/latest/>
-		<https://pandas.pydata.org>
-
+	Dans la suite, nous allons utiliser la librairie :python:`S3Fs` pour la gestion du stockage sur MinIO
         
         .. code:: python
 
             import os
             import s3fs
-
-	Create filesystem object
-
-		.. code:: python
-
-			S3_ENDPOINT_URL = "https://" + os.environ["AWS_S3_ENDPOINT"]
-			fs = s3fs.S3FileSystem(client_kwargs={'endpoint_url': S3_ENDPOINT_URL})
+            S3_ENDPOINT_URL = "https://" + os.environ["AWS_S3_ENDPOINT"]
+            fs = s3fs.S3FileSystem(client_kwargs={'endpoint_url': S3_ENDPOINT_URL})
 
 
-	Pour lister les fichiers d'un bucket: 
+	**Pour lister les fichiers d'un bucket**: 
 
-		.. code:: python
+	.. code:: python
        
-			BUCKET = "donnees-insee"
-			fs.ls(BUCKET)
+		BUCKET = "donnees-insee"
+		fs.ls(BUCKET)
 
 
-	Importer des données dans Python
+	**Pour importer des données** en utilisant la librairie :python:`pandas` :
 
 
-		Le package :python:`S3Fs` permet d'interagir avec les fichiers stockés sur MinIO comme s'il s'agissait de fichiers locaux. La syntaxe est donc très familière pour les utilisateurs de Python. Par exemple, pour importer/exporter des données tabulaires via :python:`pandas`:
-
-		.. code:: python
+	.. code:: python
        
 
-			BUCKET = "donnees-insee"
-			FILE_KEY_S3 = "BPE/2019/BPE_ENS.csv"
-			FILE_PATH_S3 = BUCKET + "/" + FILE_KEY_S3
+		BUCKET = "donnees-insee"
+		FILE_KEY_S3 = "BPE/2019/BPE_ENS.csv"
+		FILE_PATH_S3 = BUCKET + "/" + FILE_KEY_S3
 
-			with fs.open(FILE_PATH_S3, mode="rb") as file_in:
- 		    df_bpe = pd.read_csv(file_in, sep=";")
+		with fs.open(FILE_PATH_S3, mode="rb") as file_in:
+ 		df_bpe = pd.read_csv(file_in, sep=";")
 	
-		Exporter des données vers MinIO
+	**Pour exporter des données vers son bucket S3**
 
 
-		.. code:: python
+	.. code:: python
   
-			BUCKET_OUT = "<mon_bucket>"
-			FILE_KEY_OUT_S3 = "mon_dossier/BPE_ENS.csv"
-			FILE_PATH_OUT_S3 = BUCKET_OUT + "/" + FILE_KEY_OUT_S3
+		BUCKET_OUT = "<mon_bucket>"
+		FILE_KEY_OUT_S3 = "mon_dossier/BPE_ENS.csv"
+		FILE_PATH_OUT_S3 = BUCKET_OUT + "/" + FILE_KEY_OUT_S3
 
-			with fs.open(FILE_PATH_OUT_S3, 'w') as file_out:
-		    df_bpe.to_csv(file_out)
+		with fs.open(FILE_PATH_OUT_S3, 'w') as file_out:
+		df_bpe.to_csv(file_out)
 
     .. tab-item:: mc
 
 
-		MinIO propose un client en ligne de commande (`mc`) qui permet d’interagir avec le système de stockage à la manière d'un *filesystem* UNIX classique. Ce client est installé par défaut et accessible via un terminal dans les différents services du Datalab.
-
-		Le client MinIO propose les commandes UNIX de base, telles que ls, cat, cp, etc. La liste complète est disponible dans la [documentation du client](https://docs.min.io/docs/minio-client-complete-guide.html).
+		Avec la commande :program:`mc`, il est possible d’interagir avec le système de stockage à la manière d'un *filesystem* UNIX classique. Cette commande est installée par défaut et est accessible via un terminal dans les différents services de Nubonyxia. Elle s'utilise avec les commandes UNIX de base, telles que :program:`ls`, :program:`cat`, :program:`cp`, etc. La liste complète est disponible dans la `documentation <https://docs.min.io/docs/minio-client-complete-guide.html>`_.
 
 
 

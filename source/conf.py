@@ -74,4 +74,7 @@ rst_prolog = """
 .. role:: python(code)
   :language: python
   :class: highlight
+.. _Boto3: https://boto3.amazonaws.com/v1/documentation/api/latest/index.html
+.. _S3Fs: https://s3fs.readthedocs.io/en/latest/
+.. _pandas: https://pandas.pydata.org
 """
