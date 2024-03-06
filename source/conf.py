@@ -77,4 +77,10 @@ rst_prolog = """
 .. _Boto3: https://boto3.amazonaws.com/v1/documentation/api/latest/index.html
 .. _S3Fs: https://s3fs.readthedocs.io/en/latest/
 .. _pandas: https://pandas.pydata.org
+.. _Nubonyxia: https://nubonyxia.incubateur.finances.rie.gouv.fr
+.. _Harbor: https://harbor.lab.incubateur.finances.rie.gouv.fr
+.. _MinIO: https://minio-console.lab.incubateur.finances.rie.gouv.fr/ 
+.. _Vault: https://nubonyxia.incubateur.finances.rie.gouv.fr/account/vault
+
+
 """
