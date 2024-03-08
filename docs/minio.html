@@ -158,7 +158,7 @@
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="firststeps.html">Premiers pas avec Nubonyxia</a></li>
-<li class="toctree-l1"><a class="reference internal" href="services.html">Catalogue de services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">Configuration de services</a></li>
 <li class="toctree-l1"><a class="reference internal" href="methode.html">Guide des bonnes pratiques</a></li>
 <li class="toctree-l1"><a class="reference internal" href="app.html">Déploiement CI/ CD d’applications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="proxy.html">Connexion Proxy</a></li>
@@ -203,7 +203,7 @@
 <section id="les-espaces-de-stockages-sur-nubonyxia">
 <h2>Les espaces de stockages sur Nubonyxia<a class="headerlink" href="#les-espaces-de-stockages-sur-nubonyxia" title="Link to this heading">#</a></h2>
 <p>La plateforme Nubonyxia utilise <a class="reference external" href="https://min.io">MinIO</a> comme solution cloud de stockage objet. Cette dernière, compatible avec  l’API S3 d’Amazon, offre la possibilité d’intéragir avec les fichiers stockés depuis n’importe quel service lancé sur la plateforme.</p>
-<p>La création d’un compte Nubonyxia donne accès à un <em>bucket S3</em> individuel.</p>
+<p>La création d’un compte Nubonyxia donne accès à un <em>bucket S3</em> individuel de <strong>50 Go</strong>.</p>
 <p>De plus,chaque service de développement (VSCode, etc) dispose d’un espace de stockage <strong>NFS</strong> (<em>Network File System</em>). Ce dernier, par construction local et temporaire, a la même durée de vie que le service.</p>
 <p>Enfin, il est possible de créer des services de base de données comme <strong>PostgreSQL</strong>, qui ouvre accès à un espace de stockage persistent <strong>PVC</strong> (<em>Permanent Virtual Circuit</em>)</p>
 </section>
@@ -273,12 +273,12 @@ R</label><div class="sd-tab-content docutils">
 <input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-1">
 Python</label><div class="sd-tab-content docutils">
-<p>En Python, l’interaction avec un système de fichiers compatible S3 est rendue possible par deux librairies :</p>
+<p>En Python, l’interaction avec un système de fichiers compatible S3 est rendue possible grâce à deux librairies :</p>
 <ul class="simple">
 <li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Boto3</span></code>, une librairie créée et maintenue par Amazon</p></li>
 <li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">S3Fs</span></code> une librairie qui permet d’interagir avec les fichiers stockés à l’instar d’un <em>filesystem</em> classique. S3Fs est utilisée par défaut par la librairie <a class="reference external" href="https://pandas.pydata.org">pandas</a> pour gérer les connections S3.</p></li>
 </ul>
-<p>Dans la suite, nous allons utiliser la librairie <code class="code highlight python docutils literal highlight-python"><span class="n">S3Fs</span></code> pour la gestion du stockage sur MinIO</p>
+<p>Dans la suite, nous allons utiliser la librairie <code class="code highlight python docutils literal highlight-python"><span class="n">S3Fs</span></code> pour la gestion du stockage sur MinIO.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">s3fs</span>
 <span class="n">S3_ENDPOINT_URL</span> <span class="o">=</span> <span class="s2">&quot;https://&quot;</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;AWS_S3_ENDPOINT&quot;</span><span class="p">]</span>

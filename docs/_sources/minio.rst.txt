@@ -8,7 +8,7 @@ Les espaces de stockages sur Nubonyxia
 
 La plateforme Nubonyxia utilise `MinIO <https://min.io>`_ comme solution cloud de stockage objet. Cette dernière, compatible avec  l'API S3 d'Amazon, offre la possibilité d'intéragir avec les fichiers stockés depuis n'importe quel service lancé sur la plateforme.  
 
-La création d'un compte Nubonyxia donne accès à un *bucket S3* individuel. 
+La création d'un compte Nubonyxia donne accès à un *bucket S3* individuel de **50 Go**.
 
 De plus,chaque service de développement (VSCode, etc) dispose d'un espace de stockage **NFS** (*Network File System*). Ce dernier, par construction local et temporaire, a la même durée de vie que le service.
 
@@ -102,12 +102,12 @@ La connexion à son espace de stockage S3 depuis un service se fait grâce à un
 
     .. tab-item:: Python
 
-    	En Python, l'interaction avec un système de fichiers compatible S3 est rendue possible par deux librairies :
+    	En Python, l'interaction avec un système de fichiers compatible S3 est rendue possible grâce à deux librairies :
 
     	* :py:class:`~.Boto3`, une librairie créée et maintenue par Amazon 
     	* :py:class:`~.S3Fs` une librairie qui permet d'interagir avec les fichiers stockés à l'instar d'un *filesystem* classique. S3Fs est utilisée par défaut par la librairie `pandas <https://pandas.pydata.org>`_ pour gérer les connections S3.
 
-	Dans la suite, nous allons utiliser la librairie :python:`S3Fs` pour la gestion du stockage sur MinIO
+	Dans la suite, nous allons utiliser la librairie :python:`S3Fs` pour la gestion du stockage sur MinIO. 
         
         .. code:: python
 

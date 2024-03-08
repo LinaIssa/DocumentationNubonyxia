@@ -4,7 +4,7 @@
    contain the root `toctree` directive.
 
 Bienvenue dans la documentation de Nubonyxia!
-===================================
+=============================================
 
 **Nubonyxia** est une plateforme de data science à destination des experts numériques de l'Etat. 
 

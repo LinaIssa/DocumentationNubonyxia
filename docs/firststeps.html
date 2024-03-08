@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Catalogue de services" href="services.html" /><link rel="prev" title="Bienvenue dans la documentation de Nubonyxia!" href="index.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Configuration de services" href="services.html" /><link rel="prev" title="Bienvenue dans la documentation de Nubonyxia!" href="index.html" />
 
     <!-- Generated with Sphinx 7.2.6 and Furo 2024.01.29 -->
         <title>Premiers pas avec Nubonyxia - Nubonyxia 0.1 documentation</title>
@@ -136,7 +136,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -158,7 +158,7 @@
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <ul class="current">
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Premiers pas avec Nubonyxia</a></li>
-<li class="toctree-l1"><a class="reference internal" href="services.html">Catalogue de services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">Configuration de services</a></li>
 <li class="toctree-l1"><a class="reference internal" href="methode.html">Guide des bonnes pratiques</a></li>
 <li class="toctree-l1"><a class="reference internal" href="app.html">Déploiement CI/ CD d’applications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="proxy.html">Connexion Proxy</a></li>
@@ -192,7 +192,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -200,7 +200,149 @@
         <article role="main">
           <section id="premiers-pas-avec-nubonyxia">
 <h1>Premiers pas avec Nubonyxia<a class="headerlink" href="#premiers-pas-avec-nubonyxia" title="Link to this heading">#</a></h1>
-<p>Comment configurer son environnement de travail : git, espace de stockage, ressources etc</p>
+<p>Cette page offre une visite guidée de <a class="reference external" href="https://nubonyxia.incubateur.finances.rie.gouv.fr">Nubonyxia</a> et donne une desciption <em>pas à pas</em> des différentes étapes du lancement d’un service sur la plateforme.</p>
+<section id="ajout-du-certificat-dans-le-navigateur">
+<h2>1- Ajout du certificat dans le navigateur<a class="headerlink" href="#ajout-du-certificat-dans-le-navigateur" title="Link to this heading">#</a></h2>
+<p>Dans un premier temps, avec d’accéder à la plateforme, il est nécessaire d’ajouter le certificat, acccessible <a class="reference external" href="https://nubonyxia.incubateur.finances.rie.gouv.fr/statics/bercyCA.crt">ici</a>, dans le navigateur de votre choix. En effet, nous travaillons pour le moment avec un certificat auto-signé.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Cette manipulation est à faire une seule fois.</p>
+</div>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-0">
+avec Firefox</label><div class="sd-tab-content docutils">
+<ul class="simple">
+<li><p>Aller dans le menu Paramètres, rechercher Certificats</p></li>
+<li><p>Cliquer sur le bouton Afficher les certificats</p></li>
+<li><p>Aller dans l’Onglet Autorités</p></li>
+<li><p>Cliquer sur le bouton Importer et sélectionner le certificat bercyCA.crt</p></li>
+</ul>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-1">
+avec Edge</label><div class="sd-tab-content docutils">
+<ul class="simple">
+<li><p>Aller dans les paramètres du navigateur, chercher Certificats</p></li>
+<li><p>Cliquer sur Gérer les certificats qui devrait ouvrir une fenêtre Windows</p></li>
+<li><p>Sélectionner l’onglet Autorités de certification racine de confiance</p></li>
+<li><p>Importer le certificat bercyCA.crt</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="connexion-a-la-plateforme">
+<h2>2- Connexion à la plateforme<a class="headerlink" href="#connexion-a-la-plateforme" title="Link to this heading">#</a></h2>
+<p>L’accès à la plateforme se fait en utilisant l’identifiant et mot de passe que l’on vous aura communiqué. Nous utilisons <a class="reference external" href="https://www.keycloak.org">keycloak</a> pour gérer l’authentification.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Nous travaillons actuellement à intégrer <strong>agent connect</strong> à la plateforme. Pour le moment, nous gérons à la main les comptes utilisateurs (pas de fédérateur d’identité).</p>
+</div>
+</section>
+<section id="vue-generale-de-la-plateforme">
+<h2>3- Vue générale de la plateforme<a class="headerlink" href="#vue-generale-de-la-plateforme" title="Link to this heading">#</a></h2>
+<p>L’interface du datalab <a class="reference external" href="https://nubonyxia.incubateur.finances.rie.gouv.fr">Nubonyxia</a> est très largement inspirée de celle du <a class="reference external" href="https://datalab.sspcloud.fr">SSP Cloud</a>.
+insérer schéma relation entre différentes composantes</p>
+<p>A la disposition de l’utilisateur :</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3 sd-fade-in-slide-down">
+<summary class="sd-summary-title sd-card-header">
+un espace de stockage<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><a class="reference external" href="https://nubonyxia.incubateur.finances.rie.gouv.fr">Nubonyxia</a> n’échappe pas à la tendance de fond observée dans la Data et le Cloud, qui consiste à séparer l’espace de stockage des données des services où elles sont traitées. Pour plus d’informations sur le bucket S3 basé sur <a class="reference external" href="https://minio-console.lab.incubateur.finances.rie.gouv.fr/">MinIO</a> mis à la disposition des utilisateurs, consulter cette <a class="reference internal" href="minio.html"><span class="doc">page</span></a>.</p>
+<p class="sd-card-text">Cette séparation entre l’espace de stockage des données et l’envrionnement où elles sont traitées offre plusieurs avantages :</p>
+<ul class="simple">
+<li><p class="sd-card-text">découpler le stockage et le calcul,</p></li>
+<li><p class="sd-card-text">garantir une <strong>reproductibilité des analyses</strong>,</p></li>
+<li><p class="sd-card-text">permettre une <strong>optimisation des coûts</strong>. En effet, on peut dès lors adapter les ressources en fonction des besoins de stockage et calcul.</p></li>
+</ul>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3 sd-fade-in-slide-down">
+<summary class="sd-summary-title sd-card-header">
+un catalogue de services<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Les services mis à la disposition des utilisateurs sont dans l’onglet <span class="menuselection">Catalogue de services</span>. Ces derniers se répartissent selon plusieurs catégories et permettent de répondre à un large spectre de cas d’usages <em>data</em>.</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-2" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-2">
+IDE</label><div class="sd-tab-content docutils">
+<ul class="simple">
+<li><p class="sd-card-text">Vscode</p></li>
+<li><p class="sd-card-text">Notebook</p></li>
+</ul>
+</div>
+<input id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-3">
+Gestion de base de données</label><div class="sd-tab-content docutils">
+<ul class="simple">
+<li><p class="sd-card-text">PostgreSQL</p></li>
+<li><p class="sd-card-text">Cloudbeaver</p></li>
+<li><p class="sd-card-text">NocoDB</p></li>
+</ul>
+</div>
+<input id="sd-tab-item-4" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-4">
+Data Visualisation</label><div class="sd-tab-content docutils">
+<ul class="simple">
+<li><p class="sd-card-text">Superset</p></li>
+</ul>
+</div>
+<input id="sd-tab-item-5" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-5">
+Automation</label><div class="sd-tab-content docutils">
+<ul class="simple">
+<li><p class="sd-card-text">Argo-cd</p></li>
+<li><p class="sd-card-text">Argo-workflows</p></li>
+</ul>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p class="sd-card-text">Si vous avez besoin d’un service en particulier qui est indisponible dans notre catalogue, n’hésitez pas à nous en faire part. Nous sommes à l’écoute de nos utilisateurs pour enrichir notre catalogue !</p>
+</div>
+<p class="sd-card-text">Vous trouverez <a class="reference internal" href="services.html"><span class="doc">ici</span></a> les explications sur la configuration des différents services. Des exemples de cas d’usages sont présentés dans cette <a class="reference internal" href="usecase.html"><span class="doc">page</span></a>.</p>
+<p class="sd-card-text">Les services lancés par l’utilisateur apparaissent dans l’onglet <span class="menuselection">Mes services</span>. Il est possible de lancer à la demande plusieurs services à la fois.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p class="sd-card-text">Les services ont des tokens d’expiration. Lorsqu’ils ne sont plus utilisés, pensez à bien les supprimer, voir <a class="reference internal" href="methode.html"><span class="doc">guide des bonnes pratiques</span></a>.</p>
+</div>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3 sd-fade-in-slide-down">
+<summary class="sd-summary-title sd-card-header">
+une connexion git intégré<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><a class="reference external" href="https://nubonyxia.incubateur.finances.rie.gouv.fr">Nubonyxia</a> est connectée à la <em>forge interministérielle</em> de la DGFiP. Cette dernière est hébergée sur une instance GitLab.
+Dans l’onglet <span class="menuselection">Mon Compte ‣ Services Externes -‣ Configuration Git</span>
+Nous recommendons l’utilisation de la <a class="reference external" href="https://forge.dgfip.finances.rie.gouv.fr/">forge</a> pour stocker vos codes et déployer des applications. Consulter le <a class="reference internal" href="methode.html"><span class="doc">guide des bonnes pratiques</span></a> pour plus d’informations sur l’utilisation de git et la <a class="reference internal" href="app.html"><span class="doc">page</span></a> pour le déploiement d’applications.</p>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3 sd-fade-in-slide-down">
+<summary class="sd-summary-title sd-card-header">
+une gestion de secret<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Certains usages requiert de fournir à un service des <em>crédentials</em> sous forme de secret - sans les écrire en clair dans le code de chaque service. Cela est géré par <a class="reference external" href="https://nubonyxia.incubateur.finances.rie.gouv.fr/account/vault">Vault</a> dans notre cluster.</p>
+</div>
+</details></section>
+<section id="lancement-d-un-service">
+<h2>4- Lancement d’un service<a class="headerlink" href="#lancement-d-un-service" title="Link to this heading">#</a></h2>
+<p>Utilsation : pip install grace au Nexus mis en place par la DGFIP</p>
+<p>L’interface utilisateur permet de configurer le service que l’on va lancer.
+Onyxia facilite cette configuration en injectant directement certaines valeurs (token S3, token Git, secrets …).
+Pour une configuration plus détaillée, consulter <a class="reference internal" href="services.html"><span class="doc">ici</span></a>.</p>
+</section>
+<section id="pour-aller-plus-loin">
+<h2>Pour aller plus loin<a class="headerlink" href="#pour-aller-plus-loin" title="Link to this heading">#</a></h2>
+</section>
 </section>
 
         </article>
@@ -213,7 +355,7 @@
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Catalogue de services</div>
+                <div class="title">Configuration de services</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -246,8 +388,31 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Premiers pas avec Nubonyxia</a><ul>
+<li><a class="reference internal" href="#ajout-du-certificat-dans-le-navigateur">1- Ajout du certificat dans le navigateur</a></li>
+<li><a class="reference internal" href="#connexion-a-la-plateforme">2- Connexion à la plateforme</a></li>
+<li><a class="reference internal" href="#vue-generale-de-la-plateforme">3- Vue générale de la plateforme</a></li>
+<li><a class="reference internal" href="#lancement-d-un-service">4- Lancement d’un service</a></li>
+<li><a class="reference internal" href="#pour-aller-plus-loin">Pour aller plus loin</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

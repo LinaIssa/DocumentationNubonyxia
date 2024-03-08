@@ -81,6 +81,8 @@ rst_prolog = """
 .. _Harbor: https://harbor.lab.incubateur.finances.rie.gouv.fr
 .. _MinIO: https://minio-console.lab.incubateur.finances.rie.gouv.fr/ 
 .. _Vault: https://nubonyxia.incubateur.finances.rie.gouv.fr/account/vault
+.. _SSP Cloud: https://datalab.sspcloud.fr
+.. _forge: https://forge.dgfip.finances.rie.gouv.fr/ 
 
 
 """

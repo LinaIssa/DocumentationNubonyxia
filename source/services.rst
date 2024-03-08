@@ -1,4 +1,4 @@
-Catalogue de services
+Configuration de services
 =====================
 
 Mise à la disposition des services combinés à des ressources en CPU et en RAM
@@ -14,3 +14,5 @@ IDE : notebook, vscode
 Base de données : Postegre, Cloudbeaver
 
 Outils no code, low code : NocoDB et superset  
+
+configurration services 
