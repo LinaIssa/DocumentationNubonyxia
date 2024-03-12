@@ -72,8 +72,11 @@ A la disposition de l'utilisateur :
 
 		.. tab-item:: IDE
 
-			* Vscode 
-			* Notebook
+
+			* `Vscode-python` : Vscode avec Python, Julia et une collection de packages *data science* intégrée  
+			* `Vscode-pytorch`: Vscode enrichi avec le framework de *deep learning* :python:`pyorch`  
+			* `jupyter-notebook`: JupterLab avec Python, Julia et une collection de packages *data science* intégrée 
+			* `R studio` : RStudio avec les packages de *data science* intégrés
 
 		.. tab-item:: Gestion de base de données
 
@@ -103,6 +106,7 @@ A la disposition de l'utilisateur :
 		Les services ont des tokens d'expiration. Lorsqu'ils ne sont plus utilisés, pensez à bien les supprimer, voir :doc:`guide des bonnes pratiques <methode>`. 
 
 
+.. _target to paragraph:
 
 .. dropdown:: une connexion git intégré 
 	:animate: fade-in-slide-down
@@ -122,12 +126,25 @@ A la disposition de l'utilisateur :
 4- Lancement d'un service 
 -------------------------
 
-Utilsation : pip install grace au Nexus mis en place par la DGFIP 
+Nous avons mis à disposition sur la `forge`_ un repo nommé `Quick Start` avec des scripts de *data visualisation* prêt à être exécuté. 
 
-L'interface utilisateur permet de configurer le service que l'on va lancer.
-Onyxia facilite cette configuration en injectant directement certaines valeurs (token S3, token Git, secrets ...).
-Pour une configuration plus détaillée, consulter :doc:`ici <services>`. 
+Pour lancer un service, il suffit de se rendre dans l'onglet :menuselection:`Catalogue de services`. Vous pouvez lancer le service IDE de votre choix.   
+L'interface Onyxia permet de configurer le service que l'on va lancer comme le montre en détail la section :doc:`Configuration de services <services>`.
 
+.. note::
+	Les **tokens S3** et **git** sont déjà pré-configurés. 
+
+
+Après avoir renseigné son token d'accès Gitlab dans Onyxia (voir section :ref:`connexion Git intégré <target to paragraph>`), l'utilisateur peut directement cloner le repo en s'identifiant avec son token stocké sous forme de variable d'environnement 
+
+:program:`git clone https://<gitlab-user>:$GIT_PERSONAL_ACCESS_TOKEN@repo`, où :program:`repo` renvoie à l'url du repo.  
+
+Il est également possible de cloner le repo au lancement du service dans l'interface. 
+
+
+
+
+Dans le service IDE , il est possible de télécharger en complément des librairies Python ou R, grâce au `Nexus` mis en place par la DGFIP. En effet bien que la plateforme soit isolée d'internet, un point d'accès à Pypi (librairies Python) et CRAN (packages R) nous est tout de même offert grâce à un mirroir (Nexus de la DGFiP). Il est ainsi possible de réaliser :program:`pip install` suivi de la librairie de votre choix pour Python et :program:`install.package("")` en R.
 
 Pour aller plus loin 
 ---------------------

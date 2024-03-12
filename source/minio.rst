@@ -150,6 +150,8 @@ La connexion à son espace de stockage S3 depuis un service se fait grâce à un
 		with fs.open(FILE_PATH_OUT_S3, 'w') as file_out:
 		df_bpe.to_csv(file_out)
 
+	L'intéraction avec MinIO est illustrée dans ce `notebook <https://forge.dgfip.finances.rie.gouv.fr/bercyhub/nubonyxia/python-demonstration/-/blob/main/UseCase_MinIO.ipynb?ref_type=heads>`_ disponible sur la forge. 
+
     .. tab-item:: mc
 
 
