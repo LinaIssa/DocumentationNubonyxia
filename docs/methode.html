@@ -136,7 +136,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -192,7 +192,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -200,6 +200,24 @@
         <article role="main">
           <section id="guide-des-bonnes-pratiques">
 <h1>Guide des bonnes pratiques<a class="headerlink" href="#guide-des-bonnes-pratiques" title="Link to this heading">#</a></h1>
+<section id="gestion-de-versions-avec-git">
+<h2>Gestion de versions avec Git<a class="headerlink" href="#gestion-de-versions-avec-git" title="Link to this heading">#</a></h2>
+<section id="configuration-du-git-pour-la-premiere-fois">
+<span id="gitconfig"></span><h3>Configuration du Git pour la première fois<a class="headerlink" href="#configuration-du-git-pour-la-premiere-fois" title="Link to this heading">#</a></h3>
+<p>Afin de pouvoir synchroniser ses codes avec un dépôt distant, il faut tout d’abord connecter <a class="reference external" href="https://nubonyxia.incubateur.finances.rie.gouv.fr">Nubonyxia</a> à un compte Git. La création d’un compte sur une forge Git est donc indispensable si l’on veut bénéficier de ce service.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Il est possible de créer un compte sur la forge Git de son choix, soit la forge interministérielle <a class="reference external" href="https://forge.dgfip.finances.rie.gouv.fr/">GitLab</a>  accessible via <a class="reference external" href="https://www.renater.fr/projets-et-partenariats/projets-specifiques/le-reseau-interministeriel-de-letat-rie/">RIE</a>, soit la forge <a class="reference external" href="https://github.com/signup">GitHub</a> exposé sur internet.</p>
+</div>
+<p>1 - <strong>création d’un token à partir de son compte git</strong> : Sur son compte Git, générer un jeton d’accès personnel ou <cite>token</cite> permettant l’authentification auprès de la forge. Une fois généré, le token n’apparait qu’une seule fois. Il faudra alors bien le noter.</p>
+<p>2 - <strong>configuration de git sur la plateforme</strong>: Sur sa plateforme <a class="reference external" href="https://nubonyxia.incubateur.finances.rie.gouv.fr">Nubonyxia</a>, se rendre dans l’onglet <span class="menuselection">Mon Compte ‣ Services Externes ‣ Configuration Git</span> et renseigner ses identifiants Git et le token. Ainsi, ce dernier sera accessible aux services lancés sur la plateforme.</p>
+<a class="reference internal image-reference" href="_images/configGIT.png"><img alt="Alternative text" src="_images/configGIT.png" style="width: 800px;" /></a>
+</section>
+<section id="utilisation-de-git-avec-les-services-du-datalab">
+<span id="gitservice"></span><h3>Utilisation de Git avec les services du Datalab<a class="headerlink" href="#utilisation-de-git-avec-les-services-du-datalab" title="Link to this heading">#</a></h3>
+<a class="reference internal image-reference" href="_images/configService.png"><img alt="Alternative text" src="_images/configService.png" style="width: 800px;" /></a>
+</section>
+</section>
 </section>
 
         </article>
@@ -245,8 +263,31 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Guide des bonnes pratiques</a><ul>
+<li><a class="reference internal" href="#gestion-de-versions-avec-git">Gestion de versions avec Git</a><ul>
+<li><a class="reference internal" href="#configuration-du-git-pour-la-premiere-fois">Configuration du Git pour la première fois</a></li>
+<li><a class="reference internal" href="#utilisation-de-git-avec-les-services-du-datalab">Utilisation de Git avec les services du Datalab</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

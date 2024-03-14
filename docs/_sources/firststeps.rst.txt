@@ -75,7 +75,9 @@ A la disposition de l'utilisateur :
 
 			* `Vscode-python` : Vscode avec Python, Julia et une collection de packages *data science* intégrée  
 			* `Vscode-pytorch`: Vscode enrichi avec le framework de *deep learning* :python:`pyorch`  
-			* `jupyter-notebook`: JupterLab avec Python, Julia et une collection de packages *data science* intégrée 
+			* `Vscode-nodejs` : Vscode enrichi de `NodeJs runtime` et donc adapté pour le développement web. 
+			* `jupyter-python`: JupterLab avec Python, Julia et une collection de packages *data science* intégrée 
+			* `jupyter-pyspark`: JupyterLab intégrant `Apache Spark <https://spark.apache.org/docs/latest/api/python/index.html>`_ pour réaliser du calcul distribué avec Python.  
 			* `R studio` : RStudio avec les packages de *data science* intégrés
 
 		.. tab-item:: Gestion de base de données
@@ -89,7 +91,7 @@ A la disposition de l'utilisateur :
 			* Superset
 
 		.. tab-item:: Automation
-
+			* GitlabRunner : pour le déploiement sur le cluster `Kubernetes`_ d'un job CI lancé sur la `forge`_. Voir la :doc:`page <app>` pour le déploiement d'applications.
 			* Argo-cd 
 			* Argo-workflows 
 
@@ -108,13 +110,15 @@ A la disposition de l'utilisateur :
 
 .. _target to paragraph:
 
-.. dropdown:: une connexion git intégré 
+.. dropdown:: une connexion git intégrée
 	:animate: fade-in-slide-down
 
-	`Nubonyxia`_ est connectée à la *forge interministérielle* de la DGFiP. Cette dernière est hébergée sur une instance GitLab.
-	Dans l'onglet :menuselection:`Mon Compte --> Services Externes ---> Configuration Git`
-	Nous recommendons l'utilisation de la `forge`_ pour stocker vos codes et déployer des applications. Consulter le :doc:`guide des bonnes pratiques <methode>` pour plus d'informations sur l'utilisation de git et la :doc:`page <app>` pour le déploiement d'applications. 
+	La sauvegarde des codes ainsi que la gestion des versions sont assurées par une instance **Git**. Le datalab de `Nubonyxia`_ facilite son implémentation en offrant une connexion à la *forge interministérielle* de la DGFiP. Cette dernière est hébergée sur une instance GitLab. La plateforme autorise également une connexion à GitHub. Nous recommendons toutefois l'utilisation de la `forge`_ pour stocker vos codes et déployer des applications afin de bénéficier du `RIE_ (ie, le réseau interministériel).
 
+
+	
+ 	La configuration d'un serveur Git sur `Nubonyxia`_ ainsi que son utilisation sont détaillées dans la section :doc:`guide des bonnes pratiques <methode>`.
+ 
 
 .. dropdown:: une gestion de secret  
 	:animate: fade-in-slide-down
@@ -126,7 +130,7 @@ A la disposition de l'utilisateur :
 4- Lancement d'un service 
 -------------------------
 
-Nous avons mis à disposition sur la `forge`_ un repo nommé `Quick Start` avec des scripts de *data visualisation* prêt à être exécuté. 
+Nous avons mis à disposition sur la `forge`_ un repo nommé `Quick Start` avec des scripts de *data visualisation* prêt-à-être exécutés. 
 
 Pour lancer un service, il suffit de se rendre dans l'onglet :menuselection:`Catalogue de services`. Vous pouvez lancer le service IDE de votre choix.   
 L'interface Onyxia permet de configurer le service que l'on va lancer comme le montre en détail la section :doc:`Configuration de services <services>`.
@@ -135,16 +139,15 @@ L'interface Onyxia permet de configurer le service que l'on va lancer comme le m
 	Les **tokens S3** et **git** sont déjà pré-configurés. 
 
 
-Après avoir renseigné son token d'accès Gitlab dans Onyxia (voir section :ref:`connexion Git intégré <target to paragraph>`), l'utilisateur peut directement cloner le repo en s'identifiant avec son token stocké sous forme de variable d'environnement 
+Après avoir renseigné son token d'accès Gitlab dans le datalab (voir section :ref:`gitConfig`), l'utilisateur peut directement cloner le repo en s'identifiant avec son token stocké sous forme de variable d'environnement :python:`$GIT_PERSONAL_ACCESS_TOKEN` à l'aide de la ligne de commande suivante :  
 
-:program:`git clone https://<gitlab-user>:$GIT_PERSONAL_ACCESS_TOKEN@repo`, où :program:`repo` renvoie à l'url du repo.  
-
-Il est également possible de cloner le repo au lancement du service dans l'interface. 
+:program:`git clone https://<gitlab-user>:$GIT_PERSONAL_ACCESS_TOKEN@forge.dgfip.finances.rie.gouv.fr/<owner>/<repo>.git`, où :program:`<owner>` et :program:`<repo>` sont à remplacer respectivement par le nom d'utilisateur et le nom du repo Git.  
 
 
+Il est également possible de cloner le repo au lancement du service dans l'interface, comme le montre la section :ref:`gitService`. 
 
 
-Dans le service IDE , il est possible de télécharger en complément des librairies Python ou R, grâce au `Nexus` mis en place par la DGFIP. En effet bien que la plateforme soit isolée d'internet, un point d'accès à Pypi (librairies Python) et CRAN (packages R) nous est tout de même offert grâce à un mirroir (Nexus de la DGFiP). Il est ainsi possible de réaliser :program:`pip install` suivi de la librairie de votre choix pour Python et :program:`install.package("")` en R.
+Dans le service IDE , il est possible de télécharger en complément des librairies Python ou R, grâce au `Nexus` mis en place par la DGFIP. En effet bien que la plateforme soit isolée d'internet, un point d'accès à Pypi (librairies Python) et CRAN (packages R)est mis en place grâce à un mirroir (Nexus de la DGFiP). Il est ainsi possible de réaliser :program:`pip install` suivi de la librairie de votre choix pour Python et :program:`install.package("")` pour R.
 
 Pour aller plus loin 
 ---------------------

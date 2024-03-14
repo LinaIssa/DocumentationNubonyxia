@@ -274,7 +274,9 @@ IDE</label><div class="sd-tab-content docutils">
 <ul class="simple">
 <li><p class="sd-card-text"><cite>Vscode-python</cite> : Vscode avec Python, Julia et une collection de packages <em>data science</em> intégrée</p></li>
 <li><p class="sd-card-text"><cite>Vscode-pytorch</cite>: Vscode enrichi avec le framework de <em>deep learning</em> <code class="code highlight python docutils literal highlight-python"><span class="n">pyorch</span></code></p></li>
-<li><p class="sd-card-text"><cite>jupyter-notebook</cite>: JupterLab avec Python, Julia et une collection de packages <em>data science</em> intégrée</p></li>
+<li><p class="sd-card-text"><cite>Vscode-nodejs</cite> : Vscode enrichi de <cite>NodeJs runtime</cite> et donc adapté pour le développement web.</p></li>
+<li><p class="sd-card-text"><cite>jupyter-python</cite>: JupterLab avec Python, Julia et une collection de packages <em>data science</em> intégrée</p></li>
+<li><p class="sd-card-text"><cite>jupyter-pyspark</cite>: JupyterLab intégrant <a class="reference external" href="https://spark.apache.org/docs/latest/api/python/index.html">Apache Spark</a> pour réaliser du calcul distribué avec Python.</p></li>
 <li><p class="sd-card-text"><cite>R studio</cite> : RStudio avec les packages de <em>data science</em> intégrés</p></li>
 </ul>
 </div>
@@ -294,14 +296,6 @@ Data Visualisation</label><div class="sd-tab-content docutils">
 <li><p class="sd-card-text">Superset</p></li>
 </ul>
 </div>
-<input id="sd-tab-item-5" name="sd-tab-set-1" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-5">
-Automation</label><div class="sd-tab-content docutils">
-<ul class="simple">
-<li><p class="sd-card-text">Argo-cd</p></li>
-<li><p class="sd-card-text">Argo-workflows</p></li>
-</ul>
-</div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -316,14 +310,13 @@ Automation</label><div class="sd-tab-content docutils">
 </div>
 </details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3 sd-fade-in-slide-down" id="target-to-paragraph">
 <summary class="sd-summary-title sd-card-header">
-une connexion git intégré<div class="sd-summary-down docutils">
+une connexion git intégrée<div class="sd-summary-down docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
 <div class="sd-summary-up docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text"><a class="reference external" href="https://nubonyxia.incubateur.finances.rie.gouv.fr">Nubonyxia</a> est connectée à la <em>forge interministérielle</em> de la DGFiP. Cette dernière est hébergée sur une instance GitLab.
-Dans l’onglet <span class="menuselection">Mon Compte ‣ Services Externes -‣ Configuration Git</span>
-Nous recommendons l’utilisation de la <a class="reference external" href="https://forge.dgfip.finances.rie.gouv.fr/">forge</a> pour stocker vos codes et déployer des applications. Consulter le <a class="reference internal" href="methode.html"><span class="doc">guide des bonnes pratiques</span></a> pour plus d’informations sur l’utilisation de git et la <a class="reference internal" href="app.html"><span class="doc">page</span></a> pour le déploiement d’applications.</p>
+<p class="sd-card-text">La sauvegarde des codes ainsi que la gestion des versions sont assurées par une instance <strong>Git</strong>. Le datalab de <a class="reference external" href="https://nubonyxia.incubateur.finances.rie.gouv.fr">Nubonyxia</a> facilite son implémentation en offrant une connexion à la <em>forge interministérielle</em> de la DGFiP. Cette dernière est hébergée sur une instance GitLab. La plateforme autorise également une connexion à GitHub. Nous recommendons toutefois l’utilisation de la <a class="reference external" href="https://forge.dgfip.finances.rie.gouv.fr/">forge</a> pour stocker vos codes et déployer des applications afin de bénéficier du <a href="#id1"><span class="problematic" id="id2">`</span></a><a class="reference external" href="https://www.renater.fr/projets-et-partenariats/projets-specifiques/le-reseau-interministeriel-de-letat-rie/">RIE</a> (ie, le réseau interministériel).</p>
+<p class="sd-card-text">La configuration d’un serveur Git sur <a class="reference external" href="https://nubonyxia.incubateur.finances.rie.gouv.fr">Nubonyxia</a> ainsi que son utilisation sont détaillées dans la section <a class="reference internal" href="methode.html"><span class="doc">guide des bonnes pratiques</span></a>.</p>
 </div>
 </details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3 sd-fade-in-slide-down">
 <summary class="sd-summary-title sd-card-header">
@@ -337,17 +330,17 @@ une gestion de secret<div class="sd-summary-down docutils">
 </details></section>
 <section id="lancement-d-un-service">
 <h2>4- Lancement d’un service<a class="headerlink" href="#lancement-d-un-service" title="Link to this heading">#</a></h2>
-<p>Nous avons mis à disposition sur la <a class="reference external" href="https://forge.dgfip.finances.rie.gouv.fr/">forge</a> un repo nommé <cite>Quick Start</cite> avec des scripts de <em>data visualisation</em> prêt à être exécuté.</p>
+<p>Nous avons mis à disposition sur la <a class="reference external" href="https://forge.dgfip.finances.rie.gouv.fr/">forge</a> un repo nommé <cite>Quick Start</cite> avec des scripts de <em>data visualisation</em> prêt-à-être exécutés.</p>
 <p>Pour lancer un service, il suffit de se rendre dans l’onglet <span class="menuselection">Catalogue de services</span>. Vous pouvez lancer le service IDE de votre choix.
 L’interface Onyxia permet de configurer le service que l’on va lancer comme le montre en détail la section <a class="reference internal" href="services.html"><span class="doc">Configuration de services</span></a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Les <strong>tokens S3</strong> et <strong>git</strong> sont déjà pré-configurés.</p>
 </div>
-<p>Après avoir renseigné son token d’accès Gitlab dans Onyxia (voir section <a class="reference internal" href="#target-to-paragraph"><span class="std std-ref">connexion Git intégré</span></a>), l’utilisateur peut directement cloner le repo en s’identifiant avec son token stocké sous forme de variable d’environnement</p>
-<p><strong class="program">git clone https://&lt;gitlab-user&gt;:$GIT_PERSONAL_ACCESS_TOKEN&#64;repo</strong>, où <strong class="program">repo</strong> renvoie à l’url du repo.</p>
-<p>Il est également possible de cloner le repo au lancement du service dans l’interface.</p>
-<p>Dans le service IDE , il est possible de télécharger en complément des librairies Python ou R, grâce au <cite>Nexus</cite> mis en place par la DGFIP. En effet bien que la plateforme soit isolée d’internet, un point d’accès à Pypi (librairies Python) et CRAN (packages R) nous est tout de même offert grâce à un mirroir (Nexus de la DGFiP). Il est ainsi possible de réaliser <strong class="program">pip install</strong> suivi de la librairie de votre choix pour Python et <strong class="program">install.package(&quot;&quot;)</strong> en R.</p>
+<p>Après avoir renseigné son token d’accès Gitlab dans le datalab (voir section <a class="reference internal" href="methode.html#gitconfig"><span class="std std-ref">Configuration du Git pour la première fois</span></a>), l’utilisateur peut directement cloner le repo en s’identifiant avec son token stocké sous forme de variable d’environnement <code class="code highlight python docutils literal highlight-python"><span class="err">$</span><span class="n">GIT_PERSONAL_ACCESS_TOKEN</span></code> à l’aide de la ligne de commande suivante :</p>
+<p><strong class="program">git clone https://&lt;gitlab-user&gt;:$GIT_PERSONAL_ACCESS_TOKEN&#64;forge.dgfip.finances.rie.gouv.fr/&lt;owner&gt;/&lt;repo&gt;.git</strong>, où <strong class="program">&lt;owner&gt;</strong> et <strong class="program">&lt;repo&gt;</strong> sont à remplacer respectivement par le nom d’utilisateur et le nom du repo Git.</p>
+<p>Il est également possible de cloner le repo au lancement du service dans l’interface, comme le montre la section <a class="reference internal" href="methode.html#gitservice"><span class="std std-ref">Utilisation de Git avec les services du Datalab</span></a>.</p>
+<p>Dans le service IDE , il est possible de télécharger en complément des librairies Python ou R, grâce au <cite>Nexus</cite> mis en place par la DGFIP. En effet bien que la plateforme soit isolée d’internet, un point d’accès à Pypi (librairies Python) et CRAN (packages R)est mis en place grâce à un mirroir (Nexus de la DGFiP). Il est ainsi possible de réaliser <strong class="program">pip install</strong> suivi de la librairie de votre choix pour Python et <strong class="program">install.package(&quot;&quot;)</strong> pour R.</p>
 </section>
 <section id="pour-aller-plus-loin">
 <h2>Pour aller plus loin<a class="headerlink" href="#pour-aller-plus-loin" title="Link to this heading">#</a></h2>

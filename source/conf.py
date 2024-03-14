@@ -82,7 +82,9 @@ rst_prolog = """
 .. _MinIO: https://minio-console.lab.incubateur.finances.rie.gouv.fr/ 
 .. _Vault: https://nubonyxia.incubateur.finances.rie.gouv.fr/account/vault
 .. _SSP Cloud: https://datalab.sspcloud.fr
+.. _Kubernetes: https://kubernetes.io/fr/docs/concepts/overview/what-is-kubernetes/
 .. _forge: https://forge.dgfip.finances.rie.gouv.fr/ 
+.. _RIE: https://www.renater.fr/projets-et-partenariats/projets-specifiques/le-reseau-interministeriel-de-letat-rie/ 
 
 
 """
