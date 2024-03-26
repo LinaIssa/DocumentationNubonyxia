@@ -130,7 +130,7 @@ A la disposition de l'utilisateur :
 4- Lancement d'un service 
 -------------------------
 
-Nous avons mis à disposition sur la `forge`_ un repo nommé `Quick Start` avec des scripts de *data visualisation* prêt-à-être exécutés. 
+Nous avons mis à disposition sur la `forge`_ un repo nommé `Quick Start <https://forge.dgfip.finances.rie.gouv.fr/bercyhub/nubonyxia/quick-start>`_ avec des scripts de *data visualisation* prêt-à-être exécutés. 
 
 Pour lancer un service, il suffit de se rendre dans l'onglet :menuselection:`Catalogue de services`. Vous pouvez lancer le service IDE de votre choix.   
 L'interface Onyxia permet de configurer le service que l'on va lancer comme le montre en détail la section :doc:`Configuration de services <services>`.
@@ -141,7 +141,11 @@ L'interface Onyxia permet de configurer le service que l'on va lancer comme le m
 
 Après avoir renseigné son token d'accès Gitlab dans le datalab (voir section :ref:`gitConfig`), l'utilisateur peut directement cloner le repo en s'identifiant avec son token stocké sous forme de variable d'environnement :python:`$GIT_PERSONAL_ACCESS_TOKEN` à l'aide de la ligne de commande suivante :  
 
-:program:`git clone https://<gitlab-user>:$GIT_PERSONAL_ACCESS_TOKEN@forge.dgfip.finances.rie.gouv.fr/<owner>/<repo>.git`, où :program:`<owner>` et :program:`<repo>` sont à remplacer respectivement par le nom d'utilisateur et le nom du repo Git.  
+.. code:: python
+
+	git clone https://<gitlab-user>:$GIT_PERSONAL_ACCESS_TOKEN@forge.dgfip.finances.rie.gouv.fr/<owner>/<repo>.git
+
+où :program:`<owner>` et :program:`<repo>` sont à remplacer respectivement par le nom d'utilisateur et le nom du repo Git.  
 
 
 Il est également possible de cloner le repo au lancement du service dans l'interface, comme le montre la section :ref:`gitService`. 
