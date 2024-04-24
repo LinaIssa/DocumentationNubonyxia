@@ -3,7 +3,7 @@ Déploiement CI/ CD d'applications
 
 .. important::
 
-    Dans sa conception actuelle, `Nubonyxia`_ ne gère pas la mise en production des applicatifs webs déployés sur la plateforme. Si vous souhaitez péréniser une application déployée sur notre plateforme, adressez-vous directement à nous. 
+    Dans sa conception actuelle, `Nubonyxia`_ ne gère pas la mise en production des applicatifs webs déployés sur la plateforme. Si vous souhaitez pérénniser une application déployée sur notre plateforme, adressez-vous directement à nous. 
 
 
 Cette section décrit les étapes dans le déploiement d'une application développée en 
@@ -101,7 +101,7 @@ d. Dockerfile
           
 
     .. tab-item:: Python
-    
+
         Voici un exemple type de dockerfile pour une application python, à adapter selon le cas d'usage. 
         
         .. code:: python
