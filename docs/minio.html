@@ -202,7 +202,7 @@
 <h1>Stockage de données dans Nubonyxia<a class="headerlink" href="#stockage-de-donnees-dans-nubonyxia" title="Link to this heading">#</a></h1>
 <section id="les-espaces-de-stockages-sur-nubonyxia">
 <h2>Les espaces de stockages sur Nubonyxia<a class="headerlink" href="#les-espaces-de-stockages-sur-nubonyxia" title="Link to this heading">#</a></h2>
-<p>La plateforme Nubonyxia utilise <a class="reference external" href="https://min.io">MinIO</a> comme solution cloud de stockage objet. Cette dernière, compatible avec  l’API S3 d’Amazon, offre la possibilité d’intéragir avec les fichiers stockés depuis n’importe quel service lancé sur la plateforme.</p>
+<p>La plateforme Nubonyxia utilise <a class="reference external" href="https://minio-console.lab.incubateur.finances.rie.gouv.fr/">MinIO</a> comme solution cloud de stockage objet. Cette dernière, compatible avec  l’API S3 d’Amazon, offre la possibilité d’intéragir avec les fichiers stockés depuis n’importe quel service lancé sur la plateforme.</p>
 <p>La création d’un compte Nubonyxia donne accès à un <em>bucket S3</em> individuel de <strong>50 Go</strong>.</p>
 <p>De plus,chaque service de développement (VSCode, etc) dispose d’un espace de stockage <strong>NFS</strong> (<em>Network File System</em>). Ce dernier, par construction local et temporaire, a la même durée de vie que le service.</p>
 <p>Enfin, il est possible de créer des services de base de données comme <strong>PostgreSQL</strong>, qui ouvre accès à un espace de stockage persistent <strong>PVC</strong> (<em>Permanent Virtual Circuit</em>)</p>
@@ -317,6 +317,26 @@ mc</label><div class="sd-tab-content docutils">
 </div>
 </div>
 </section>
+<section id="creation-des-cles-d-acces-a-minio">
+<span id="miniokeys"></span><h3>Création des clés d’accès à <a class="reference external" href="https://minio-console.lab.incubateur.finances.rie.gouv.fr/">MinIO</a><a class="headerlink" href="#creation-des-cles-d-acces-a-minio" title="Link to this heading">#</a></h3>
+<p>Nubonyxia utilise <a class="reference external" href="https://minio-console.lab.incubateur.finances.rie.gouv.fr/">MinIO</a> pour stocker les caches nécessaires à la bonne exécution de la chaîne d’intégration de l’application que l’on cherche à déployer, voir la page <a class="reference internal" href="app.html"><span class="doc">Déploiement CI/ CD d’applications</span></a> sur la mise en place d’une chaîne CI/CD. Il faut alors fournir les clés d’accès <strong>AccessKey</strong> et <strong>SecretKey</strong> à l’engin d’intégration continue, en l’occurence le <cite>gitlab-runner</cite> instancié depuis la plateforme. Ces clés sont crées une seule fois en se connectant à <a class="reference external" href="https://minio-console.lab.incubateur.finances.rie.gouv.fr/">MinIO</a>.</p>
+<p>Pour ce faire, choisir le mode <strong>STS</strong> lors de sa connexion à <a class="reference external" href="https://minio-console.lab.incubateur.finances.rie.gouv.fr/">MinIO</a>. Les tokens STS sont à récupérer dans <span class="menuselection">Mon compte ‣ Connexion au stockage</span> (<a class="reference external" href="https://nubonyxia.incubateur.finances.rie.gouv.fr/account/storage">https://nubonyxia.incubateur.finances.rie.gouv.fr/account/storage</a>).
+Plus spécifiquement:</p>
+<ul class="simple">
+<li><p><em>STS Username</em>  correspond à <strong>Access key id</strong></p></li>
+<li><p><em>STS Secret</em>  correspond à <strong>Secret access key</strong></p></li>
+<li><p><em>STS Token</em>  correspond à <strong>Session token</strong></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Cliquez sur l’icône ‘copier dans presse-papier’ présente dans l’interface afin de copier les codes d’accès à <a class="reference external" href="https://minio-console.lab.incubateur.finances.rie.gouv.fr/">MinIO</a>.</p>
+</div>
+<p>Une fois connectée, il suffit de se rendre dans <span class="menuselection">Access Keys ‣ Create access key</span></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Pensez à bien sauvegarder les codes d’accès, dans un gestionnaire de mots de passe par exemple.</p>
+</div>
+</section>
 </section>
 </section>
 
@@ -384,6 +404,7 @@ mc</label><div class="sd-tab-content docutils">
 </ul>
 </li>
 <li><a class="reference internal" href="#utilisation-des-donnees-depuis-un-service">Utilisation des données depuis un service</a></li>
+<li><a class="reference internal" href="#creation-des-cles-d-acces-a-minio">Création des clés d’accès à MinIO</a></li>
 </ul>
 </li>
 </ul>

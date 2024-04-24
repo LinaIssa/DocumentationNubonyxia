@@ -20,7 +20,7 @@ En combinant le datalab interministériel développé par l'INSEE, `Onyxia <http
 
 .. note::
 
-   This project is under active development.
+   La documentation est en cours de développement. 
    
 Contents
 --------

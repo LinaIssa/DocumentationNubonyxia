@@ -6,7 +6,7 @@ Les espaces de stockages sur Nubonyxia
 -------------------------------------------
 
 
-La plateforme Nubonyxia utilise `MinIO <https://min.io>`_ comme solution cloud de stockage objet. Cette dernière, compatible avec  l'API S3 d'Amazon, offre la possibilité d'intéragir avec les fichiers stockés depuis n'importe quel service lancé sur la plateforme.  
+La plateforme Nubonyxia utilise `MinIO`_ comme solution cloud de stockage objet. Cette dernière, compatible avec  l'API S3 d'Amazon, offre la possibilité d'intéragir avec les fichiers stockés depuis n'importe quel service lancé sur la plateforme.  
 
 La création d'un compte Nubonyxia donne accès à un *bucket S3* individuel de **50 Go**.
 
@@ -159,8 +159,31 @@ La connexion à son espace de stockage S3 depuis un service se fait grâce à un
 
 
 
+.. _miniokeys:
+
+Création des clés d'accès à `MinIO`_
+####################################
+
+Nubonyxia utilise `MinIO`_ pour stocker les caches nécessaires à la bonne exécution de la chaîne d'intégration de l'application que l'on cherche à déployer, voir la page :doc:`app` sur la mise en place d'une chaîne CI/CD. Il faut alors fournir les clés d'accès **AccessKey** et **SecretKey** à l'engin d'intégration continue, en l'occurence le `gitlab-runner` instancié depuis la plateforme. Ces clés sont crées une seule fois en se connectant à `MinIO`_. 
+
+Pour ce faire, choisir le mode **STS** lors de sa connexion à `MinIO`_. Les tokens STS sont à récupérer dans :menuselection:`Mon compte --> Connexion au stockage` (https://nubonyxia.incubateur.finances.rie.gouv.fr/account/storage). 
+Plus spécifiquement: 
+
+* *STS Username*  correspond à **Access key id**
+* *STS Secret*  correspond à **Secret access key**
+* *STS Token*  correspond à **Session token**
+
+.. note::
+	Cliquez sur l'icône 'copier dans presse-papier' présente dans l'interface afin de copier les codes d'accès à `MinIO`_. 
 
 
+
+Une fois connectée, il suffit de se rendre dans :menuselection:`Access Keys --> Create access key` 
+
+
+.. warning:: 
+	Pensez à bien sauvegarder les codes d'accès, dans un gestionnaire de mots de passe par exemple. 
+ 
 
 
         

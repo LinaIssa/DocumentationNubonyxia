@@ -40,7 +40,7 @@ Les jobs d'un pipeline **GitLab-CI** sont pris en charge et exécutés par un ou
 
 Si aucun runner n'est déjà détecté, il faut en créer un. Pour cela, depuis la plateforme Onyxia, il est possible de lancer un service `GitLab-Runner`,dans le catalogue :menuselction:`Automation Services`. Dans le paramétrage du service, il y a plusieurs champs à compléter : 
 
-- dans l'onglet :menuselection:`Cache`, il faut remplir les champs :python:`AccessKey` et :python:`SecretKey` avec les clés d'accès à son bucket `MinIO`_ , qui sera utilisé pour stocker les artefacts entre les différents jobs dans la pipeline. Pour obtenir sa clé d'accès, se connecter à `MinIO`_(se connecter en mode **STS** et chercher les clés de connexion dans :menuselction:`Connexion au stockage` dans Onyxia). Puis dans l'onglet :menuselection:`Access Keys, cliquer sur :menuselction:`Create access key` et copier-coller les clés lors de la création du runner.
+- dans l'onglet :menuselection:`Cache`, il faut remplir les champs :python:`AccessKey` et :python:`SecretKey` avec les clés d'accès à son bucket `MinIO`_ , qui sera utilisé pour stocker les artefacts entre les différents jobs dans la pipeline. La section :ref:`miniokeys` dans la page :doc:`minio` explique comment créer les clés d'accès `MinIo`_ pour la première fois. 
 
 - dans l'onglet :menuselection:`Registration` dans la création du Gitlab runner, il faut renseigner le :python:`Registration token` qui est trouvable dans GitLab :menuselection:`Settings --> CI/CD --> Runners` du projet, cliquer sur les trois petits points à côté du bouton bleu `New project runner`.
 
@@ -97,12 +97,26 @@ d. Dockerfile
                 
         .. code:: R
 
-          install.packages
+          install.packages()
           
 
     .. tab-item:: Python
+    
+        Voici un exemple type de dockerfile pour une application python, à adapter selon le cas d'usage. 
         
         .. code:: python
+
+          FROM python:3.10.10-slim-buster
+
+          COPY app /app/
+          COPY pip /tmp/pip/
+          WORKDIR /app
+
+          RUN pip install --no-index -r /tmp/pip/requirements.txt --find-links=/tmp/pip/
+
+          ENTRYPOINT ["python"]
+
+          CMD ["app.py"]
 
 
 
@@ -113,21 +127,29 @@ d. Dockerfile
 ############################
 
 
-Il faut ajouter un secret dans Kubernetes. Pour cela, ouvrir un service **VSCode** dans Onyxia, en prenant soin dans l'onglet :menuselection:`Kubernetes` de choisir le mode admin. Puis ouvrir un terminal dans VSCode et exécuter les commandes suivantes en remplaçant les variables :python:`HARBOR_USERNAME`, :python:`HARBOR_PASSWORD`. De plus ajouter, pour les variables :python:`AWS_ACCESS_KEY_ID`, :python:`AWS_SECRET_ACCESS_KEY`, ajouter les clés `MinIO`_ que vous avez récupérées `ici <https://forge.dgfip.finances.rie.gouv.fr/bercyhub/nubonyxia/nubonyxia-r-app-example#b-runners>`_ : 
+Il faut ajouter un secret dans `Kubernetes <https://kubernetes.io/fr/>`_. Pour cela, ouvrir un service **VSCode** dans Onyxia, en prenant soin dans l'onglet :menuselection:`Kubernetes` de choisir le mode admin. Puis ouvrir un terminal dans VSCode et exécuter les commandes suivantes: 
 
-:command:`HARBOR_AUTH=$(echo -n "HARBOR_USERNAME:HARBOR_PASSWORD" | base64)`
 
-:command:`cat <<EOF > dockerconfig.json
-{"auths":
-  {"harbor.lab.incubateur.finances.rie.gouv.fr": {"auth": "<HARBOR_AUTH>"}
-}}
-EOF`
+.. code:: python
 
-:command:`kubectl create secret generic registries \
+    HARBOR_AUTH=$(echo -n "HARBOR_USERNAME:HARBOR_PASSWORD" | base64)
+    cat <<EOF > dockerconfig.json
+    {"auths":
+      {"harbor.lab.incubateur.finances.rie.gouv.fr": {"auth": "<HARBOR_AUTH>"}
+    }}
+    EOF
+
+en remplaçant :python:`HARBOR_USERNAME` et :python:`HARBOR_PASSWORD` par leurs valeurs. Puis : 
+
+.. code:: python
+
+  kubectl create secret generic registries \
   --from-literal=AWS_DEFAULT_REGION=us-east-1 \
   --from-literal=AWS_S3_ENDPOINT="minio.lab.incubateur.finances.rie.gouv.fr" \
-  --from-literal=AWS_ACCESS_KEY_ID="" \
-  --from-literal=AWS_SECRET_ACCESS_KEY="" `
+  --from-literal=AWS_ACCESS_KEY_ID="MyAccessKey" \
+  --from-literal=AWS_SECRET_ACCESS_KEY="MySecretKey"
+
+où **MyAccessKey** et **AWS_SECRET_ACCESS_KE** correspondent aux clés `MinIO`_ crées lors de sa première connexion, voir la section :ref:`miniokeys`.
 
 Exécution de la pipeline
 -------------------------
@@ -145,26 +167,26 @@ Commande pour debugger
 
 :command:`kubectl delete deployment deployment_name` pour supprimer un déploiement
 
-:command:`kubectl logs pod_name` pour voir les logs d'un pod.`
+:command:`kubectl logs pod_name` pour voir les logs d'un pod.
 
 
-Partage d'une application R shiny depuis `Nubonyxia`
+Partage d'une application R shiny depuis `Nubonyxia`_
 -----------------------------------------------------
 Pour partager rapidement une application RShiny, il est possible de lancer un *server* depuis son service **RStudio** et de partager une URL.
 
 Pour cela, il faut :
 
-  * lancer un service **RStudio** en prenant soin d'activer le port Custom dans l'onglet Networking
-  * activer les options suivantes dans votre code :
+* lancer un service **RStudio** en prenant soin d'activer le port Custom dans l'onglet Networking
+* activer les options suivantes dans votre code :
 
-  .. code:: R
+.. code:: R
 
-    options(shiny.host = '0.0.0.0')
-    options(shiny.port = 5000) # mettre le port que vous avez choisi dans Onyxia
-    options(shiny.launch.browser = FALSE)
+  options(shiny.host = '0.0.0.0')
+  options(shiny.port = 5000) # mettre le port que vous avez choisi dans Onyxia
+  options(shiny.launch.browser = FALSE)
 
-  * lancer votre code dans **RStudio**
-  * obtenir le lien dans `Nubonyxia`_ en cliquant sur le bouton :menuselection:`Readme de votre service
+* lancer votre code dans **RStudio**
+* obtenir le lien dans `Nubonyxia`_ en cliquant sur le bouton :menuselection:`Readme de votre service
 
 Un exemple de code :
 

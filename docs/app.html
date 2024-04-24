@@ -231,7 +231,7 @@ Il suffit de forker le repo qui vous intéresse et d’ajouter vos scripts dans 
 <p>Les jobs d’un pipeline <strong>GitLab-CI</strong> sont pris en charge et exécutés par un ou plusieurs <cite>GitLab-Runners</cite>. Il est possible de voir les runners actifs au niveau des paramètres du CI/CD du projet GitLab dans :menuselection: <cite>Settings –&gt; CI/CD –&gt; Runners</cite>. Une ligne avec un point vert apparaît si un runner est détecté.</p>
 <p>Si aucun runner n’est déjà détecté, il faut en créer un. Pour cela, depuis la plateforme Onyxia, il est possible de lancer un service <cite>GitLab-Runner</cite>,dans le catalogue <a href="#id1"><span class="problematic" id="id2">:menuselction:`Automation Services`</span></a>. Dans le paramétrage du service, il y a plusieurs champs à compléter :</p>
 <ul class="simple">
-<li><p>dans l’onglet <span class="menuselection">Cache</span>, il faut remplir les champs <code class="code highlight python docutils literal highlight-python"><span class="n">AccessKey</span></code> et <code class="code highlight python docutils literal highlight-python"><span class="n">SecretKey</span></code> avec les clés d’accès à son bucket <a class="reference external" href="https://minio-console.lab.incubateur.finances.rie.gouv.fr/">MinIO</a> , qui sera utilisé pour stocker les artefacts entre les différents jobs dans la pipeline. Pour obtenir sa clé d’accès, se connecter à <cite>MinIO`_(se connecter en mode **STS** et chercher les clés de connexion dans :menuselction:`Connexion au stockage</cite> dans Onyxia). Puis dans l’onglet <span class="menuselection">Access Keys, cliquer sur :menuselction:`Create access key</span> et copier-coller les clés lors de la création du runner.</p></li>
+<li><p>dans l’onglet <span class="menuselection">Cache</span>, il faut remplir les champs <code class="code highlight python docutils literal highlight-python"><span class="n">AccessKey</span></code> et <code class="code highlight python docutils literal highlight-python"><span class="n">SecretKey</span></code> avec les clés d’accès à son bucket <a class="reference external" href="https://minio-console.lab.incubateur.finances.rie.gouv.fr/">MinIO</a> , qui sera utilisé pour stocker les artefacts entre les différents jobs dans la pipeline. La section <a class="reference internal" href="minio.html#miniokeys"><span class="std std-ref">Création des clés d’accès à MinIO</span></a> dans la page <a class="reference internal" href="minio.html"><span class="doc">Stockage de données dans Nubonyxia</span></a> explique comment créer les clés d’accès <a class="reference external" href="https://minio-console.lab.incubateur.finances.rie.gouv.fr/">MinIo</a> pour la première fois.</p></li>
 <li><p>dans l’onglet <span class="menuselection">Registration</span> dans la création du Gitlab runner, il faut renseigner le <code class="code highlight python docutils literal highlight-python"><span class="n">Registration</span> <span class="n">token</span></code> qui est trouvable dans GitLab <span class="menuselection">Settings ‣ CI/CD ‣ Runners</span> du projet, cliquer sur les trois petits points à côté du bouton bleu <cite>New project runner</cite>.</p></li>
 <li><p>vous pouvez ensuite lancer votre <cite>gitlab-runner</cite>.</p></li>
 </ul>
@@ -274,32 +274,51 @@ Il suffit de forker le repo qui vous intéresse et d’ajouter vos scripts dans 
 </input><label class="sd-tab-label" for="sd-tab-item-0">
 R</label><div class="sd-tab-content docutils">
 <p>Dans le fichier, ajouter les dépendances <strong>R</strong> à installer dans la fonction <cite>install.packages</cite>.</p>
-<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="n">install.packages</span>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-1">
 Python</label><div class="sd-tab-content docutils">
+<p>Voici un exemple type de dockerfile pour une application python, à adapter selon le cas d’usage.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">FROM</span> <span class="n">python</span><span class="p">:</span><span class="mf">3.10.10</span><span class="o">-</span><span class="n">slim</span><span class="o">-</span><span class="n">buster</span>
+
+<span class="n">COPY</span> <span class="n">app</span> <span class="o">/</span><span class="n">app</span><span class="o">/</span>
+<span class="n">COPY</span> <span class="n">pip</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">pip</span><span class="o">/</span>
+<span class="n">WORKDIR</span> <span class="o">/</span><span class="n">app</span>
+
+<span class="n">RUN</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">index</span> <span class="o">-</span><span class="n">r</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">pip</span><span class="o">/</span><span class="n">requirements</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">find</span><span class="o">-</span><span class="n">links</span><span class="o">=/</span><span class="n">tmp</span><span class="o">/</span><span class="n">pip</span><span class="o">/</span>
+
+<span class="n">ENTRYPOINT</span> <span class="p">[</span><span class="s2">&quot;python&quot;</span><span class="p">]</span>
+
+<span class="n">CMD</span> <span class="p">[</span><span class="s2">&quot;app.py&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
 </div>
 </div>
 </section>
 </section>
 <section id="configuration-kubernetes">
 <h3>3. Configuration Kubernetes<a class="headerlink" href="#configuration-kubernetes" title="Link to this heading">#</a></h3>
-<p>Il faut ajouter un secret dans Kubernetes. Pour cela, ouvrir un service <strong>VSCode</strong> dans Onyxia, en prenant soin dans l’onglet <span class="menuselection">Kubernetes</span> de choisir le mode admin. Puis ouvrir un terminal dans VSCode et exécuter les commandes suivantes en remplaçant les variables <code class="code highlight python docutils literal highlight-python"><span class="n">HARBOR_USERNAME</span></code>, <code class="code highlight python docutils literal highlight-python"><span class="n">HARBOR_PASSWORD</span></code>. De plus ajouter, pour les variables <code class="code highlight python docutils literal highlight-python"><span class="n">AWS_ACCESS_KEY_ID</span></code>, <code class="code highlight python docutils literal highlight-python"><span class="n">AWS_SECRET_ACCESS_KEY</span></code>, ajouter les clés <a class="reference external" href="https://minio-console.lab.incubateur.finances.rie.gouv.fr/">MinIO</a> que vous avez récupérées <a class="reference external" href="https://forge.dgfip.finances.rie.gouv.fr/bercyhub/nubonyxia/nubonyxia-r-app-example#b-runners">ici</a> :</p>
-<p><strong class="command">HARBOR_AUTH=$(echo -n &quot;HARBOR_USERNAME:HARBOR_PASSWORD&quot; | base64)</strong></p>
-<p>:command:<a href="#id3"><span class="problematic" id="id4">`</span></a>cat &lt;&lt;EOF &gt; dockerconfig.json
-{“auths”:</p>
-<blockquote>
-<div><p>{“harbor.lab.incubateur.finances.rie.gouv.fr”: {“auth”: “&lt;HARBOR_AUTH&gt;”}</p>
-</div></blockquote>
-<p>}}
-EOF`</p>
-<dl class="simple">
-<dt>:command:<a href="#id5"><span class="problematic" id="id6">`</span></a>kubectl create secret generic registries </dt><dd><p>–from-literal=AWS_DEFAULT_REGION=us-east-1 –from-literal=AWS_S3_ENDPOINT=”minio.lab.incubateur.finances.rie.gouv.fr” –from-literal=AWS_ACCESS_KEY_ID=”” –from-literal=AWS_SECRET_ACCESS_KEY=”” `</p>
-</dd>
-</dl>
+<p>Il faut ajouter un secret dans <a class="reference external" href="https://kubernetes.io/fr/">Kubernetes</a>. Pour cela, ouvrir un service <strong>VSCode</strong> dans Onyxia, en prenant soin dans l’onglet <span class="menuselection">Kubernetes</span> de choisir le mode admin. Puis ouvrir un terminal dans VSCode et exécuter les commandes suivantes:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">HARBOR_AUTH</span><span class="o">=</span><span class="err">$</span><span class="p">(</span><span class="n">echo</span> <span class="o">-</span><span class="n">n</span> <span class="s2">&quot;HARBOR_USERNAME:HARBOR_PASSWORD&quot;</span> <span class="o">|</span> <span class="n">base64</span><span class="p">)</span>
+<span class="n">cat</span> <span class="o">&lt;&lt;</span><span class="n">EOF</span> <span class="o">&gt;</span> <span class="n">dockerconfig</span><span class="o">.</span><span class="n">json</span>
+<span class="p">{</span><span class="s2">&quot;auths&quot;</span><span class="p">:</span>
+  <span class="p">{</span><span class="s2">&quot;harbor.lab.incubateur.finances.rie.gouv.fr&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;auth&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;HARBOR_AUTH&gt;&quot;</span><span class="p">}</span>
+<span class="p">}}</span>
+<span class="n">EOF</span>
+</pre></div>
+</div>
+<p>en remplaçant <code class="code highlight python docutils literal highlight-python"><span class="n">HARBOR_USERNAME</span></code> et <code class="code highlight python docutils literal highlight-python"><span class="n">HARBOR_PASSWORD</span></code> par leurs valeurs. Puis :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">kubectl</span> <span class="n">create</span> <span class="n">secret</span> <span class="n">generic</span> <span class="n">registries</span> \
+<span class="o">--</span><span class="n">from</span><span class="o">-</span><span class="n">literal</span><span class="o">=</span><span class="n">AWS_DEFAULT_REGION</span><span class="o">=</span><span class="n">us</span><span class="o">-</span><span class="n">east</span><span class="o">-</span><span class="mi">1</span> \
+<span class="o">--</span><span class="n">from</span><span class="o">-</span><span class="n">literal</span><span class="o">=</span><span class="n">AWS_S3_ENDPOINT</span><span class="o">=</span><span class="s2">&quot;minio.lab.incubateur.finances.rie.gouv.fr&quot;</span> \
+<span class="o">--</span><span class="n">from</span><span class="o">-</span><span class="n">literal</span><span class="o">=</span><span class="n">AWS_ACCESS_KEY_ID</span><span class="o">=</span><span class="s2">&quot;MyAccessKey&quot;</span> \
+<span class="o">--</span><span class="n">from</span><span class="o">-</span><span class="n">literal</span><span class="o">=</span><span class="n">AWS_SECRET_ACCESS_KEY</span><span class="o">=</span><span class="s2">&quot;MySecretKey&quot;</span>
+</pre></div>
+</div>
+<p>où <strong>MyAccessKey</strong> et <strong>AWS_SECRET_ACCESS_KE</strong> correspondent aux clés <a class="reference external" href="https://minio-console.lab.incubateur.finances.rie.gouv.fr/">MinIO</a> crées lors de sa première connexion, voir la section <a class="reference internal" href="minio.html#miniokeys"><span class="std std-ref">Création des clés d’accès à MinIO</span></a>.</p>
 </section>
 </section>
 <section id="execution-de-la-pipeline">
@@ -312,14 +331,13 @@ EOF`</p>
 <p><strong class="command">kubectl delete pod &lt;nom_pod&gt;</strong> pour supprimer un pod</p>
 <p><strong class="command">kubectl get deployment</strong> pour voir les déploiements</p>
 <p><strong class="command">kubectl delete deployment deployment_name</strong> pour supprimer un déploiement</p>
-<p><strong class="command">kubectl logs pod_name</strong> pour voir les logs d’un pod.`</p>
+<p><strong class="command">kubectl logs pod_name</strong> pour voir les logs d’un pod.</p>
 </section>
 <section id="partage-d-une-application-r-shiny-depuis-nubonyxia">
-<h2>Partage d’une application R shiny depuis <cite>Nubonyxia</cite><a class="headerlink" href="#partage-d-une-application-r-shiny-depuis-nubonyxia" title="Link to this heading">#</a></h2>
+<h2>Partage d’une application R shiny depuis <a class="reference external" href="https://nubonyxia.incubateur.finances.rie.gouv.fr">Nubonyxia</a><a class="headerlink" href="#partage-d-une-application-r-shiny-depuis-nubonyxia" title="Link to this heading">#</a></h2>
 <p>Pour partager rapidement une application RShiny, il est possible de lancer un <em>server</em> depuis son service <strong>RStudio</strong> et de partager une URL.</p>
 <p>Pour cela, il faut :</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li><p>lancer un service <strong>RStudio</strong> en prenant soin d’activer le port Custom dans l’onglet Networking</p></li>
 <li><p>activer les options suivantes dans votre code :</p></li>
 </ul>
@@ -330,9 +348,8 @@ EOF`</p>
 </div>
 <ul class="simple">
 <li><p>lancer votre code dans <strong>RStudio</strong></p></li>
-<li><p>obtenir le lien dans <a class="reference external" href="https://nubonyxia.incubateur.finances.rie.gouv.fr">Nubonyxia</a> en cliquant sur le bouton :menuselection:<a href="#id7"><span class="problematic" id="id8">`</span></a>Readme de votre service</p></li>
+<li><p>obtenir le lien dans <a class="reference external" href="https://nubonyxia.incubateur.finances.rie.gouv.fr">Nubonyxia</a> en cliquant sur le bouton :menuselection:<a href="#id4"><span class="problematic" id="id5">`</span></a>Readme de votre service</p></li>
 </ul>
-</div></blockquote>
 <p>Un exemple de code :</p>
 <div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">shiny</span><span class="p">)</span>
 
@@ -431,7 +448,7 @@ EOF`</p>
 </li>
 <li><a class="reference internal" href="#execution-de-la-pipeline">Exécution de la pipeline</a></li>
 <li><a class="reference internal" href="#commande-pour-debugger">Commande pour debugger</a></li>
-<li><a class="reference internal" href="#partage-d-une-application-r-shiny-depuis-nubonyxia">Partage d’une application R shiny depuis <cite>Nubonyxia</cite></a></li>
+<li><a class="reference internal" href="#partage-d-une-application-r-shiny-depuis-nubonyxia">Partage d’une application R shiny depuis Nubonyxia</a></li>
 </ul>
 </li>
 </ul>
