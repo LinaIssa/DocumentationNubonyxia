@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Connexion Proxy" href="proxy.html" /><link rel="prev" title="Guide des bonnes pratiques" href="methode.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" />
 
     <!-- Generated with Sphinx 7.2.6 and Furo 2024.01.29 -->
-        <title>Déploiement CI/ CD d’applications - Nubonyxia 0.1 documentation</title>
+        <title>&lt;no title&gt; - Nubonyxia 0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=a5c4661c" />
@@ -136,7 +136,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -156,13 +156,11 @@
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  <ul class="current">
+  <ul>
 <li class="toctree-l1"><a class="reference internal" href="firststeps.html">Premiers pas avec Nubonyxia</a></li>
-<li class="toctree-l1"><a class="reference internal" href="services.html">Configuration de services</a></li>
-<li class="toctree-l1"><a class="reference internal" href="methode.html">Guide des bonnes pratiques</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Déploiement CI/ CD d’applications</a></li>
-<li class="toctree-l1"><a class="reference internal" href="proxy.html">Connexion Proxy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="minio.html">Stockage de données dans Nubonyxia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="methode.html">Guide des bonnes pratiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">Configuration des services</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usecase.html">Cas d’usages Nubonyxia</a></li>
 </ul>
 
@@ -192,213 +190,20 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main">
-          <section id="deploiement-ci-cd-d-applications">
-<h1>Déploiement CI/ CD d’applications<a class="headerlink" href="#deploiement-ci-cd-d-applications" title="Link to this heading">#</a></h1>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>Dans sa conception actuelle, <a class="reference external" href="https://nubonyxia.incubateur.finances.rie.gouv.fr">Nubonyxia</a> ne gère pas la mise en production des applicatifs webs déployés sur la plateforme. Si vous souhaitez péréniser une application déployée sur notre plateforme, adressez-vous directement à nous.</p>
-</div>
-<dl class="simple">
-<dt>Cette section décrit les étapes dans le déploiement d’une application développée en</dt><dd><ul class="simple">
-<li><p><strong>R</strong> avec la librairie <a class="reference external" href="https://shiny.posit.co">r shiny</a></p></li>
-<li><p><strong>Python</strong> avec la librairie <a class="reference external" href="https://streamlit.io">streamlit</a></p></li>
-</ul>
-</dd>
-</dl>
-<section id="prerequis-pour-execution-d-un-pipeline-gitlab-ci">
-<h2>Prérequis pour exécution d’un pipeline GitLab-CI<a class="headerlink" href="#prerequis-pour-execution-d-un-pipeline-gitlab-ci" title="Link to this heading">#</a></h2>
-<p>Les templates à utiliser sont disponibles pour <a class="reference external" href="https://forge.dgfip.finances.rie.gouv.fr/bercyhub/nubonyxia/nubonyxia-python-app-example">Python</a> et <a class="reference external" href="https://forge.dgfip.finances.rie.gouv.fr/bercyhub/nubonyxia/nubonyxia-r-app-example">R</a>
-Il suffit de forker le repo qui vous intéresse et d’ajouter vos scripts dans le dossier <em>app</em>.</p>
-<section id="configuration-onyxia">
-<h3>1. Configuration Onyxia<a class="headerlink" href="#configuration-onyxia" title="Link to this heading">#</a></h3>
-<p>Pour le bon fonctionnement du pipeline décrit dans le fichier <code class="file docutils literal notranslate"><span class="pre">.gitlab-ci.yml</span></code>, il est nécessaire de respecter une certaine <strong>convention de configuration</strong>.</p>
-<section id="a-mes-secrets">
-<h4>a. Mes secrets<a class="headerlink" href="#a-mes-secrets" title="Link to this heading">#</a></h4>
-<p>Dans <a class="reference external" href="https://nubonyxia.incubateur.finances.rie.gouv.fr/my-secrets/">Mes Secrets</a> de votre compte <a class="reference external" href="https://nubonyxia.incubateur.finances.rie.gouv.fr">NubOnyxia</a>, il doit y avoir un <strong>secret</strong>, par défaut choisissez comme nom <cite>registries</cite>. Dans ce secret, définissez deux variables :</p>
-<ul class="simple">
-<li><p><code class="code highlight python docutils literal highlight-python"><span class="n">USERNAME</span></code> correspond à votre <cite>username</cite> présent dans le menu <strong>User Profile</strong> de <a class="reference external" href="https://harbor.lab.incubateur.finances.rie.gouv.fr">Harbor</a></p></li>
-<li><p><code class="code highlight python docutils literal highlight-python"><span class="n">PASSWORD</span></code> correspond à votre <cite>CLI secret</cite> présent dans le menu <strong>User Profile</strong> de <a class="reference external" href="https://harbor.lab.incubateur.finances.rie.gouv.fr">Harbor</a></p></li>
-</ul>
-</section>
-<section id="b-runners">
-<h4>b. Runners<a class="headerlink" href="#b-runners" title="Link to this heading">#</a></h4>
-<p>Les jobs d’un pipeline <strong>GitLab-CI</strong> sont pris en charge et exécutés par un ou plusieurs <cite>GitLab-Runners</cite>. Il est possible de voir les runners actifs au niveau des paramètres du CI/CD du projet GitLab dans :menuselection: <cite>Settings –&gt; CI/CD –&gt; Runners</cite>. Une ligne avec un point vert apparaît si un runner est détecté.</p>
-<p>Si aucun runner n’est déjà détecté, il faut en créer un. Pour cela, depuis la plateforme Onyxia, il est possible de lancer un service <cite>GitLab-Runner</cite>,dans le catalogue <a href="#id1"><span class="problematic" id="id2">:menuselction:`Automation Services`</span></a>. Dans le paramétrage du service, il y a plusieurs champs à compléter :</p>
-<ul class="simple">
-<li><p>dans l’onglet <span class="menuselection">Cache</span>, il faut remplir les champs <code class="code highlight python docutils literal highlight-python"><span class="n">AccessKey</span></code> et <code class="code highlight python docutils literal highlight-python"><span class="n">SecretKey</span></code> avec les clés d’accès à son bucket <a class="reference external" href="https://minio-console.lab.incubateur.finances.rie.gouv.fr/">MinIO</a> , qui sera utilisé pour stocker les artefacts entre les différents jobs dans la pipeline. La section <a class="reference internal" href="minio.html#miniokeys"><span class="std std-ref">Création des clés d’accès à MinIO</span></a> dans la page <a class="reference internal" href="minio.html"><span class="doc">Stockage de données dans Nubonyxia</span></a> explique comment créer les clés d’accès <a class="reference external" href="https://minio-console.lab.incubateur.finances.rie.gouv.fr/">MinIo</a> pour la première fois.</p></li>
-<li><p>dans l’onglet <span class="menuselection">Registration</span> dans la création du Gitlab runner, il faut renseigner le <code class="code highlight python docutils literal highlight-python"><span class="n">Registration</span> <span class="n">token</span></code> qui est trouvable dans GitLab <span class="menuselection">Settings ‣ CI/CD ‣ Runners</span> du projet, cliquer sur les trois petits points à côté du bouton bleu <cite>New project runner</cite>.</p></li>
-<li><p>vous pouvez ensuite lancer votre <cite>gitlab-runner</cite>.</p></li>
-</ul>
-</section>
-</section>
-<section id="configuration-gitlab">
-<h3>2. Configuration GitLab<a class="headerlink" href="#configuration-gitlab" title="Link to this heading">#</a></h3>
-<section id="a-variables-de-projet">
-<h4>a. Variables de projet<a class="headerlink" href="#a-variables-de-projet" title="Link to this heading">#</a></h4>
-<p>Il faut créer la variable <code class="code highlight python docutils literal highlight-python"><span class="n">VAULT_TOKEN</span></code> depuis le menu <span class="menuselection">Settings ‣ CI/CD ‣ Variables</span> de votre projet GitLab :</p>
-<ul class="simple">
-<li><p><code class="code highlight python docutils literal highlight-python"><span class="n">VAULT_TOKEN</span></code> correspond à la valeur <strong>Vault Token</strong> précisée dans <span class="menuselection">Mon compte ‣ Vault</span> de la plateforme <a class="reference external" href="https://nubonyxia.incubateur.finances.rie.gouv.fr">NubOnyxia</a>. Cochez <cite>protected</cite> et <cite>masked</cite>.</p></li>
-</ul>
-</section>
-<section id="b-fichier-gitlab-ci-yml">
-<h4>b. Fichier <code class="file docutils literal notranslate"><span class="pre">gitlab-ci.yml</span></code><a class="headerlink" href="#b-fichier-gitlab-ci-yml" title="Link to this heading">#</a></h4>
-<p>Dans votre fichier <cite>.gitlab-ci.yml</cite>, il faut renseigner plusieurs variables :</p>
-<ul class="simple">
-<li><p><code class="code highlight python docutils literal highlight-python"><span class="n">NUBONYXIA_ID</span></code> correspond à votre identifiant <a class="reference external" href="https://nubonyxia.incubateur.finances.rie.gouv.fr">Nubonyxia</a> disponible dans <a class="reference external" href="https://nubonyxia.incubateur.finances.rie.gouv.fr/account">Mon Compte</a> de la plateforme <a class="reference external" href="https://nubonyxia.incubateur.finances.rie.gouv.fr">NubOnyxia</a></p></li>
-<li><p><code class="code highlight python docutils literal highlight-python"><span class="n">NUBONYXIA_REGISTRY_SECRET</span></code> : par défaut, valeur à définir à <cite>registries</cite>, correspond au nom du secret créé précédemment [Mes Secrets](#mes-secrets)</p></li>
-<li><p><code class="code highlight python docutils literal highlight-python"><span class="n">REGISTRY_PROJECT</span></code> : durant l’étape de <strong>deliver</strong>, l’image générée dans l’étape <strong>build</strong> sera publiée dans <a class="reference external" href="https://harbor.lab.incubateur.finances.rie.gouv.fr">Harbor</a> dans le <em>registre</em> précisé dans cette variable. S’il n’existe pas dans Harbor, ll faut le créer (<cite>Nouveau projet</cite>).</p></li>
-<li><p><code class="code highlight python docutils literal highlight-python"><span class="n">REGISTRY_PROJECT_PUBLIC_ACCESS</span></code> : le registre du projet est considéré comme privé par défaut (ie <cite>REGISTRY_PROJECT_PUBLIC_ACCESS: “false”</cite>). Si le registry est public, il faut mettre cette variable à <cite>true</cite>.</p></li>
-<li><p><code class="code highlight python docutils literal highlight-python"><span class="n">USE_HELM</span></code> : la valeur doit être à <cite>true</cite>.</p></li>
-<li><p><code class="code highlight python docutils literal highlight-python"><span class="n">APPLICATION_NAME</span></code> : cette variable définit le nom d’application, cette variable a peu d’impact et sera visible dans <a class="reference external" href="https://harbor.lab.incubateur.finances.rie.gouv.fr">Harbor</a> dans le registre. Cette variable doit être composée de caractères alphanumériques minuscules.</p></li>
-<li><p><code class="code highlight python docutils literal highlight-python"><span class="n">CHART_NAME</span></code> : le nom du chart utilisé pour déploiement de l’application. Vous pouvez laisser la valeur par défaut <cite>demo</cite>. Si vous changez cette valeur, il faudra également changer la valeur dans le fichier <cite>chart/Chart.yml</cite>.</p></li>
-</ul>
-</section>
-<section id="c-fichier-values-yaml">
-<h4>c. Fichier <code class="file docutils literal notranslate"><span class="pre">values.yaml</span></code><a class="headerlink" href="#c-fichier-values-yaml" title="Link to this heading">#</a></h4>
-<p>Dans le fichier:</p>
-<ul class="simple">
-<li><p><span class="menuselection">imagePullSecrets ‣ name</span>: mettre le même nom que <code class="code highlight python docutils literal highlight-python"><span class="n">NUBONYXIA_REGISTRY_SECRET</span></code> (ex : <cite>registries</cite>)</p></li>
-<li><p><span class="menuselection">ingress ‣ hosts ‣ host</span> : il faut choisir une URL pour votre application.</p></li>
-</ul>
-</section>
-<section id="d-dockerfile">
-<h4>d. Dockerfile<a class="headerlink" href="#d-dockerfile" title="Link to this heading">#</a></h4>
-<div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-0">
-R</label><div class="sd-tab-content docutils">
-<p>Dans le fichier, ajouter les dépendances <strong>R</strong> à installer dans la fonction <cite>install.packages</cite>.</p>
-<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-1">
-Python</label><div class="sd-tab-content docutils">
-<p>Voici un exemple type de dockerfile pour une application python, à adapter selon le cas d’usage.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">FROM</span> <span class="n">python</span><span class="p">:</span><span class="mf">3.10.10</span><span class="o">-</span><span class="n">slim</span><span class="o">-</span><span class="n">buster</span>
-
-<span class="n">COPY</span> <span class="n">app</span> <span class="o">/</span><span class="n">app</span><span class="o">/</span>
-<span class="n">COPY</span> <span class="n">pip</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">pip</span><span class="o">/</span>
-<span class="n">WORKDIR</span> <span class="o">/</span><span class="n">app</span>
-
-<span class="n">RUN</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">index</span> <span class="o">-</span><span class="n">r</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">pip</span><span class="o">/</span><span class="n">requirements</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">find</span><span class="o">-</span><span class="n">links</span><span class="o">=/</span><span class="n">tmp</span><span class="o">/</span><span class="n">pip</span><span class="o">/</span>
-
-<span class="n">ENTRYPOINT</span> <span class="p">[</span><span class="s2">&quot;python&quot;</span><span class="p">]</span>
-
-<span class="n">CMD</span> <span class="p">[</span><span class="s2">&quot;app.py&quot;</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="configuration-kubernetes">
-<h3>3. Configuration Kubernetes<a class="headerlink" href="#configuration-kubernetes" title="Link to this heading">#</a></h3>
-<p>Il faut ajouter un secret dans <a class="reference external" href="https://kubernetes.io/fr/">Kubernetes</a>. Pour cela, ouvrir un service <strong>VSCode</strong> dans Onyxia, en prenant soin dans l’onglet <span class="menuselection">Kubernetes</span> de choisir le mode admin. Puis ouvrir un terminal dans VSCode et exécuter les commandes suivantes:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">HARBOR_AUTH</span><span class="o">=</span><span class="err">$</span><span class="p">(</span><span class="n">echo</span> <span class="o">-</span><span class="n">n</span> <span class="s2">&quot;HARBOR_USERNAME:HARBOR_PASSWORD&quot;</span> <span class="o">|</span> <span class="n">base64</span><span class="p">)</span>
-<span class="n">cat</span> <span class="o">&lt;&lt;</span><span class="n">EOF</span> <span class="o">&gt;</span> <span class="n">dockerconfig</span><span class="o">.</span><span class="n">json</span>
-<span class="p">{</span><span class="s2">&quot;auths&quot;</span><span class="p">:</span>
-  <span class="p">{</span><span class="s2">&quot;harbor.lab.incubateur.finances.rie.gouv.fr&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;auth&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;HARBOR_AUTH&gt;&quot;</span><span class="p">}</span>
-<span class="p">}}</span>
-<span class="n">EOF</span>
-</pre></div>
-</div>
-<p>en remplaçant <code class="code highlight python docutils literal highlight-python"><span class="n">HARBOR_USERNAME</span></code> et <code class="code highlight python docutils literal highlight-python"><span class="n">HARBOR_PASSWORD</span></code> par leurs valeurs. Puis :</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">kubectl</span> <span class="n">create</span> <span class="n">secret</span> <span class="n">generic</span> <span class="n">registries</span> \
-<span class="o">--</span><span class="n">from</span><span class="o">-</span><span class="n">literal</span><span class="o">=</span><span class="n">AWS_DEFAULT_REGION</span><span class="o">=</span><span class="n">us</span><span class="o">-</span><span class="n">east</span><span class="o">-</span><span class="mi">1</span> \
-<span class="o">--</span><span class="n">from</span><span class="o">-</span><span class="n">literal</span><span class="o">=</span><span class="n">AWS_S3_ENDPOINT</span><span class="o">=</span><span class="s2">&quot;minio.lab.incubateur.finances.rie.gouv.fr&quot;</span> \
-<span class="o">--</span><span class="n">from</span><span class="o">-</span><span class="n">literal</span><span class="o">=</span><span class="n">AWS_ACCESS_KEY_ID</span><span class="o">=</span><span class="s2">&quot;MyAccessKey&quot;</span> \
-<span class="o">--</span><span class="n">from</span><span class="o">-</span><span class="n">literal</span><span class="o">=</span><span class="n">AWS_SECRET_ACCESS_KEY</span><span class="o">=</span><span class="s2">&quot;MySecretKey&quot;</span>
-</pre></div>
-</div>
-<p>où <strong>MyAccessKey</strong> et <strong>AWS_SECRET_ACCESS_KE</strong> correspondent aux clés <a class="reference external" href="https://minio-console.lab.incubateur.finances.rie.gouv.fr/">MinIO</a> crées lors de sa première connexion, voir la section <a class="reference internal" href="minio.html#miniokeys"><span class="std std-ref">Création des clés d’accès à MinIO</span></a>.</p>
-</section>
-</section>
-<section id="execution-de-la-pipeline">
-<h2>Exécution de la pipeline<a class="headerlink" href="#execution-de-la-pipeline" title="Link to this heading">#</a></h2>
-<p>Une fois tous les prérequis remplis, la pipeline devrait se lancer automatiquement. Il est possible de voir son exécution dans l’onglet “Build” puis “Pipelines”. Si tout se passe bien, chaque étape sera marquée d’une coche verte. Sinon, se reporter à la partie suivante.</p>
-</section>
-<section id="commande-pour-debugger">
-<h2>Commande pour debugger<a class="headerlink" href="#commande-pour-debugger" title="Link to this heading">#</a></h2>
-<p><strong class="command">kubectl get pods</strong> pour voir les pods en fonctionnement</p>
-<p><strong class="command">kubectl delete pod &lt;nom_pod&gt;</strong> pour supprimer un pod</p>
-<p><strong class="command">kubectl get deployment</strong> pour voir les déploiements</p>
-<p><strong class="command">kubectl delete deployment deployment_name</strong> pour supprimer un déploiement</p>
-<p><strong class="command">kubectl logs pod_name</strong> pour voir les logs d’un pod.</p>
-</section>
-<section id="partage-d-une-application-r-shiny-depuis-nubonyxia">
-<h2>Partage d’une application R shiny depuis <a class="reference external" href="https://nubonyxia.incubateur.finances.rie.gouv.fr">Nubonyxia</a><a class="headerlink" href="#partage-d-une-application-r-shiny-depuis-nubonyxia" title="Link to this heading">#</a></h2>
-<p>Pour partager rapidement une application RShiny, il est possible de lancer un <em>server</em> depuis son service <strong>RStudio</strong> et de partager une URL.</p>
-<p>Pour cela, il faut :</p>
-<ul class="simple">
-<li><p>lancer un service <strong>RStudio</strong> en prenant soin d’activer le port Custom dans l’onglet Networking</p></li>
-<li><p>activer les options suivantes dans votre code :</p></li>
-</ul>
-<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">options</span><span class="p">(</span><span class="n">shiny.host</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;0.0.0.0&#39;</span><span class="p">)</span>
-<span class="nf">options</span><span class="p">(</span><span class="n">shiny.port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5000</span><span class="p">)</span><span class="w"> </span><span class="c1"># mettre le port que vous avez choisi dans Onyxia</span>
-<span class="nf">options</span><span class="p">(</span><span class="n">shiny.launch.browser</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>lancer votre code dans <strong>RStudio</strong></p></li>
-<li><p>obtenir le lien dans <a class="reference external" href="https://nubonyxia.incubateur.finances.rie.gouv.fr">Nubonyxia</a> en cliquant sur le bouton :menuselection:<a href="#id4"><span class="problematic" id="id5">`</span></a>Readme de votre service</p></li>
-</ul>
-<p>Un exemple de code :</p>
-<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">shiny</span><span class="p">)</span>
-
-<span class="nf">options</span><span class="p">(</span><span class="n">shiny.host</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;0.0.0.0&#39;</span><span class="p">)</span>
-<span class="nf">options</span><span class="p">(</span><span class="n">shiny.port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5000</span><span class="p">)</span>
-<span class="nf">options</span><span class="p">(</span><span class="n">shiny.launch.browser</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
-
-<span class="n">ui</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">fluidPage</span><span class="p">(</span>
-<span class="c1"># Application title</span>
-<span class="nf">titlePanel</span><span class="p">(</span><span class="s">&quot;Hello, World! Shiny App&quot;</span><span class="p">)</span>
-
-<span class="p">)</span>
-
-<span class="c1"># Define server logic</span>
-<span class="n">server</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">input</span><span class="p">,</span><span class="w"> </span><span class="n">output</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-
-<span class="p">}</span>
-
-<span class="nf">shinyApp</span><span class="p">(</span><span class="n">ui</span><span class="p">,</span><span class="w"> </span><span class="n">server</span><span class="p">)</span>
-</pre></div>
-</div>
-</section>
-</section>
-
+          
         </article>
       </div>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="proxy.html">
-              <div class="page-info">
-                <div class="context">
-                  <span>Next</span>
-                </div>
-                <div class="title">Connexion Proxy</div>
-              </div>
-              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
-            </a>
-          <a class="prev-page" href="methode.html">
-              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
-              <div class="page-info">
-                <div class="context">
-                  <span>Previous</span>
-                </div>
-                
-                <div class="title">Guide des bonnes pratiques</div>
-                
-              </div>
-            </a>
+          
+          
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -417,45 +222,8 @@ Python</label><div class="sd-tab-content docutils">
         
       </footer>
     </div>
-    <aside class="toc-drawer">
+    <aside class="toc-drawer no-toc">
       
-      
-      <div class="toc-sticky toc-scroll">
-        <div class="toc-title-container">
-          <span class="toc-title">
-            On this page
-          </span>
-        </div>
-        <div class="toc-tree-container">
-          <div class="toc-tree">
-            <ul>
-<li><a class="reference internal" href="#">Déploiement CI/ CD d’applications</a><ul>
-<li><a class="reference internal" href="#prerequis-pour-execution-d-un-pipeline-gitlab-ci">Prérequis pour exécution d’un pipeline GitLab-CI</a><ul>
-<li><a class="reference internal" href="#configuration-onyxia">1. Configuration Onyxia</a><ul>
-<li><a class="reference internal" href="#a-mes-secrets">a. Mes secrets</a></li>
-<li><a class="reference internal" href="#b-runners">b. Runners</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#configuration-gitlab">2. Configuration GitLab</a><ul>
-<li><a class="reference internal" href="#a-variables-de-projet">a. Variables de projet</a></li>
-<li><a class="reference internal" href="#b-fichier-gitlab-ci-yml">b. Fichier <code class="file docutils literal notranslate"><span class="pre">gitlab-ci.yml</span></code></a></li>
-<li><a class="reference internal" href="#c-fichier-values-yaml">c. Fichier <code class="file docutils literal notranslate"><span class="pre">values.yaml</span></code></a></li>
-<li><a class="reference internal" href="#d-dockerfile">d. Dockerfile</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#configuration-kubernetes">3. Configuration Kubernetes</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#execution-de-la-pipeline">Exécution de la pipeline</a></li>
-<li><a class="reference internal" href="#commande-pour-debugger">Commande pour debugger</a></li>
-<li><a class="reference internal" href="#partage-d-une-application-r-shiny-depuis-nubonyxia">Partage d’une application R shiny depuis Nubonyxia</a></li>
-</ul>
-</li>
-</ul>
-
-          </div>
-        </div>
-      </div>
       
       
     </aside>

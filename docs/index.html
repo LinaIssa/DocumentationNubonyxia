@@ -158,11 +158,9 @@
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <ul>
 <li class="toctree-l1"><a class="reference internal" href="firststeps.html">Premiers pas avec Nubonyxia</a></li>
-<li class="toctree-l1"><a class="reference internal" href="services.html">Configuration de services</a></li>
-<li class="toctree-l1"><a class="reference internal" href="methode.html">Guide des bonnes pratiques</a></li>
-<li class="toctree-l1"><a class="reference internal" href="app.html">Déploiement CI/ CD d’applications</a></li>
-<li class="toctree-l1"><a class="reference internal" href="proxy.html">Connexion Proxy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="minio.html">Stockage de données dans Nubonyxia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="methode.html">Guide des bonnes pratiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">Configuration des services</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usecase.html">Cas d’usages Nubonyxia</a></li>
 </ul>
 
@@ -204,7 +202,7 @@
 <p>En combinant le datalab interministériel développé par l’INSEE, <a class="reference external" href="https://www.onyxia.sh">Onyxia</a>, au cloud souverain opéré par la DGFiP <a class="reference external" href="https://www.numerique.gouv.fr/services/cloud/cloud-interne/">Nubo</a> , <strong>Nubonyxia</strong> permet d’exploiter la donnée dans un environnement cloud <em>isolé</em>, <em>sécurisé</em> et porté par des solutions <em>open-source</em>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This project is under active development.</p>
+<p>La documentation est en cours de développement.</p>
 </div>
 <section id="contents">
 <h2>Contents<a class="headerlink" href="#contents" title="Link to this heading">#</a></h2>
@@ -215,28 +213,30 @@
 <li class="toctree-l2"><a class="reference internal" href="firststeps.html#connexion-a-la-plateforme">2- Connexion à la plateforme</a></li>
 <li class="toctree-l2"><a class="reference internal" href="firststeps.html#vue-generale-de-la-plateforme">3- Vue générale de la plateforme</a></li>
 <li class="toctree-l2"><a class="reference internal" href="firststeps.html#lancement-d-un-service">4- Lancement d’un service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firststeps.html#suppression-d-un-service">4- Suppression d’un service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="firststeps.html#pour-aller-plus-loin">Pour aller plus loin</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="services.html">Configuration de services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="minio.html">Stockage de données dans Nubonyxia</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="minio.html#les-espaces-de-stockages-sur-nubonyxia">Les espaces de stockages sur Nubonyxia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="minio.html#gestion-de-son-bucket-s3">Gestion de son bucket S3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="minio.html#utilisation-des-donnees-depuis-un-service">Utilisation des données depuis un service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="minio.html#creation-des-cles-d-acces-a-minio">Création des clés d’accès à MinIO</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="methode.html">Guide des bonnes pratiques</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="methode.html#gestion-de-versions-avec-git">Gestion de versions avec Git</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="app.html">Déploiement CI/ CD d’applications</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="app.html#prerequis-pour-execution-d-un-pipeline-gitlab-ci">Prérequis pour exécution d’un pipeline GitLab-CI</a></li>
-<li class="toctree-l2"><a class="reference internal" href="app.html#execution-de-la-pipeline">Exécution de la pipeline</a></li>
-<li class="toctree-l2"><a class="reference internal" href="app.html#commande-pour-debugger">Commande pour debugger</a></li>
-<li class="toctree-l2"><a class="reference internal" href="app.html#partage-d-une-application-r-shiny-depuis-nubonyxia">Partage d’une application R shiny depuis Nubonyxia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">Configuration des services</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="services.html#connexion-proxy">Connexion Proxy</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="proxy.html">Connexion Proxy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="minio.html">Stockage de données dans Nubonyxia</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="minio.html#les-espaces-de-stockages-sur-nubonyxia">Les espaces de stockages sur Nubonyxia</a></li>
-<li class="toctree-l2"><a class="reference internal" href="minio.html#gestion-de-son-bucket-s3">Gestion de son bucket S3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usecase.html">Cas d’usages Nubonyxia</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="usecase.html#cas-usage-1-deployer-des-applications-via-une-pipeline-ci-cd"><strong>Cas Usage 1</strong>: Déployer des applications via une pipeline CI/CD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usecase.html#cas-usage-2-data-visualisation-avec-superset"><strong>Cas Usage 2</strong> : Data Visualisation avec <code class="code highlight python docutils literal highlight-python"><span class="n">Superset</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="usecase.html">Cas d’usages Nubonyxia</a></li>
 </ul>
 </div>
 </section>

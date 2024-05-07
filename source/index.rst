@@ -28,11 +28,9 @@ Contents
    :maxdepth: 2
    
    firststeps
-   services 
-   methode  
-   app
-   proxy 
    minio
+   methode
+   services 
    usecase
 
 

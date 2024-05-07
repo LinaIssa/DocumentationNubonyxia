@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Cas d’usages Nubonyxia" href="usecase.html" /><link rel="prev" title="Connexion Proxy" href="proxy.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Guide des bonnes pratiques" href="methode.html" /><link rel="prev" title="Premiers pas avec Nubonyxia" href="firststeps.html" />
 
     <!-- Generated with Sphinx 7.2.6 and Furo 2024.01.29 -->
         <title>Stockage de données dans Nubonyxia - Nubonyxia 0.1 documentation</title>
@@ -158,11 +158,9 @@
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="firststeps.html">Premiers pas avec Nubonyxia</a></li>
-<li class="toctree-l1"><a class="reference internal" href="services.html">Configuration de services</a></li>
-<li class="toctree-l1"><a class="reference internal" href="methode.html">Guide des bonnes pratiques</a></li>
-<li class="toctree-l1"><a class="reference internal" href="app.html">Déploiement CI/ CD d’applications</a></li>
-<li class="toctree-l1"><a class="reference internal" href="proxy.html">Connexion Proxy</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Stockage de données dans Nubonyxia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="methode.html">Guide des bonnes pratiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">Configuration des services</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usecase.html">Cas d’usages Nubonyxia</a></li>
 </ul>
 
@@ -224,8 +222,9 @@
 <section id="partage-des-donnees">
 <h3>Partage des données<a class="headerlink" href="#partage-des-donnees" title="Link to this heading">#</a></h3>
 <p>Il est possible de partager de façon ponctuelle un fichier en partageant l’url du serveur <em>minio.lab.incubateur.finances.rie.gouv.fr</em>. Cette dernière s’obtient en cliquant sur un fichier dans son bucket personnel, puis en se rendant sur le menu déroulant contenant la ligne de commande :program:mc. Ce lien est partageable à toute personne ayant accès au RIE.</p>
+</section>
 <section id="espace-de-stockage-commun">
-<h4>Espace de stockage commun<a class="headerlink" href="#espace-de-stockage-commun" title="Link to this heading">#</a></h4>
+<h3>Espace de stockage commun<a class="headerlink" href="#espace-de-stockage-commun" title="Link to this heading">#</a></h3>
 <p>Si vous souhaitez disposer d’un <strong>espace de stockage commun</strong>, n’hésitez pas à nous écrire car nous pouvons créer un bucket S3 partagé <strong>sur demande uniquement</strong>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -255,7 +254,7 @@ Voici un exemple, en utilisant la librairie <code class="xref py py-class docuti
 </section>
 </section>
 <section id="utilisation-des-donnees-depuis-un-service">
-<h3>Utilisation des données depuis un service<a class="headerlink" href="#utilisation-des-donnees-depuis-un-service" title="Link to this heading">#</a></h3>
+<h2>Utilisation des données depuis un service<a class="headerlink" href="#utilisation-des-donnees-depuis-un-service" title="Link to this heading">#</a></h2>
 <p>La connexion à son espace de stockage S3 depuis un service se fait grâce à un <cite>token</cite> d’accès. Ce dernier est intégré sous forme de <cite>variable d’environnement</cite> dans le service.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -318,8 +317,8 @@ mc</label><div class="sd-tab-content docutils">
 </div>
 </section>
 <section id="creation-des-cles-d-acces-a-minio">
-<span id="miniokeys"></span><h3>Création des clés d’accès à <a class="reference external" href="https://minio-console.lab.incubateur.finances.rie.gouv.fr/">MinIO</a><a class="headerlink" href="#creation-des-cles-d-acces-a-minio" title="Link to this heading">#</a></h3>
-<p>Nubonyxia utilise <a class="reference external" href="https://minio-console.lab.incubateur.finances.rie.gouv.fr/">MinIO</a> pour stocker les caches nécessaires à la bonne exécution de la chaîne d’intégration de l’application que l’on cherche à déployer, voir la page <a class="reference internal" href="app.html"><span class="doc">Déploiement CI/ CD d’applications</span></a> sur la mise en place d’une chaîne CI/CD. Il faut alors fournir les clés d’accès <strong>AccessKey</strong> et <strong>SecretKey</strong> à l’engin d’intégration continue, en l’occurence le <cite>gitlab-runner</cite> instancié depuis la plateforme. Ces clés sont crées une seule fois en se connectant à <a class="reference external" href="https://minio-console.lab.incubateur.finances.rie.gouv.fr/">MinIO</a>.</p>
+<span id="miniokeys"></span><h2>Création des clés d’accès à <a class="reference external" href="https://minio-console.lab.incubateur.finances.rie.gouv.fr/">MinIO</a><a class="headerlink" href="#creation-des-cles-d-acces-a-minio" title="Link to this heading">#</a></h2>
+<p>Nubonyxia utilise <a class="reference external" href="https://minio-console.lab.incubateur.finances.rie.gouv.fr/">MinIO</a> pour stocker les caches nécessaires à la bonne exécution de la chaîne d’intégration de l’application que l’on cherche à déployer, voir la section <a class="reference internal" href="usecase.html#firstcase"><span class="std std-ref">Cas Usage 1: Déployer des applications via une pipeline CI/CD</span></a> de la page <a class="reference internal" href="usecase.html"><span class="doc">Cas d’usages Nubonyxia</span></a> sur la mise en place d’une chaîne CI/CD. Il faut alors fournir les clés d’accès <strong>AccessKey</strong> et <strong>SecretKey</strong> à l’engin d’intégration continue, en l’occurence le <cite>gitlab-runner</cite> instancié depuis la plateforme. Ces clés sont crées une seule fois en se connectant à <a class="reference external" href="https://minio-console.lab.incubateur.finances.rie.gouv.fr/">MinIO</a>.</p>
 <p>Pour ce faire, choisir le mode <strong>STS</strong> lors de sa connexion à <a class="reference external" href="https://minio-console.lab.incubateur.finances.rie.gouv.fr/">MinIO</a>. Les tokens STS sont à récupérer dans <span class="menuselection">Mon compte ‣ Connexion au stockage</span> (<a class="reference external" href="https://nubonyxia.incubateur.finances.rie.gouv.fr/account/storage">https://nubonyxia.incubateur.finances.rie.gouv.fr/account/storage</a>).
 Plus spécifiquement:</p>
 <ul class="simple">
@@ -338,30 +337,29 @@ Plus spécifiquement:</p>
 </div>
 </section>
 </section>
-</section>
 
         </article>
       </div>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="usecase.html">
+          <a class="next-page" href="methode.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Cas d’usages Nubonyxia</div>
+                <div class="title">Guide des bonnes pratiques</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="proxy.html">
+          <a class="prev-page" href="firststeps.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Connexion Proxy</div>
+                <div class="title">Premiers pas avec Nubonyxia</div>
                 
               </div>
             </a>
@@ -399,14 +397,12 @@ Plus spécifiquement:</p>
 <li><a class="reference internal" href="#les-espaces-de-stockages-sur-nubonyxia">Les espaces de stockages sur Nubonyxia</a></li>
 <li><a class="reference internal" href="#gestion-de-son-bucket-s3">Gestion de son bucket S3</a><ul>
 <li><a class="reference internal" href="#espace-de-stockage-s3">Espace de stockage S3</a></li>
-<li><a class="reference internal" href="#partage-des-donnees">Partage des données</a><ul>
+<li><a class="reference internal" href="#partage-des-donnees">Partage des données</a></li>
 <li><a class="reference internal" href="#espace-de-stockage-commun">Espace de stockage commun</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#utilisation-des-donnees-depuis-un-service">Utilisation des données depuis un service</a></li>
 <li><a class="reference internal" href="#creation-des-cles-d-acces-a-minio">Création des clés d’accès à MinIO</a></li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>

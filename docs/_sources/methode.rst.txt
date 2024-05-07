@@ -33,3 +33,11 @@ Utilisation de Git avec les services du Datalab
 .. image:: images/configService.png
   :width: 800
   :alt: Alternative text
+
+
+
+
+.. A retenir::
+    -> Versionner son code à l'aide de Git 
+    -> Sauvegarder ses données régulièrement dans le système de stockage S3. 
+

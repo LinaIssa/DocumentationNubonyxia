@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Guide des bonnes pratiques" href="methode.html" /><link rel="prev" title="Premiers pas avec Nubonyxia" href="firststeps.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Cas d’usages Nubonyxia" href="usecase.html" /><link rel="prev" title="Guide des bonnes pratiques" href="methode.html" />
 
     <!-- Generated with Sphinx 7.2.6 and Furo 2024.01.29 -->
-        <title>Configuration de services - Nubonyxia 0.1 documentation</title>
+        <title>Configuration des services - Nubonyxia 0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=a5c4661c" />
@@ -136,7 +136,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -158,11 +158,9 @@
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="firststeps.html">Premiers pas avec Nubonyxia</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Configuration de services</a></li>
-<li class="toctree-l1"><a class="reference internal" href="methode.html">Guide des bonnes pratiques</a></li>
-<li class="toctree-l1"><a class="reference internal" href="app.html">Déploiement CI/ CD d’applications</a></li>
-<li class="toctree-l1"><a class="reference internal" href="proxy.html">Connexion Proxy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="minio.html">Stockage de données dans Nubonyxia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="methode.html">Guide des bonnes pratiques</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Configuration des services</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usecase.html">Cas d’usages Nubonyxia</a></li>
 </ul>
 
@@ -192,22 +190,88 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main">
-          <section id="configuration-de-services">
-<h1>Configuration de services<a class="headerlink" href="#configuration-de-services" title="Link to this heading">#</a></h1>
-<p>Mise à la disposition des services combinés à des ressources en CPU et en RAM
--&gt; possibilité de réserver jusqu’à   30 000 milliCPU et 200Gi de RAM</p>
+          <section id="configuration-des-services">
+<h1>Configuration des services<a class="headerlink" href="#configuration-des-services" title="Link to this heading">#</a></h1>
+<p><a class="reference external" href="https://nubonyxia.incubateur.finances.rie.gouv.fr">Nubonyxia</a> met à la disposition des utilisateurs des services ainsi que des ressources en CPU et en RAM. Par exemple, pour les services <em>data science</em> comme <cite>RStudio</cite> ou <cite>Vscode</cite>, il est possible de réserver jusqu’à <strong>30 000 milliCPU</strong> et <strong>32Gi de RAM</strong></p>
 <p>lister extension disponible dans vscode</p>
-<p>Data Visuaisation : superset</p>
-<p>IDE : notebook, vscode</p>
-<p>Base de données : Postegre, Cloudbeaver</p>
-<p>Outils no code, low code : NocoDB et superset</p>
-<p>configurration services</p>
+<p>Au moment du lancement d’un service, en plus des ressources évoquées, différentes options de configurations sont possibles.
+Cette section s’attache à couvrir ces différentes options.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Donner un nom personnalisé à son service permet de s’y retrouver lorsque l’on a plusieurs services <cite>RStudio</cite> ou <cite>VScode</cite> ouverts en parallèle.</p>
+</div>
+<p>Partager le service</p>
+<p>Connecter son service à l’espace de stockage S3</p>
+<p>Kubernetes</p>
+<p>Init</p>
+<p>PersonalInit
+Onyxia
+Ressources
+Networking
+Security
+Git
+Vault</p>
+<p>Les services de bases de données s’appuient sur PVC -&gt; penser à delete PVC si le service ne se lance pas</p>
+<p>Une fois un nouveau service lancé, il apparait dans l’onglet <span class="menuselection">Mes services</span>.</p>
+<section id="connexion-proxy">
+<h2>Connexion Proxy<a class="headerlink" href="#connexion-proxy" title="Link to this heading">#</a></h2>
+<p>Pour accéder à Internet, il faut recourir au proxy du SNUM. Des exemples de code sont inclus ci-dessous pour lancer une requète http sur Internet.</p>
+<p>L’adresse IP du proxy est <strong>172.16.0.53</strong>.</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-0">
+R</label><div class="sd-tab-content docutils">
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="n">proxy_host</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;172.16.0.53&quot;</span>
+<span class="w">        </span><span class="n">proxy_port</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;3128&quot;</span>
+
+<span class="w">        </span><span class="n">url</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;http://example.com&quot;</span>
+
+<span class="w">        </span><span class="n">output_file</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;output.txt&quot;</span>
+
+<span class="w">        </span><span class="n">curl_command</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sprintf</span><span class="p">(</span>
+<span class="w">        </span><span class="s">&#39;curl -x %s:%s %s -o %s&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="n">proxy_host</span><span class="p">,</span><span class="w"> </span><span class="n">proxy_port</span><span class="p">,</span><span class="w"> </span><span class="n">url</span><span class="p">,</span><span class="w"> </span><span class="n">output_file</span>
+<span class="w">        </span><span class="p">)</span>
+
+<span class="w">        </span><span class="nf">system</span><span class="p">(</span><span class="n">curl_command</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-1">
+Python</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">PROXY</span> <span class="o">=</span> <span class="s1">&#39;172.16.0.53:3128&#39;</span>
+<span class="n">proxies</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;http&quot;</span><span class="p">:</span> <span class="n">PROXY</span><span class="p">,</span>
+            <span class="s2">&quot;https&quot;</span><span class="p">:</span> <span class="n">PROXY</span>
+            <span class="p">}</span>
+
+<span class="n">URL</span><span class="o">=</span><span class="s1">&#39;monURL&#39;</span>
+<span class="n">AGENT</span> <span class="o">=</span> <span class="s2">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101 Firefox/102.0&quot;</span>
+
+<span class="n">session</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
+<span class="n">session</span><span class="o">.</span><span class="n">get_adapter</span><span class="p">(</span><span class="s2">&quot;https://&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">proxy_manager_for</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;http://</span><span class="si">{</span><span class="n">PROXY</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">proxy_headers</span><span class="p">[</span><span class="s2">&quot;User-Agent&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">AGENT</span>
+<span class="n">session</span><span class="o">.</span><span class="n">proxies</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">proxies</span><span class="p">)</span>
+
+<span class="n">req</span>  <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="n">URL</span><span class="p">)</span>
+<span class="n">preq</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">prepare</span><span class="p">()</span>
+<span class="n">r</span>    <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">preq</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Le proxy peut s’employer lorsque l’on cherche à récupérer des données via API, comme le montre le notebook disponible sur ce <a class="reference external" href="https://forge.dgfip.finances.rie.gouv.fr/bercyhub/nubonyxia/python-demonstration/-/blob/main/UseCase_API.ipynb?ref_type=heads">repo git</a></p>
+</section>
 </section>
 
         </article>
@@ -215,23 +279,23 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="methode.html">
+          <a class="next-page" href="usecase.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Guide des bonnes pratiques</div>
+                <div class="title">Cas d’usages Nubonyxia</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="firststeps.html">
+          <a class="prev-page" href="methode.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Premiers pas avec Nubonyxia</div>
+                <div class="title">Guide des bonnes pratiques</div>
                 
               </div>
             </a>
@@ -253,8 +317,27 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Configuration des services</a><ul>
+<li><a class="reference internal" href="#connexion-proxy">Connexion Proxy</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

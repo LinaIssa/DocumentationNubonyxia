@@ -82,13 +82,13 @@ A la disposition de l'utilisateur :
 
 		.. tab-item:: Gestion de base de données
 
-			* PostgreSQL 
-			* Cloudbeaver 
-			* NocoDB 
+			* `PostgreSQL <https://www.postgresql.org>`_
+			* `Cloudbeaver <https://github.com/dbeaver/cloudbeaver>`_ 
+			* `NocoDB <https://data-apis-v2.nocodb.com>`_ 
 
 		.. tab-item:: Data Visualisation 
 
-			* Superset
+			* `Superset <https://superset.apache.org>`_
 
 		.. tab-item:: Automation
 			* GitlabRunner : pour le déploiement sur le cluster `Kubernetes`_ d'un job CI lancé sur la `forge`_. Voir la :doc:`page <app>` pour le déploiement d'applications.
@@ -132,7 +132,8 @@ A la disposition de l'utilisateur :
 
 Nous avons mis à disposition sur la `forge`_ un repo nommé `Quick Start <https://forge.dgfip.finances.rie.gouv.fr/bercyhub/nubonyxia/quick-start>`_ avec des scripts de *data visualisation* prêt-à-être exécutés. 
 
-Pour lancer un service, il suffit de se rendre dans l'onglet :menuselection:`Catalogue de services`. Vous pouvez lancer le service IDE de votre choix.   
+Pour lancer un service, il suffit de se rendre dans l'onglet :menuselection:`Catalogue de services`. Vous pouvez lancer le service IDE de votre choix. Le service lancé apparaît alors dans la page `Mes Services <https://nubonyxia.incubateur.finances.rie.gouv.fr/my-services>`_. L'accès au service se fait en cliquant sur le bouton :python:`Ouvrir`. Un mot de passe est alors fourni pour pouvoir accéder au service. Les informations relatives aux tokens peuvent être consultés en cliquant sur l'icône information en bas à gauche du service instancié. 
+
 L'interface Onyxia permet de configurer le service que l'on va lancer comme le montre en détail la section :doc:`Configuration de services <services>`.
 
 .. note::
@@ -152,6 +153,20 @@ Il est également possible de cloner le repo au lancement du service dans l'inte
 
 
 Dans le service IDE , il est possible de télécharger en complément des librairies Python ou R, grâce au `Nexus` mis en place par la DGFIP. En effet bien que la plateforme soit isolée d'internet, un point d'accès à Pypi (librairies Python) et CRAN (packages R)est mis en place grâce à un mirroir (Nexus de la DGFiP). Il est ainsi possible de réaliser :program:`pip install` suivi de la librairie de votre choix pour Python et :program:`install.package("")` pour R.
+
+
+4- Suppression d'un service 
+-------------------------
+
+Les services de développement comme :python:`vscode` ou :python:`jupyter-notebook` lancés sur la plateforme n'ont pas pour vocation d'être utilisés *ad vitam eternam*. De fait, les tokens d'accès expirent au bout d'un certain temps. Il faut donc supprimer le service et en relancer un autre. Pour ce faire, cliquer sur l'icône poubelle figurant en dessous du sevice instancié.    
+
+.. important::
+	Les ressources nécessaires à la bonne exécution des services sont partagées au sein de la communauté des utilisateurs. Pensez donc à bien supprimer les services que vous n'utlisez plus afin de libérer des ressources.
+
+
+.. warning:: 
+	Avant de supprimer un service, pensez à bien sauvegarder vos codes et vos données comme illustré dans la section :doc:`methode`. En effet, pour certains services, la suppression d'une instance est susceptible d'entraîner la suppression de toutes les données associées. 
+
 
 Pour aller plus loin 
 ---------------------

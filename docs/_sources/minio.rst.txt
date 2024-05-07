@@ -38,7 +38,8 @@ Il est possible de partager de façon ponctuelle un fichier en partageant l'url 
 
 
 Espace de stockage commun
-***************************
+##########################
+
 
 Si vous souhaitez disposer d'un **espace de stockage commun**, n'hésitez pas à nous écrire car nous pouvons créer un bucket S3 partagé **sur demande uniquement**.  
 
@@ -75,7 +76,7 @@ avec **AWS_ACCESS_KEY_ID** correspond à l’Access Key fourni et **AWS_SECRET_A
 
 
 Utilisation des données depuis un service 
-#####################################
+----------------------------------
 
 La connexion à son espace de stockage S3 depuis un service se fait grâce à un `token` d'accès. Ce dernier est intégré sous forme de `variable d'environnement` dans le service. 
 
@@ -162,9 +163,9 @@ La connexion à son espace de stockage S3 depuis un service se fait grâce à un
 .. _miniokeys:
 
 Création des clés d'accès à `MinIO`_
-####################################
+----------------------------------
 
-Nubonyxia utilise `MinIO`_ pour stocker les caches nécessaires à la bonne exécution de la chaîne d'intégration de l'application que l'on cherche à déployer, voir la page :doc:`app` sur la mise en place d'une chaîne CI/CD. Il faut alors fournir les clés d'accès **AccessKey** et **SecretKey** à l'engin d'intégration continue, en l'occurence le `gitlab-runner` instancié depuis la plateforme. Ces clés sont crées une seule fois en se connectant à `MinIO`_. 
+Nubonyxia utilise `MinIO`_ pour stocker les caches nécessaires à la bonne exécution de la chaîne d'intégration de l'application que l'on cherche à déployer, voir la section :ref:`firstcase` de la page :doc:`usecase` sur la mise en place d'une chaîne CI/CD. Il faut alors fournir les clés d'accès **AccessKey** et **SecretKey** à l'engin d'intégration continue, en l'occurence le `gitlab-runner` instancié depuis la plateforme. Ces clés sont crées une seule fois en se connectant à `MinIO`_. 
 
 Pour ce faire, choisir le mode **STS** lors de sa connexion à `MinIO`_. Les tokens STS sont à récupérer dans :menuselection:`Mon compte --> Connexion au stockage` (https://nubonyxia.incubateur.finances.rie.gouv.fr/account/storage). 
 Plus spécifiquement: 
