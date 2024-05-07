@@ -199,29 +199,65 @@
           <section id="configuration-des-services">
 <h1>Configuration des services<a class="headerlink" href="#configuration-des-services" title="Link to this heading">#</a></h1>
 <p><a class="reference external" href="https://nubonyxia.incubateur.finances.rie.gouv.fr">Nubonyxia</a> met à la disposition des utilisateurs des services ainsi que des ressources en CPU et en RAM. Par exemple, pour les services <em>data science</em> comme <cite>RStudio</cite> ou <cite>Vscode</cite>, il est possible de réserver jusqu’à <strong>30 000 milliCPU</strong> et <strong>32Gi de RAM</strong></p>
-<p>lister extension disponible dans vscode</p>
+<p>Une fois un nouveau service lancé, il apparait dans l’onglet <span class="menuselection">Mes services</span>.</p>
 <p>Au moment du lancement d’un service, en plus des ressources évoquées, différentes options de configurations sont possibles.
 Cette section s’attache à couvrir ces différentes options.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>Donner un nom personnalisé à son service permet de s’y retrouver lorsque l’on a plusieurs services <cite>RStudio</cite> ou <cite>VScode</cite> ouverts en parallèle.</p>
 </div>
-<p>Partager le service</p>
-<p>Connecter son service à l’espace de stockage S3</p>
-<p>Kubernetes</p>
-<p>Init</p>
-<p>PersonalInit
-Onyxia
-Ressources
-Networking
-Security
-Git
-Vault</p>
-<p>Les services de bases de données s’appuient sur PVC -&gt; penser à delete PVC si le service ne se lance pas</p>
-<p>Une fois un nouveau service lancé, il apparait dans l’onglet <span class="menuselection">Mes services</span>.</p>
-<section id="connexion-proxy">
-<h2>Connexion Proxy<a class="headerlink" href="#connexion-proxy" title="Link to this heading">#</a></h2>
-<p>Pour accéder à Internet, il faut recourir au proxy du SNUM. Des exemples de code sont inclus ci-dessous pour lancer une requète http sur Internet.</p>
+<section id="options-de-configurations">
+<h2>Options de configurations<a class="headerlink" href="#options-de-configurations" title="Link to this heading">#</a></h2>
+<p>Suivant le service lancé, différents onglets de configurations sont disponibles. Cette section présente les options les plus couramment utilisées.</p>
+<section id="connecter-son-service-a-l-espace-de-stockage-s3">
+<h3>Connecter son service à l’espace de stockage S3<a class="headerlink" href="#connecter-son-service-a-l-espace-de-stockage-s3" title="Link to this heading">#</a></h3>
+</section>
+<section id="id1">
+<h3>Kubernetes<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+</section>
+<section id="init">
+<h3>Init<a class="headerlink" href="#init" title="Link to this heading">#</a></h3>
+<section id="personalinit">
+<h4>PersonalInit<a class="headerlink" href="#personalinit" title="Link to this heading">#</a></h4>
+</section>
+<section id="personalinitargs">
+<h4>PersonalInitArgs<a class="headerlink" href="#personalinitargs" title="Link to this heading">#</a></h4>
+</section>
+</section>
+<section id="onyxia">
+<h3>Onyxia<a class="headerlink" href="#onyxia" title="Link to this heading">#</a></h3>
+</section>
+<section id="ressources">
+<h3>Ressources<a class="headerlink" href="#ressources" title="Link to this heading">#</a></h3>
+</section>
+<section id="networking">
+<h3>Networking<a class="headerlink" href="#networking" title="Link to this heading">#</a></h3>
+<p>Il est possible de partager de manière ponctuelle un service lancé à un autre agent. Pour ce faire, il faut décocher <em>Enable IP protection</em> et <em>Enable network policy</em>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>L’utilisation simultannée d’un service est impossible. Une seule personne à la fois peut se connecter à un service.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Il est recommandé de changer le mot de passe dans l’onglet <em>Security</em> une fois le partage terminé.</p>
+</div>
+</section>
+<section id="security">
+<h3>Security<a class="headerlink" href="#security" title="Link to this heading">#</a></h3>
+</section>
+<section id="git">
+<h3>Git<a class="headerlink" href="#git" title="Link to this heading">#</a></h3>
+</section>
+<section id="id2">
+<h3>Vault<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section id="gestion-des-secrets">
+<h2>Gestion des secrets<a class="headerlink" href="#gestion-des-secrets" title="Link to this heading">#</a></h2>
+</section>
+<section id="configurer-le-proxy">
+<h2>Configurer le proxy<a class="headerlink" href="#configurer-le-proxy" title="Link to this heading">#</a></h2>
+<p>Pour accéder à Internet, il faut recourir au <strong>proxy</strong> du SNUM. Des exemples de code sont inclus ci-dessous pour lancer une requète http sur Internet.</p>
 <p>L’adresse IP du proxy est <strong>172.16.0.53</strong>.</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
@@ -271,6 +307,9 @@ Python</label><div class="sd-tab-content docutils">
 </div>
 </div>
 <p>Le proxy peut s’employer lorsque l’on cherche à récupérer des données via API, comme le montre le notebook disponible sur ce <a class="reference external" href="https://forge.dgfip.finances.rie.gouv.fr/bercyhub/nubonyxia/python-demonstration/-/blob/main/UseCase_API.ipynb?ref_type=heads">repo git</a></p>
+</section>
+<section id="id3">
+<h2>Gestion des secrets<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 </section>
 </section>
 
@@ -330,7 +369,25 @@ Python</label><div class="sd-tab-content docutils">
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Configuration des services</a><ul>
-<li><a class="reference internal" href="#connexion-proxy">Connexion Proxy</a></li>
+<li><a class="reference internal" href="#options-de-configurations">Options de configurations</a><ul>
+<li><a class="reference internal" href="#connecter-son-service-a-l-espace-de-stockage-s3">Connecter son service à l’espace de stockage S3</a></li>
+<li><a class="reference internal" href="#id1">Kubernetes</a></li>
+<li><a class="reference internal" href="#init">Init</a><ul>
+<li><a class="reference internal" href="#personalinit">PersonalInit</a></li>
+<li><a class="reference internal" href="#personalinitargs">PersonalInitArgs</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#onyxia">Onyxia</a></li>
+<li><a class="reference internal" href="#ressources">Ressources</a></li>
+<li><a class="reference internal" href="#networking">Networking</a></li>
+<li><a class="reference internal" href="#security">Security</a></li>
+<li><a class="reference internal" href="#git">Git</a></li>
+<li><a class="reference internal" href="#id2">Vault</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#gestion-des-secrets">Gestion des secrets</a></li>
+<li><a class="reference internal" href="#configurer-le-proxy">Configurer le proxy</a></li>
+<li><a class="reference internal" href="#id3">Gestion des secrets</a></li>
 </ul>
 </li>
 </ul>

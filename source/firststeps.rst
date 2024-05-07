@@ -167,6 +167,10 @@ Les services de développement comme :python:`vscode` ou :python:`jupyter-notebo
 .. warning:: 
 	Avant de supprimer un service, pensez à bien sauvegarder vos codes et vos données comme illustré dans la section :doc:`methode`. En effet, pour certains services, la suppression d'une instance est susceptible d'entraîner la suppression de toutes les données associées. 
 
+.. important:: 
+Les services de bases de données s'appuient sur PVC -> penser à delete PVC si le service ne se lance pas 
+
+
 
 Pour aller plus loin 
 ---------------------

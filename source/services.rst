@@ -4,7 +4,7 @@ Configuration des services
 
 `Nubonyxia`_ met à la disposition des utilisateurs des services ainsi que des ressources en CPU et en RAM. Par exemple, pour les services *data science* comme `RStudio` ou `Vscode`, il est possible de réserver jusqu'à **30 000 milliCPU** et **32Gi de RAM** 
 
-lister extension disponible dans vscode 
+Une fois un nouveau service lancé, il apparait dans l'onglet :menuselection:`Mes services`.  
 
 Au moment du lancement d'un service, en plus des ressources évoquées, différentes options de configurations sont possibles. 
 Cette section s'attache à couvrir ces différentes options. 
@@ -13,33 +13,63 @@ Cette section s'attache à couvrir ces différentes options.
 
 	Donner un nom personnalisé à son service permet de s'y retrouver lorsque l'on a plusieurs services `RStudio` ou `VScode` ouverts en parallèle. 
 	
-Partager le service
+
+Options de configurations 
+-------------------------
+
+Suivant le service lancé, différents onglets de configurations sont disponibles. Cette section présente les options les plus couramment utilisées. 
+
 
 Connecter son service à l'espace de stockage S3
+*************
 
 Kubernetes
+*************
 
 Init 
+*************
 
 PersonalInit 
+++++++++++++
+PersonalInitArgs 
++++++++++++++++
+
 Onyxia 
-Ressources 
+*************
+Ressources
+*************
+
 Networking 
+*************
+
+Il est possible de partager de manière ponctuelle un service lancé à un autre agent. Pour ce faire, il faut décocher *Enable IP protection* et *Enable network policy*. 
+
+.. note::
+	L'utilisation simultannée d'un service est impossible. Une seule personne à la fois peut se connecter à un service.
+
+.. warning::
+	Il est recommandé de changer le mot de passe dans l'onglet *Security* une fois le partage terminé. 
+
+
 Security 
+*************
 Git 
+*************
 Vault 
-
-.. warning:: 
-Les services de bases de données s'appuient sur PVC -> penser à delete PVC si le service ne se lance pas 
+*************
 
 
-Une fois un nouveau service lancé, il apparait dans l'onglet :menuselection:`Mes services`.  
-
-Connexion Proxy
----------------
 
 
-Pour accéder à Internet, il faut recourir au proxy du SNUM. Des exemples de code sont inclus ci-dessous pour lancer une requète http sur Internet.
+Gestion des secrets 
+--------------------
+
+
+Configurer le proxy 
+--------------------
+
+
+Pour accéder à Internet, il faut recourir au **proxy** du SNUM. Des exemples de code sont inclus ci-dessous pour lancer une requète http sur Internet.
 
 L'adresse IP du proxy est **172.16.0.53**.
 
