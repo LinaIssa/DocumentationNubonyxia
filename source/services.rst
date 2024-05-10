@@ -48,13 +48,25 @@ Suivant le service lancé, différents onglets de configurations sont disponible
 
 		alors le script va créer les fichiers :python:`fichier1.txt` et :python:`fichier2.txt` grâce à la commande :program:`touch`
 
-	.. tab-item:: Onyxia  
-
+	.. tab-item:: Onyxia 
 
 	.. tab-item:: Ressources  
 
+		Déplacer le curseur pour définir la plage de ressources souhaitée 
+
+		* CPU
+		* RAM
+
+		.. note:: 
+
+			Les ressources du cluster étant mutualisées, il est de bon ton de réserver les ressources adaptées à ses besoins et son cas d'usage. 
+
 
 	.. tab-item:: Networking 
+
+
+   
+	.. tab-item:: Security 
 
 		Il est possible de partager de manière ponctuelle un service lancé à un autre agent. Pour ce faire, il faut décocher *Enable IP protection* et *Enable network policy*. 
 
@@ -62,13 +74,23 @@ Suivant le service lancé, différents onglets de configurations sont disponible
 			L'utilisation simultannée d'un service est impossible. Une seule personne à la fois peut se connecter à un service.
 
 		.. warning::
-			Il est recommandé de changer le mot de passe dans l'onglet *Security* une fois le partage terminé. 
+			Il est recommandé de définir un mot de passe propre au service que l'on souhaite partager dans *Password*. 
 
-   
-	.. tab-item:: Security  
 
 
 	.. tab-item:: Git
+
+		* `Token` : Il s'agit du jeton d'accès défini sur la plateforme Git utilisée (GitLab, GitHub ou bien la `forge`_)
+		* `Repository` : Il s'agit de l'url du repo à cloner, obtenue à partir de la plateforme git utilisée (GitLab, GitHub ou bien la `forge`_) en cliquant sur :menuselection:`Cloner --> HTTPS`. 
+
+
+	.. tab-item:: Service
+
+
+	.. tab-item:: Persistence
+
+
+
 
 
 	.. tab-item:: Vault  
