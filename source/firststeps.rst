@@ -73,12 +73,12 @@ A la disposition de l'utilisateur :
 		.. tab-item:: IDE
 
 
-			* `Vscode-python` : Vscode avec Python, Julia et une collection de packages *data science* intégrée  
-			* `Vscode-pytorch`: Vscode enrichi avec le framework de *deep learning* :python:`pyorch`  
-			* `Vscode-nodejs` : Vscode enrichi de `NodeJs runtime` et donc adapté pour le développement web. 
-			* `jupyter-python`: JupterLab avec Python, Julia et une collection de packages *data science* intégrée 
-			* `jupyter-pyspark`: JupyterLab intégrant `Apache Spark <https://spark.apache.org/docs/latest/api/python/index.html>`_ pour réaliser du calcul distribué avec Python.  
-			* `R studio` : RStudio avec les packages de *data science* intégrés
+			* :python:`Vscode-python` : Vscode avec Python, Julia et une collection de packages *data science* intégrée  
+			* :python:`Vscode-pytorch`: Vscode enrichi avec le framework de *deep learning* :python:`pyorch`  
+			* :python:`Vscode-nodejs` : Vscode enrichi de `NodeJs runtime` et donc adapté pour le développement web. 
+			* :python:`jupyter-python`: JupterLab avec Python, Julia et une collection de packages *data science* intégrée 
+			* :python:`jupyter-pyspark`: JupyterLab intégrant `Apache Spark <https://spark.apache.org/docs/latest/api/python/index.html>`_ pour réaliser du calcul distribué avec Python.  
+			* :python:`R studio` : RStudio avec les packages de *data science* intégrés
 
 		.. tab-item:: Gestion de base de données
 
@@ -134,6 +134,11 @@ Nous avons mis à disposition sur la `forge`_ un repo nommé `Quick Start <https
 
 Pour lancer un service, il suffit de se rendre dans l'onglet :menuselection:`Catalogue de services`. Vous pouvez lancer le service IDE de votre choix. Le service lancé apparaît alors dans la page `Mes Services <https://nubonyxia.incubateur.finances.rie.gouv.fr/my-services>`_. L'accès au service se fait en cliquant sur le bouton :python:`Ouvrir`. Un mot de passe est alors fourni pour pouvoir accéder au service. Les informations relatives aux tokens peuvent être consultés en cliquant sur l'icône information en bas à gauche du service instancié. 
 
+.. important::
+	Il est possible de lancer différentes instances d'un même service. Ainsi on peut avoir différent services :python:`vscode` qui tournent en même temps sur la plateforme. Cela ne s'applique pas pour les services reposant sur des *permanent virtual circuit* (PVC) à l'instar des services de la catégorie **base de données** comme :python:`Postgresql`. Autrement dit, si un service :python:`Postgresql` est déjà ouvert, il faut d'abord le supprimer avant d'en lancer un nouveau. Il en est de même pour le service :python:`Superset`.
+
+
+
 L'interface Onyxia permet de configurer le service que l'on va lancer comme le montre en détail la section :doc:`Configuration de services <services>`.
 
 .. note::
@@ -153,6 +158,8 @@ Il est également possible de cloner le repo au lancement du service dans l'inte
 
 
 Dans le service IDE , il est possible de télécharger en complément des librairies Python ou R, grâce au `Nexus` mis en place par la DGFIP. En effet bien que la plateforme soit isolée d'internet, un point d'accès à Pypi (librairies Python) et CRAN (packages R)est mis en place grâce à un mirroir (Nexus de la DGFiP). Il est ainsi possible de réaliser :program:`pip install` suivi de la librairie de votre choix pour Python et :program:`install.package("")` pour R.
+	 
+
 
 
 4- Suppression d'un service 
@@ -167,9 +174,17 @@ Les services de développement comme :python:`vscode` ou :python:`jupyter-notebo
 .. warning:: 
 	Avant de supprimer un service, pensez à bien sauvegarder vos codes et vos données comme illustré dans la section :doc:`methode`. En effet, pour certains services, la suppression d'une instance est susceptible d'entraîner la suppression de toutes les données associées. 
 
-.. important:: 
-Les services de bases de données s'appuient sur PVC -> penser à delete PVC si le service ne se lance pas 
 
+Les services de bases de données s'appuyant sur des PVC, la suppression complète se fait avec la ligne de commande :program:`kubectl delete PVC` suivi du nom du volume. Cette dernière est indiquée dans la fenêtre qui s'ouvre lors du lancement du service, comme le montre l'image ci-après. 
+
+
+
+.. image:: images/deletepvc.png
+  :width: 800
+  :alt: Alternative text
+
+.. important:: 
+	Pour exécuter la ligne de commande :program:`kubectl delete PVC`, il faut ouvrir un vscode et sélectionner le role *admin* dans l'onglet **Kubernetes** présent dans la configuration (voir section :ref:`servicesConfig`)
 
 
 Pour aller plus loin 

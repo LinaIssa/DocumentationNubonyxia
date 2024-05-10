@@ -270,12 +270,12 @@ un catalogue de services<div class="sd-summary-down docutils">
 </input><label class="sd-tab-label" for="sd-tab-item-2">
 IDE</label><div class="sd-tab-content docutils">
 <ul class="simple">
-<li><p class="sd-card-text"><cite>Vscode-python</cite> : Vscode avec Python, Julia et une collection de packages <em>data science</em> intégrée</p></li>
-<li><p class="sd-card-text"><cite>Vscode-pytorch</cite>: Vscode enrichi avec le framework de <em>deep learning</em> <code class="code highlight python docutils literal highlight-python"><span class="n">pyorch</span></code></p></li>
-<li><p class="sd-card-text"><cite>Vscode-nodejs</cite> : Vscode enrichi de <cite>NodeJs runtime</cite> et donc adapté pour le développement web.</p></li>
-<li><p class="sd-card-text"><cite>jupyter-python</cite>: JupterLab avec Python, Julia et une collection de packages <em>data science</em> intégrée</p></li>
-<li><p class="sd-card-text"><cite>jupyter-pyspark</cite>: JupyterLab intégrant <a class="reference external" href="https://spark.apache.org/docs/latest/api/python/index.html">Apache Spark</a> pour réaliser du calcul distribué avec Python.</p></li>
-<li><p class="sd-card-text"><cite>R studio</cite> : RStudio avec les packages de <em>data science</em> intégrés</p></li>
+<li><p class="sd-card-text"><code class="code highlight python docutils literal highlight-python"><span class="n">Vscode</span><span class="o">-</span><span class="n">python</span></code> : Vscode avec Python, Julia et une collection de packages <em>data science</em> intégrée</p></li>
+<li><p class="sd-card-text"><code class="code highlight python docutils literal highlight-python"><span class="n">Vscode</span><span class="o">-</span><span class="n">pytorch</span></code>: Vscode enrichi avec le framework de <em>deep learning</em> <code class="code highlight python docutils literal highlight-python"><span class="n">pyorch</span></code></p></li>
+<li><p class="sd-card-text"><code class="code highlight python docutils literal highlight-python"><span class="n">Vscode</span><span class="o">-</span><span class="n">nodejs</span></code> : Vscode enrichi de <cite>NodeJs runtime</cite> et donc adapté pour le développement web.</p></li>
+<li><p class="sd-card-text"><code class="code highlight python docutils literal highlight-python"><span class="n">jupyter</span><span class="o">-</span><span class="n">python</span></code>: JupterLab avec Python, Julia et une collection de packages <em>data science</em> intégrée</p></li>
+<li><p class="sd-card-text"><code class="code highlight python docutils literal highlight-python"><span class="n">jupyter</span><span class="o">-</span><span class="n">pyspark</span></code>: JupyterLab intégrant <a class="reference external" href="https://spark.apache.org/docs/latest/api/python/index.html">Apache Spark</a> pour réaliser du calcul distribué avec Python.</p></li>
+<li><p class="sd-card-text"><code class="code highlight python docutils literal highlight-python"><span class="n">R</span> <span class="n">studio</span></code> : RStudio avec les packages de <em>data science</em> intégrés</p></li>
 </ul>
 </div>
 <input id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
@@ -330,6 +330,10 @@ une gestion de secret<div class="sd-summary-down docutils">
 <h2>4- Lancement d’un service<a class="headerlink" href="#lancement-d-un-service" title="Link to this heading">#</a></h2>
 <p>Nous avons mis à disposition sur la <a class="reference external" href="https://forge.dgfip.finances.rie.gouv.fr/">forge</a> un repo nommé <a class="reference external" href="https://forge.dgfip.finances.rie.gouv.fr/bercyhub/nubonyxia/quick-start">Quick Start</a> avec des scripts de <em>data visualisation</em> prêt-à-être exécutés.</p>
 <p>Pour lancer un service, il suffit de se rendre dans l’onglet <span class="menuselection">Catalogue de services</span>. Vous pouvez lancer le service IDE de votre choix. Le service lancé apparaît alors dans la page <a class="reference external" href="https://nubonyxia.incubateur.finances.rie.gouv.fr/my-services">Mes Services</a>. L’accès au service se fait en cliquant sur le bouton <code class="code highlight python docutils literal highlight-python"><span class="n">Ouvrir</span></code>. Un mot de passe est alors fourni pour pouvoir accéder au service. Les informations relatives aux tokens peuvent être consultés en cliquant sur l’icône information en bas à gauche du service instancié.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Il est possible de lancer différentes instances d’un même service. Ainsi on peut avoir différent services <code class="code highlight python docutils literal highlight-python"><span class="n">vscode</span></code> qui tournent en même temps sur la plateforme. Cela ne s’applique pas pour les services reposant sur des <em>permanent virtual circuit</em> (PVC) à l’instar des services de la catégorie <strong>base de données</strong> comme <code class="code highlight python docutils literal highlight-python"><span class="n">Postgresql</span></code>. Autrement dit, si un service <code class="code highlight python docutils literal highlight-python"><span class="n">Postgresql</span></code> est déjà ouvert, il faut d’abord le supprimer avant d’en lancer un nouveau. Il en est de même pour le service <code class="code highlight python docutils literal highlight-python"><span class="n">Superset</span></code>.</p>
+</div>
 <p>L’interface Onyxia permet de configurer le service que l’on va lancer comme le montre en détail la section <a class="reference internal" href="services.html"><span class="doc">Configuration de services</span></a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -354,7 +358,12 @@ une gestion de secret<div class="sd-summary-down docutils">
 <p class="admonition-title">Warning</p>
 <p>Avant de supprimer un service, pensez à bien sauvegarder vos codes et vos données comme illustré dans la section <a class="reference internal" href="methode.html"><span class="doc">Guide des bonnes pratiques</span></a>. En effet, pour certains services, la suppression d’une instance est susceptible d’entraîner la suppression de toutes les données associées.</p>
 </div>
-<p>Les services de bases de données s’appuient sur PVC -&gt; penser à delete PVC si le service ne se lance pas</p>
+<p>Les services de bases de données s’appuyant sur des PVC, la suppression complète se fait avec la ligne de commande <strong class="program">kubectl delete PVC</strong> suivi du nom du volume. Cette dernière est indiquée dans la fenêtre qui s’ouvre lors du lancement du service, comme le montre l’image ci-après.</p>
+<a class="reference internal image-reference" href="_images/deletepvc.png"><img alt="Alternative text" src="_images/deletepvc.png" style="width: 800px;" /></a>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Pour exécuter la ligne de commande <strong class="program">kubectl delete PVC</strong>, il faut ouvrir un vscode et sélectionner le role <em>admin</em> dans l’onglet <strong>Kubernetes</strong> présent dans la configuration (voir section <a class="reference internal" href="services.html#servicesconfig"><span class="std std-ref">Options de configurations</span></a>)</p>
+</div>
 </section>
 <section id="pour-aller-plus-loin">
 <h2>Pour aller plus loin<a class="headerlink" href="#pour-aller-plus-loin" title="Link to this heading">#</a></h2>

@@ -11,54 +11,71 @@ Cette section s'attache à couvrir ces différentes options.
 
 .. important::
 
-	Donner un nom personnalisé à son service permet de s'y retrouver lorsque l'on a plusieurs services `RStudio` ou `VScode` ouverts en parallèle. 
+	Donner un nom personnalisé à son service permet de s'y retrouver lorsque l'on a plusieurs services :python:`RStudio` ou :python:`VScode` ouverts en parallèle. 
 	
+.. _servicesConfig:
 
 Options de configurations 
 -------------------------
 
 Suivant le service lancé, différents onglets de configurations sont disponibles. Cette section présente les options les plus couramment utilisées. 
 
+.. tab-set::
 
-Connecter son service à l'espace de stockage S3
-*************
+	.. tab-item:: S3 
 
-Kubernetes
-*************
+		La connection du service à son espace de stockage S3 est déjà configurée. On peut laisser tel quel cet onglet. 
+		
+	.. tab-item:: Kubernetes   
 
-Init 
-*************
+		Pour pouvoir utiliser les commandes :program:`kubectl`, il faut sélectionner le role *admin*. Par défaut, *role* est sur *viewer*. Cela peut être utile lorsque l'on souhaite par exemple vérifier l'état des pods. Consulter la section :ref:`commandKubectl` pour avoir un aperçu des commandes que vous pouvez exécuter. 
 
-PersonalInit 
-++++++++++++
-PersonalInitArgs 
-+++++++++++++++
+	.. tab-item:: Init   
 
-Onyxia 
-*************
-Ressources
-*************
+		Il est possible de fournir un script d'initialisation qui va s'exécuter à l'ouverture du service. Cela permet d'automatiser des configurations spécifiques d'un service. 
 
-Networking 
-*************
+		* `PersonalInit`: lien vers un script shell. 
 
-Il est possible de partager de manière ponctuelle un service lancé à un autre agent. Pour ce faire, il faut décocher *Enable IP protection* et *Enable network policy*. 
+		* `PersonalInitArgs`: options correspondant aux variables :python:`$1` :python:`$2` dans le script init
 
-.. note::
-	L'utilisation simultannée d'un service est impossible. Une seule personne à la fois peut se connecter à un service.
+		Par exemple, si *PersonalInitArgs* corresponde à :python:`fichier1.txt fichier2.txt` et que le script init soit le suivant: 
 
-.. warning::
-	Il est recommandé de changer le mot de passe dans l'onglet *Security* une fois le partage terminé. 
+		.. code:: python
 
+  			#!/bin/bash
+			touch $1
+			touch $2
 
-Security 
-*************
-Git 
-*************
-Vault 
-*************
+		alors le script va créer les fichiers :python:`fichier1.txt` et :python:`fichier2.txt` grâce à la commande :program:`touch`
+
+	.. tab-item:: Onyxia  
 
 
+	.. tab-item:: Ressources  
+
+
+	.. tab-item:: Networking 
+
+		Il est possible de partager de manière ponctuelle un service lancé à un autre agent. Pour ce faire, il faut décocher *Enable IP protection* et *Enable network policy*. 
+
+		.. note::
+			L'utilisation simultannée d'un service est impossible. Une seule personne à la fois peut se connecter à un service.
+
+		.. warning::
+			Il est recommandé de changer le mot de passe dans l'onglet *Security* une fois le partage terminé. 
+
+   
+	.. tab-item:: Security  
+
+
+	.. tab-item:: Git
+
+
+	.. tab-item:: Vault  
+
+
+
+	
 
 
 Gestion des secrets 
@@ -124,6 +141,4 @@ L'adresse IP du proxy est **172.16.0.53**.
 
 Le proxy peut s'employer lorsque l'on cherche à récupérer des données via API, comme le montre le notebook disponible sur ce `repo git <https://forge.dgfip.finances.rie.gouv.fr/bercyhub/nubonyxia/python-demonstration/-/blob/main/UseCase_API.ipynb?ref_type=heads>`_
 
-Gestion des secrets 
---------------------
 
