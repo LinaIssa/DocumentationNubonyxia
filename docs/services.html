@@ -252,14 +252,19 @@ Ressources</label><div class="sd-tab-content docutils">
 <input id="sd-tab-item-4" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-4">
 Security</label><div class="sd-tab-content docutils">
+<ul class="simple">
+<li><p><cite>Password</cite> : Il est possible de définir un mot de passe spécifique au service. Par défaut, il s’agit du mot de passe présent dans <span class="menuselection">Mon compte ‣ Informations du compte</span> sous le paramètre <cite>Mot de passe pour vos services</cite>.</p></li>
+<li><p><cite>Enable IP Protection</cite> : à décocher pour être accessible par deux adresses IP différentes.</p></li>
+<li><p><cite>Enable Network Policy</cite></p></li>
+</ul>
 <p>Il est possible de partager de manière ponctuelle un service lancé à un autre agent. Pour ce faire, il faut décocher <em>Enable IP protection</em> et <em>Enable network policy</em>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>L’utilisation simultannée d’un service est impossible. Une seule personne à la fois peut se connecter à un service.</p>
 </div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Il est recommandé de définir un mot de passe propre au service que l’on souhaite partager dans <em>Password</em>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Dans le cas d’un partage de service, il est recommandé de définir un mot de passe propre au service que l’on souhaite partager dans <em>Password</em>.</p>
 </div>
 </div>
 <input id="sd-tab-item-5" name="sd-tab-set-0" type="radio">
@@ -270,18 +275,49 @@ Git</label><div class="sd-tab-content docutils">
 <li><p><cite>Repository</cite> : Il s’agit de l’url du repo à cloner, obtenue à partir de la plateforme git utilisée (GitLab, GitHub ou bien la <a class="reference external" href="https://forge.dgfip.finances.rie.gouv.fr/">forge</a>) en cliquant sur <span class="menuselection">Cloner ‣ HTTPS</span>.</p></li>
 </ul>
 </div>
+<input id="sd-tab-item-6" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-6">
+Vault</label><div class="sd-tab-content docutils">
+<p><a class="reference external" href="https://nubonyxia.incubateur.finances.rie.gouv.fr/account/vault">Vault</a> est le coffre fort de la plateforme. Si le service à lancer nécessite des variables d’environnement spécifiques, vous pouvez les injecter au service sans avoir à les écrire en clair dans votre code. La section <a class="reference internal" href="#gestionvault"><span class="std std-ref">Gestion des secrets</span></a> montre comment créer un secret dans la page <a class="reference external" href="https://nubonyxia.incubateur.finances.rie.gouv.fr/my-secrets">Mes secrets</a>.</p>
+<p>Une fois le secret crée et le chemin du secret copié dans le presse papier, il suffit de coller le chemin dans le champ afférent.</p>
+<ul class="simple">
+<li><p><cite>Secret</cite></p></li>
+</ul>
+<p>Pour vérifier que les variables ont bien été injectés dans le service, vous pouvez lancer les commandes suivantes dans un terminal:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">env</span>
+
+<span class="n">echo</span> <span class="err">$</span><span class="n">MA_VARIABLE</span>
+
+<span class="n">env</span> <span class="o">|</span> <span class="n">grep</span> <span class="o">-</span><span class="n">i</span> <span class="s2">&quot;&lt;PATTERN&gt;&quot;</span>
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="gestion-des-secrets">
-<h2>Gestion des secrets<a class="headerlink" href="#gestion-des-secrets" title="Link to this heading">#</a></h2>
+<span id="gestionvault"></span><h2>Gestion des secrets<a class="headerlink" href="#gestion-des-secrets" title="Link to this heading">#</a></h2>
+<p>La création et la gestion des variables environnements se fait dans la page <a class="reference external" href="https://nubonyxia.incubateur.finances.rie.gouv.fr/my-secrets">Mes secrets</a>.  Cette page se présente comme un explorateur de fichiers, avec la possibilité de stoker identifiants, mots de passes et de trier les variables définies dans des dossiers.</p>
+<ul class="simple">
+<li><p><code class="code highlight python docutils literal highlight-python"><span class="o">+</span> <span class="n">Nouveau</span> <span class="n">dossier</span></code></p></li>
+<li><p><code class="code highlight python docutils literal highlight-python"><span class="o">+</span> <span class="n">Nouveau</span> <span class="n">secret</span></code></p></li>
+</ul>
+<p>Chaque secret peut contenir plusieurs variables, constituées de paires de clés-valeurs.</p>
+<ul class="simple">
+<li><p><code class="code highlight python docutils literal highlight-python"><span class="o">+</span> <span class="n">Ajouter</span> <span class="n">une</span> <span class="n">variable</span></code></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Comme le montre l’image jointe, les clés commencent par <code class="code highlight python docutils literal highlight-python"><span class="err">$</span></code>, contiennent uniqueement lettre, chiffres et le cra t!re <code class="code highlight python docutils literal highlight-python"><span class="n">_</span></code>. Par convention les clés s’écrivent en majuscule.</p>
+</div>
+<p>Une fois le secret crée avec ses variables, pour pouvoir l’uiliser dans un service, cliquer sur le bouton <code class="code highlight python docutils literal highlight-python"><span class="n">Utiliser</span> <span class="n">dans</span> <span class="n">un</span> <span class="n">service</span></code>. La section <a class="reference internal" href="#servicesconfig"><span class="std std-ref">Options de configurations</span></a> montre ensuite comment configurer le service dans l’onglet <code class="code highlight python docutils literal highlight-python"><span class="n">Vault</span></code></p>
 </section>
 <section id="configurer-le-proxy">
 <h2>Configurer le proxy<a class="headerlink" href="#configurer-le-proxy" title="Link to this heading">#</a></h2>
 <p>Pour accéder à Internet, il faut recourir au <strong>proxy</strong> du SNUM. Des exemples de code sont inclus ci-dessous pour lancer une requète http sur Internet.</p>
 <p>L’adresse IP du proxy est <strong>172.16.0.53</strong>.</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-6" name="sd-tab-set-1" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-6">
+<input checked="checked" id="sd-tab-item-7" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-7">
 R</label><div class="sd-tab-content docutils">
 <div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="n">proxy_host</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;172.16.0.53&quot;</span>
 <span class="w">        </span><span class="n">proxy_port</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;3128&quot;</span>
@@ -299,8 +335,8 @@ R</label><div class="sd-tab-content docutils">
 </pre></div>
 </div>
 </div>
-<input id="sd-tab-item-7" name="sd-tab-set-1" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-7">
+<input id="sd-tab-item-8" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-8">
 Python</label><div class="sd-tab-content docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">os</span>

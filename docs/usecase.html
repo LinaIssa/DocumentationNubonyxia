@@ -202,7 +202,7 @@
 <span id="firstcase"></span><h2><strong>Cas Usage 1</strong>: Déployer des applications via une pipeline CI/CD<a class="headerlink" href="#cas-usage-1-deployer-des-applications-via-une-pipeline-ci-cd" title="Link to this heading">#</a></h2>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>Dans sa conception actuelle, <a class="reference external" href="https://nubonyxia.incubateur.finances.rie.gouv.fr">Nubonyxia</a> ne gère pas la mise en production des applicatifs webs déployés sur la plateforme. Si vous souhaitez pérénniser une application déployée sur notre plateforme, adressez-vous directement à nous.</p>
+<p>Dans sa conception actuelle, <a class="reference external" href="https://nubonyxia.incubateur.finances.rie.gouv.fr">Nubonyxia</a> ne gère pas la mise en production des applicatifs webs déployés sur la plateforme. Si vous souhaitez péréniser une application déployée sur notre plateforme, adressez-vous directement à nous.</p>
 </div>
 <dl class="simple">
 <dt>Cette section décrit les étapes dans le déploiement d’une application développée en</dt><dd><ul class="simple">
@@ -229,7 +229,7 @@ Il suffit de forker le repo qui vous intéresse et d’ajouter vos scripts dans 
 <section id="b-runners">
 <h5>b. Runners<a class="headerlink" href="#b-runners" title="Link to this heading">#</a></h5>
 <p>Les jobs d’un pipeline <strong>GitLab-CI</strong> sont pris en charge et exécutés par un ou plusieurs <cite>GitLab-Runners</cite>. Il est possible de voir les runners actifs au niveau des paramètres du CI/CD du projet GitLab dans :menuselection: <cite>Settings –&gt; CI/CD –&gt; Runners</cite>. Une ligne avec un point vert apparaît si un runner est détecté.</p>
-<p>Si aucun runner n’est déjà détecté, il faut en créer un. Pour cela, depuis la plateforme Onyxia, il est possible de lancer un service <cite>GitLab-Runner</cite>,dans le catalogue <span class="menuselection">Automation Services</span>. Dans le paramétrage du service, il y a plusieurs champs à compléter :</p>
+<p>Si aucun runner n’est détecté, il faut en créer un. Pour cela, depuis la plateforme Onyxia, il est possible de lancer un service <cite>GitLab-Runner</cite>,dans le catalogue <span class="menuselection">Automation Services</span>. Dans le paramétrage du service, il y a plusieurs champs à compléter :</p>
 <ul class="simple">
 <li><p>dans l’onglet <span class="menuselection">Cache</span>, il faut remplir les champs <code class="code highlight python docutils literal highlight-python"><span class="n">AccessKey</span></code> et <code class="code highlight python docutils literal highlight-python"><span class="n">SecretKey</span></code> avec les clés d’accès à son bucket <a class="reference external" href="https://minio-console.lab.incubateur.finances.rie.gouv.fr/">MinIO</a> , qui sera utilisé pour stocker les artefacts entre les différents jobs dans la pipeline. La section <a class="reference internal" href="minio.html#miniokeys"><span class="std std-ref">Création des clés d’accès à MinIO</span></a> dans la page <a class="reference internal" href="minio.html"><span class="doc">Stockage de données dans Nubonyxia</span></a> explique comment créer les clés d’accès <a class="reference external" href="https://minio-console.lab.incubateur.finances.rie.gouv.fr/">MinIo</a> pour la première fois.</p></li>
 <li><p>dans l’onglet <span class="menuselection">Registration</span> dans la création du Gitlab runner, il faut renseigner le <code class="code highlight python docutils literal highlight-python"><span class="n">Registration</span> <span class="n">token</span></code> qui est trouvable dans GitLab <span class="menuselection">Settings ‣ CI/CD ‣ Runners</span> du projet, cliquer sur les trois petits points à côté du bouton bleu <cite>New project runner</cite>.</p></li>
@@ -327,7 +327,7 @@ Python</label><div class="sd-tab-content docutils">
 </section>
 <section id="commande-pour-debugger">
 <h3>Commande pour debugger<a class="headerlink" href="#commande-pour-debugger" title="Link to this heading">#</a></h3>
-<p><strong class="command">kubectl get pods</strong> pour voir les pods en fonctionnement</p>
+<p id="commandkubectl"><strong class="command">kubectl get pods</strong> pour voir les pods en fonctionnement</p>
 <p><strong class="command">kubectl delete pod &lt;nom_pod&gt;</strong> pour supprimer un pod</p>
 <p><strong class="command">kubectl get deployment</strong> pour voir les déploiements</p>
 <p><strong class="command">kubectl delete deployment deployment_name</strong> pour supprimer un déploiement</p>

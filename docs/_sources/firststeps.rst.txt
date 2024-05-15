@@ -7,7 +7,7 @@ Cette page offre une visite guidée de `Nubonyxia`_ et donne une desciption *pas
 1- Ajout du certificat dans le navigateur
 -----------------------------------------
 
-Dans un premier temps, avec d’accéder à la plateforme, il est nécessaire d’ajouter le certificat, acccessible `ici <https://nubonyxia.incubateur.finances.rie.gouv.fr/statics/bercyCA.crt>`_, dans le navigateur de votre choix. En effet, nous travaillons pour le moment avec un certificat auto-signé. 
+Dans un premier temps, avant d’accéder à la plateforme, il est nécessaire d’ajouter le certificat, accessible `ici <https://nubonyxia.incubateur.finances.rie.gouv.fr/statics/bercyCA.crt>`_, dans le navigateur de votre choix. En effet, nous travaillons pour le moment avec un certificat auto-signé. 
 
 
 .. note::
@@ -41,6 +41,7 @@ L'accès à la plateforme se fait en utilisant l'identifiant et mot de passe que
 .. note:: 
 	Nous travaillons actuellement à intégrer **agent connect** à la plateforme. Pour le moment, nous gérons à la main les comptes utilisateurs (pas de fédérateur d'identité).
 
+
 3- Vue générale de la plateforme 
 --------------------------------
 
@@ -49,16 +50,17 @@ insérer schéma relation entre différentes composantes
 
 A la disposition de l'utilisateur : 
 
+
 .. dropdown:: un espace de stockage
     :animate: fade-in-slide-down 
 
     `Nubonyxia`_ n'échappe pas à la tendance de fond observée dans la Data et le Cloud, qui consiste à séparer l'espace de stockage des données des services où elles sont traitées. Pour plus d'informations sur le bucket S3 basé sur `MinIO`_ mis à la disposition des utilisateurs, consulter cette :doc:`page <minio>`.   
 
-    Cette séparation entre l'espace de stockage des données et l'envrionnement où elles sont traitées offre plusieurs avantages : 
+    Cette séparation entre l'espace de stockage des données et l'environnement où elles sont traitées offre plusieurs avantages : 
 
     * découpler le stockage et le calcul,
     * garantir une **reproductibilité des analyses**, 
-    * permettre une **optimisation des coûts**. En effet, on peut dès lors adapter les ressources en fonction des besoins de stockage et calcul.
+    * permettre une **optimisation des coûts**. En effet, on peut dès lors adapter les ressources en fonction des besoins de stockage et de calcul.
 
      
 
@@ -73,10 +75,10 @@ A la disposition de l'utilisateur :
 		.. tab-item:: IDE
 
 
-			* :python:`Vscode-python` : Vscode avec Python, Julia et une collection de packages *data science* intégrée  
+			* :python:`Vscode-python` : Vscode avec Python, Julia et une collection de packages *data science* intégrés
 			* :python:`Vscode-pytorch`: Vscode enrichi avec le framework de *deep learning* :python:`pyorch`  
 			* :python:`Vscode-nodejs` : Vscode enrichi de `NodeJs runtime` et donc adapté pour le développement web. 
-			* :python:`jupyter-python`: JupterLab avec Python, Julia et une collection de packages *data science* intégrée 
+			* :python:`jupyter-python`: JupterLab avec Python, Julia et une collection de packages *data science* intégrés
 			* :python:`jupyter-pyspark`: JupyterLab intégrant `Apache Spark <https://spark.apache.org/docs/latest/api/python/index.html>`_ pour réaliser du calcul distribué avec Python.  
 			* :python:`R studio` : RStudio avec les packages de *data science* intégrés
 
@@ -108,7 +110,6 @@ A la disposition de l'utilisateur :
 		Les services ont des tokens d'expiration. Lorsqu'ils ne sont plus utilisés, pensez à bien les supprimer, voir :doc:`guide des bonnes pratiques <methode>`. 
 
 
-.. _target to paragraph:
 
 .. dropdown:: une connexion git intégrée
 	:animate: fade-in-slide-down
@@ -118,14 +119,17 @@ A la disposition de l'utilisateur :
 
 	
  	La configuration d'un serveur Git sur `Nubonyxia`_ ainsi que son utilisation sont détaillées dans la section :doc:`guide des bonnes pratiques <methode>`.
+
  
+.. _secretCreate:
 
 .. dropdown:: une gestion de secret  
 	:animate: fade-in-slide-down
+	
+	
 
-	Certains usages requiert de fournir à un service des *crédentials* sous forme de secret - sans les écrire en clair dans le code de chaque service. Cela est géré par `Vault`_ dans notre cluster.
-
-
+	Certains usages requièrent  de fournir à un service des variables d'environnement sous forme de secret - sans les écrire en clair dans le code de chaque service. Cela est géré par `Vault`_ dans notre plateforme. 
+	Se référer à la section :ref:`gestionVault` pour la création et la gestion des variables environnements.
 
 4- Lancement d'un service 
 -------------------------
@@ -157,7 +161,7 @@ où :program:`<owner>` et :program:`<repo>` sont à remplacer respectivement par
 Il est également possible de cloner le repo au lancement du service dans l'interface, comme le montre la section :ref:`gitService`. 
 
 
-Dans le service IDE , il est possible de télécharger en complément des librairies Python ou R, grâce au `Nexus` mis en place par la DGFIP. En effet bien que la plateforme soit isolée d'internet, un point d'accès à Pypi (librairies Python) et CRAN (packages R)est mis en place grâce à un mirroir (Nexus de la DGFiP). Il est ainsi possible de réaliser :program:`pip install` suivi de la librairie de votre choix pour Python et :program:`install.package("")` pour R.
+Dans le service IDE , il est possible de télécharger en complément des librairies Python ou R, grâce au `Nexus` mis en place par la DGFIP. En effet bien que la plateforme soit isolée d'internet, un point d'accès à Pypi (librairies Python) et CRAN (packages R) est mis en place grâce à un miroir (Nexus de la DGFiP). Il est ainsi possible de réaliser :program:`pip install` suivi de la librairie de votre choix pour Python et :program:`install.package("")` pour R.
 	 
 
 

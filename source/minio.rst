@@ -10,9 +10,9 @@ La plateforme Nubonyxia utilise `MinIO`_ comme solution cloud de stockage objet.
 
 La création d'un compte Nubonyxia donne accès à un *bucket S3* individuel de **50 Go**.
 
-De plus,chaque service de développement (VSCode, etc) dispose d'un espace de stockage **NFS** (*Network File System*). Ce dernier, par construction local et temporaire, a la même durée de vie que le service.
+De plus, chaque service de développement (VSCode, etc) dispose d'un espace de stockage **NFS** (*Network File System*). Ce dernier, par construction local et temporaire, a la même durée de vie que le service.
 
-Enfin, il est possible de créer des services de base de données comme **PostgreSQL**, qui ouvre accès à un espace de stockage persistent **PVC** (*Permanent Virtual Circuit*)
+Enfin, il est possible de créer des services de base de données comme **PostgreSQL**, qui ouvre accès à un espace de stockage persistant **PVC** (*Permanent Virtual Circuit*)
 
 
 Gestion de son bucket S3 
@@ -47,7 +47,7 @@ Si vous souhaitez disposer d'un **espace de stockage commun**, n'hésitez pas à
 	Le bucket partagé n'est pas accessible depuis l'explorateur de fichiers se trouvant dans l'onglet :menuselection:`Mes fichers` de la plateforme.  L’accès se fait uniquement une fois le service lancé, en ligne de commande.
 
 
-Une fois le bucket partagé crée, un **bucket name**, **Access Key**  et **Secret Key** vous seront communiqués. La connexion se fait dans le terminal de n'importe quel service lancé. La configuration se fait comme pour accéder à son MinIO personnel, en s’aidant des scripts disponibles dans l’onglet :menuselection:`Mon Compte --> Connexion de stockage`. 
+Une fois que le bucket partagé a été crée, un **bucket name**, **Access Key**  et **Secret Key** vous seront communiqués. La connexion se fait dans le terminal de n'importe quel service lancé. La configuration se fait comme pour accéder à son MinIO personnel, en s’aidant des scripts disponibles dans l’onglet :menuselection:`Mon Compte --> Connexion de stockage`. 
 Voici un exemple, en utilisant la librairie :py:class:`~.Boto3` avec python:
 
 .. code:: python

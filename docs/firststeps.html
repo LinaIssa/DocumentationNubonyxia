@@ -201,7 +201,7 @@
 <p>Cette page offre une visite guidée de <a class="reference external" href="https://nubonyxia.incubateur.finances.rie.gouv.fr">Nubonyxia</a> et donne une desciption <em>pas à pas</em> des différentes étapes du lancement d’un service sur la plateforme.</p>
 <section id="ajout-du-certificat-dans-le-navigateur">
 <h2>1- Ajout du certificat dans le navigateur<a class="headerlink" href="#ajout-du-certificat-dans-le-navigateur" title="Link to this heading">#</a></h2>
-<p>Dans un premier temps, avec d’accéder à la plateforme, il est nécessaire d’ajouter le certificat, acccessible <a class="reference external" href="https://nubonyxia.incubateur.finances.rie.gouv.fr/statics/bercyCA.crt">ici</a>, dans le navigateur de votre choix. En effet, nous travaillons pour le moment avec un certificat auto-signé.</p>
+<p>Dans un premier temps, avant d’accéder à la plateforme, il est nécessaire d’ajouter le certificat, accessible <a class="reference external" href="https://nubonyxia.incubateur.finances.rie.gouv.fr/statics/bercyCA.crt">ici</a>, dans le navigateur de votre choix. En effet, nous travaillons pour le moment avec un certificat auto-signé.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Cette manipulation est à faire une seule fois.</p>
@@ -250,11 +250,11 @@ un espace de stockage<div class="sd-summary-down docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
 <p class="sd-card-text"><a class="reference external" href="https://nubonyxia.incubateur.finances.rie.gouv.fr">Nubonyxia</a> n’échappe pas à la tendance de fond observée dans la Data et le Cloud, qui consiste à séparer l’espace de stockage des données des services où elles sont traitées. Pour plus d’informations sur le bucket S3 basé sur <a class="reference external" href="https://minio-console.lab.incubateur.finances.rie.gouv.fr/">MinIO</a> mis à la disposition des utilisateurs, consulter cette <a class="reference internal" href="minio.html"><span class="doc">page</span></a>.</p>
-<p class="sd-card-text">Cette séparation entre l’espace de stockage des données et l’envrionnement où elles sont traitées offre plusieurs avantages :</p>
+<p class="sd-card-text">Cette séparation entre l’espace de stockage des données et l’environnement où elles sont traitées offre plusieurs avantages :</p>
 <ul class="simple">
 <li><p class="sd-card-text">découpler le stockage et le calcul,</p></li>
 <li><p class="sd-card-text">garantir une <strong>reproductibilité des analyses</strong>,</p></li>
-<li><p class="sd-card-text">permettre une <strong>optimisation des coûts</strong>. En effet, on peut dès lors adapter les ressources en fonction des besoins de stockage et calcul.</p></li>
+<li><p class="sd-card-text">permettre une <strong>optimisation des coûts</strong>. En effet, on peut dès lors adapter les ressources en fonction des besoins de stockage et de calcul.</p></li>
 </ul>
 </div>
 </details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3 sd-fade-in-slide-down">
@@ -270,10 +270,10 @@ un catalogue de services<div class="sd-summary-down docutils">
 </input><label class="sd-tab-label" for="sd-tab-item-2">
 IDE</label><div class="sd-tab-content docutils">
 <ul class="simple">
-<li><p class="sd-card-text"><code class="code highlight python docutils literal highlight-python"><span class="n">Vscode</span><span class="o">-</span><span class="n">python</span></code> : Vscode avec Python, Julia et une collection de packages <em>data science</em> intégrée</p></li>
+<li><p class="sd-card-text"><code class="code highlight python docutils literal highlight-python"><span class="n">Vscode</span><span class="o">-</span><span class="n">python</span></code> : Vscode avec Python, Julia et une collection de packages <em>data science</em> intégrés</p></li>
 <li><p class="sd-card-text"><code class="code highlight python docutils literal highlight-python"><span class="n">Vscode</span><span class="o">-</span><span class="n">pytorch</span></code>: Vscode enrichi avec le framework de <em>deep learning</em> <code class="code highlight python docutils literal highlight-python"><span class="n">pyorch</span></code></p></li>
 <li><p class="sd-card-text"><code class="code highlight python docutils literal highlight-python"><span class="n">Vscode</span><span class="o">-</span><span class="n">nodejs</span></code> : Vscode enrichi de <cite>NodeJs runtime</cite> et donc adapté pour le développement web.</p></li>
-<li><p class="sd-card-text"><code class="code highlight python docutils literal highlight-python"><span class="n">jupyter</span><span class="o">-</span><span class="n">python</span></code>: JupterLab avec Python, Julia et une collection de packages <em>data science</em> intégrée</p></li>
+<li><p class="sd-card-text"><code class="code highlight python docutils literal highlight-python"><span class="n">jupyter</span><span class="o">-</span><span class="n">python</span></code>: JupterLab avec Python, Julia et une collection de packages <em>data science</em> intégrés</p></li>
 <li><p class="sd-card-text"><code class="code highlight python docutils literal highlight-python"><span class="n">jupyter</span><span class="o">-</span><span class="n">pyspark</span></code>: JupyterLab intégrant <a class="reference external" href="https://spark.apache.org/docs/latest/api/python/index.html">Apache Spark</a> pour réaliser du calcul distribué avec Python.</p></li>
 <li><p class="sd-card-text"><code class="code highlight python docutils literal highlight-python"><span class="n">R</span> <span class="n">studio</span></code> : RStudio avec les packages de <em>data science</em> intégrés</p></li>
 </ul>
@@ -306,7 +306,7 @@ Data Visualisation</label><div class="sd-tab-content docutils">
 <p class="sd-card-text">Les services ont des tokens d’expiration. Lorsqu’ils ne sont plus utilisés, pensez à bien les supprimer, voir <a class="reference internal" href="methode.html"><span class="doc">guide des bonnes pratiques</span></a>.</p>
 </div>
 </div>
-</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3 sd-fade-in-slide-down" id="target-to-paragraph">
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3 sd-fade-in-slide-down">
 <summary class="sd-summary-title sd-card-header">
 une connexion git intégrée<div class="sd-summary-down docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
@@ -316,14 +316,15 @@ une connexion git intégrée<div class="sd-summary-down docutils">
 <p class="sd-card-text">La sauvegarde des codes ainsi que la gestion des versions sont assurées par une instance <strong>Git</strong>. Le datalab de <a class="reference external" href="https://nubonyxia.incubateur.finances.rie.gouv.fr">Nubonyxia</a> facilite son implémentation en offrant une connexion à la <em>forge interministérielle</em> de la DGFiP. Cette dernière est hébergée sur une instance GitLab. La plateforme autorise également une connexion à GitHub. Nous recommendons toutefois l’utilisation de la <a class="reference external" href="https://forge.dgfip.finances.rie.gouv.fr/">forge</a> pour stocker vos codes et déployer des applications afin de bénéficier du <a href="#id1"><span class="problematic" id="id2">`</span></a><a class="reference external" href="https://www.renater.fr/projets-et-partenariats/projets-specifiques/le-reseau-interministeriel-de-letat-rie/">RIE</a> (ie, le réseau interministériel).</p>
 <p class="sd-card-text">La configuration d’un serveur Git sur <a class="reference external" href="https://nubonyxia.incubateur.finances.rie.gouv.fr">Nubonyxia</a> ainsi que son utilisation sont détaillées dans la section <a class="reference internal" href="methode.html"><span class="doc">guide des bonnes pratiques</span></a>.</p>
 </div>
-</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3 sd-fade-in-slide-down">
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3 sd-fade-in-slide-down" id="secretcreate">
 <summary class="sd-summary-title sd-card-header">
 une gestion de secret<div class="sd-summary-down docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
 <div class="sd-summary-up docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">Certains usages requiert de fournir à un service des <em>crédentials</em> sous forme de secret - sans les écrire en clair dans le code de chaque service. Cela est géré par <a class="reference external" href="https://nubonyxia.incubateur.finances.rie.gouv.fr/account/vault">Vault</a> dans notre cluster.</p>
+<p class="sd-card-text">Certains usages requièrent  de fournir à un service des variables d’environnement sous forme de secret - sans les écrire en clair dans le code de chaque service. Cela est géré par <a class="reference external" href="https://nubonyxia.incubateur.finances.rie.gouv.fr/account/vault">Vault</a> dans notre plateforme.
+Se référer à la section <a class="reference internal" href="services.html#gestionvault"><span class="std std-ref">Gestion des secrets</span></a> pour la création et la gestion des variables environnements.</p>
 </div>
 </details></section>
 <section id="lancement-d-un-service">
@@ -345,7 +346,7 @@ une gestion de secret<div class="sd-summary-down docutils">
 </div>
 <p>où <strong class="program">&lt;owner&gt;</strong> et <strong class="program">&lt;repo&gt;</strong> sont à remplacer respectivement par le nom d’utilisateur et le nom du repo Git.</p>
 <p>Il est également possible de cloner le repo au lancement du service dans l’interface, comme le montre la section <a class="reference internal" href="methode.html#gitservice"><span class="std std-ref">Utilisation de Git avec les services du Datalab</span></a>.</p>
-<p>Dans le service IDE , il est possible de télécharger en complément des librairies Python ou R, grâce au <cite>Nexus</cite> mis en place par la DGFIP. En effet bien que la plateforme soit isolée d’internet, un point d’accès à Pypi (librairies Python) et CRAN (packages R)est mis en place grâce à un mirroir (Nexus de la DGFiP). Il est ainsi possible de réaliser <strong class="program">pip install</strong> suivi de la librairie de votre choix pour Python et <strong class="program">install.package(&quot;&quot;)</strong> pour R.</p>
+<p>Dans le service IDE , il est possible de télécharger en complément des librairies Python ou R, grâce au <cite>Nexus</cite> mis en place par la DGFIP. En effet bien que la plateforme soit isolée d’internet, un point d’accès à Pypi (librairies Python) et CRAN (packages R) est mis en place grâce à un miroir (Nexus de la DGFiP). Il est ainsi possible de réaliser <strong class="program">pip install</strong> suivi de la librairie de votre choix pour Python et <strong class="program">install.package(&quot;&quot;)</strong> pour R.</p>
 </section>
 <section id="suppression-d-un-service">
 <h2>4- Suppression d’un service<a class="headerlink" href="#suppression-d-un-service" title="Link to this heading">#</a></h2>

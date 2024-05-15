@@ -202,8 +202,8 @@
 <h2>Les espaces de stockages sur Nubonyxia<a class="headerlink" href="#les-espaces-de-stockages-sur-nubonyxia" title="Link to this heading">#</a></h2>
 <p>La plateforme Nubonyxia utilise <a class="reference external" href="https://minio-console.lab.incubateur.finances.rie.gouv.fr/">MinIO</a> comme solution cloud de stockage objet. Cette dernière, compatible avec  l’API S3 d’Amazon, offre la possibilité d’intéragir avec les fichiers stockés depuis n’importe quel service lancé sur la plateforme.</p>
 <p>La création d’un compte Nubonyxia donne accès à un <em>bucket S3</em> individuel de <strong>50 Go</strong>.</p>
-<p>De plus,chaque service de développement (VSCode, etc) dispose d’un espace de stockage <strong>NFS</strong> (<em>Network File System</em>). Ce dernier, par construction local et temporaire, a la même durée de vie que le service.</p>
-<p>Enfin, il est possible de créer des services de base de données comme <strong>PostgreSQL</strong>, qui ouvre accès à un espace de stockage persistent <strong>PVC</strong> (<em>Permanent Virtual Circuit</em>)</p>
+<p>De plus, chaque service de développement (VSCode, etc) dispose d’un espace de stockage <strong>NFS</strong> (<em>Network File System</em>). Ce dernier, par construction local et temporaire, a la même durée de vie que le service.</p>
+<p>Enfin, il est possible de créer des services de base de données comme <strong>PostgreSQL</strong>, qui ouvre accès à un espace de stockage persistant <strong>PVC</strong> (<em>Permanent Virtual Circuit</em>)</p>
 </section>
 <section id="gestion-de-son-bucket-s3">
 <h2>Gestion de son bucket S3<a class="headerlink" href="#gestion-de-son-bucket-s3" title="Link to this heading">#</a></h2>
@@ -230,7 +230,7 @@
 <p class="admonition-title">Note</p>
 <p>Le bucket partagé n’est pas accessible depuis l’explorateur de fichiers se trouvant dans l’onglet <span class="menuselection">Mes fichers</span> de la plateforme.  L’accès se fait uniquement une fois le service lancé, en ligne de commande.</p>
 </div>
-<p>Une fois le bucket partagé crée, un <strong>bucket name</strong>, <strong>Access Key</strong>  et <strong>Secret Key</strong> vous seront communiqués. La connexion se fait dans le terminal de n’importe quel service lancé. La configuration se fait comme pour accéder à son MinIO personnel, en s’aidant des scripts disponibles dans l’onglet <span class="menuselection">Mon Compte ‣ Connexion de stockage</span>.
+<p>Une fois que le bucket partagé a été crée, un <strong>bucket name</strong>, <strong>Access Key</strong>  et <strong>Secret Key</strong> vous seront communiqués. La connexion se fait dans le terminal de n’importe quel service lancé. La configuration se fait comme pour accéder à son MinIO personnel, en s’aidant des scripts disponibles dans l’onglet <span class="menuselection">Mon Compte ‣ Connexion de stockage</span>.
 Voici un exemple, en utilisant la librairie <code class="xref py py-class docutils literal notranslate"><span class="pre">Boto3</span></code> avec python:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">s3</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s2">&quot;s3&quot;</span><span class="p">,</span>
     <span class="n">endpoint_url</span><span class="o">=</span><span class="s2">&quot;https://&quot;</span><span class="o">+</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;AWS_S3_ENDPOINT&quot;</span><span class="p">],</span>

@@ -9,7 +9,7 @@ Cas d'usages Nubonyxia
 
 .. important::
 
-    Dans sa conception actuelle, `Nubonyxia`_ ne gère pas la mise en production des applicatifs webs déployés sur la plateforme. Si vous souhaitez pérénniser une application déployée sur notre plateforme, adressez-vous directement à nous. 
+    Dans sa conception actuelle, `Nubonyxia`_ ne gère pas la mise en production des applicatifs webs déployés sur la plateforme. Si vous souhaitez péréniser une application déployée sur notre plateforme, adressez-vous directement à nous. 
 
 
 Cette section décrit les étapes dans le déploiement d'une application développée en 
@@ -44,7 +44,7 @@ b. Runners
 
 Les jobs d'un pipeline **GitLab-CI** sont pris en charge et exécutés par un ou plusieurs `GitLab-Runners`. Il est possible de voir les runners actifs au niveau des paramètres du CI/CD du projet GitLab dans :menuselection: `Settings --> CI/CD --> Runners`. Une ligne avec un point vert apparaît si un runner est détecté.
 
-Si aucun runner n'est déjà détecté, il faut en créer un. Pour cela, depuis la plateforme Onyxia, il est possible de lancer un service `GitLab-Runner`,dans le catalogue :menuselection:`Automation Services`. Dans le paramétrage du service, il y a plusieurs champs à compléter : 
+Si aucun runner n'est détecté, il faut en créer un. Pour cela, depuis la plateforme Onyxia, il est possible de lancer un service `GitLab-Runner`,dans le catalogue :menuselection:`Automation Services`. Dans le paramétrage du service, il y a plusieurs champs à compléter : 
 
 - dans l'onglet :menuselection:`Cache`, il faut remplir les champs :python:`AccessKey` et :python:`SecretKey` avec les clés d'accès à son bucket `MinIO`_ , qui sera utilisé pour stocker les artefacts entre les différents jobs dans la pipeline. La section :ref:`miniokeys` dans la page :doc:`minio` explique comment créer les clés d'accès `MinIo`_ pour la première fois. 
 
@@ -164,6 +164,7 @@ Une fois tous les prérequis remplis, la pipeline devrait se lancer automatiquem
 
 Commande pour debugger 
 ########################
+.. _commandKubectl:
 
 :command:`kubectl get pods` pour voir les pods en fonctionnement
 

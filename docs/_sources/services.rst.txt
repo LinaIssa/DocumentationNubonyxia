@@ -18,7 +18,8 @@ Cette section s'attache à couvrir ces différentes options.
 Options de configurations 
 -------------------------
 
-Suivant le service lancé, différents onglets de configurations sont disponibles. Cette section présente les options les plus couramment utilisées. 
+Suivant le service lancé, différents onglets de configurations sont disponibles. Cette section présente les options les plus couramment utilisées.
+
 
 .. tab-set::
 
@@ -68,17 +69,28 @@ Suivant le service lancé, différents onglets de configurations sont disponible
    
 	.. tab-item:: Security 
 
+		* `Password` : Il est possible de définir un mot de passe spécifique au service. Par défaut, il s'agit du mot de passe présent dans :menuselection:`Mon compte --> Informations du compte` sous le paramètre `Mot de passe pour vos services`.  
+
+		* `Enable IP Protection` : à décocher pour être accessible par deux adresses IP différentes. 
+
+		* `Enable Network Policy`
+
+
 		Il est possible de partager de manière ponctuelle un service lancé à un autre agent. Pour ce faire, il faut décocher *Enable IP protection* et *Enable network policy*. 
 
 		.. note::
+
 			L'utilisation simultannée d'un service est impossible. Une seule personne à la fois peut se connecter à un service.
 
-		.. warning::
-			Il est recommandé de définir un mot de passe propre au service que l'on souhaite partager dans *Password*. 
+
+		.. note::
+
+			Dans le cas d'un partage de service, il est recommandé de définir un mot de passe propre au service que l'on souhaite partager dans *Password*. 
 
 
 
 	.. tab-item:: Git
+
 
 		* `Token` : Il s'agit du jeton d'accès défini sur la plateforme Git utilisée (GitLab, GitHub ou bien la `forge`_)
 		* `Repository` : Il s'agit de l'url du repo à cloner, obtenue à partir de la plateforme git utilisée (GitLab, GitHub ou bien la `forge`_) en cliquant sur :menuselection:`Cloner --> HTTPS`. 
@@ -89,19 +101,55 @@ Suivant le service lancé, différents onglets de configurations sont disponible
 
 	.. tab-item:: Persistence
 
-
-
-
+	
 
 	.. tab-item:: Vault  
 
 
+		`Vault`_ est le coffre fort de la plateforme. Si le service à lancer nécessite des variables d'environnement spécifiques, vous pouvez les injecter au service sans avoir à les écrire en clair dans votre code. La section :ref:`gestionVault` montre comment créer un secret dans la page `Mes secrets <https://nubonyxia.incubateur.finances.rie.gouv.fr/my-secrets>`_. 
+
+		Une fois le secret crée et le chemin du secret copié dans le presse papier, il suffit de coller le chemin dans le champ afférent.   
+
+		* `Secret`
+
+
+		Pour vérifier que les variables ont bien été injectés dans le service, vous pouvez lancer les commandes suivantes dans un terminal: 
+
+		.. code:: python
+
+			env 
+
+			echo $MA_VARIABLE
+
+			env | grep -i "<PATTERN>"
+
+
 
 	
-
+.. _gestionVault:
 
 Gestion des secrets 
 --------------------
+
+La création et la gestion des variables environnements se fait dans la page `Mes secrets <https://nubonyxia.incubateur.finances.rie.gouv.fr/my-secrets>`_.  Cette page se présente comme un explorateur de fichiers, avec la possibilité de stoker identifiants, mots de passes et de trier les variables définies dans des dossiers. 
+
+* :python:`+ Nouveau dossier`
+* :python:`+ Nouveau secret`
+
+Chaque secret peut contenir plusieurs variables, constituées de paires de clés-valeurs.
+
+* :python:`+ Ajouter une variable`
+
+.. note:: 
+
+	Comme le montre l'image jointe, les clés commencent par :python:`$`, contiennent uniqueement lettre, chiffres et le cra t!re :python:`_`. Par convention les clés s'écrivent en majuscule.
+
+Une fois le secret crée avec ses variables, pour pouvoir l'uiliser dans un service, cliquer sur le bouton :python:`Utiliser dans un service`. La section :ref:`servicesConfig` montre ensuite comment configurer le service dans l'onglet :python:`Vault`
+
+
+
+
+
 
 
 Configurer le proxy 
