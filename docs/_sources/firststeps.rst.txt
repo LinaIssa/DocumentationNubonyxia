@@ -126,10 +126,9 @@ A la disposition de l'utilisateur :
 .. dropdown:: une gestion de secret  
 	:animate: fade-in-slide-down
 	
-	
 
-	Certains usages requièrent  de fournir à un service des variables d'environnement sous forme de secret - sans les écrire en clair dans le code de chaque service. Cela est géré par `Vault`_ dans notre plateforme. 
-	Se référer à la section :ref:`gestionVault` pour la création et la gestion des variables environnements.
+	Certains cas d'usages justifent de fournir à un service des variables d'environnement sous forme de secret - sans les écrire en clair dans le code de chaque service. Cela est géré par `Vault`_ dans notre plateforme. 
+	Se référer à la section :ref:`gestionVault` pour la création et la gestion des variables d'environnement.
 
 4- Lancement d'un service 
 -------------------------

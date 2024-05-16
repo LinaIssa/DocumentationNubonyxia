@@ -108,19 +108,20 @@ Suivant le service lancé, différents onglets de configurations sont disponible
 
 		`Vault`_ est le coffre fort de la plateforme. Si le service à lancer nécessite des variables d'environnement spécifiques, vous pouvez les injecter au service sans avoir à les écrire en clair dans votre code. La section :ref:`gestionVault` montre comment créer un secret.
 
-		Une fois le secret crée et le chemin du secret copié dans le presse papier, il suffit de coller le chemin dans le champ afférent.   
-
-		* `Secret` : le chemin du secret copié 
+		Une fois le secret crée et le chemin du secret copié dans le presse papier, il suffit de coller le chemin dans le champ afférent, soit dans `Secret`.
 
 
 		Pour vérifier que les variables ont bien été injectés dans le service, vous pouvez lancer les commandes suivantes dans un terminal: 
 
 		.. code:: python
 
+			# Lister toutes les variables d'environnement disponibles
 			env 
 
+			# Afficher la valeur d'une variable d'environnement
 			echo $MA_VARIABLE
 
+			# Trouver toutes les variables d'environnement qui contiennent un pattern donné
 			env | grep -i "<PATTERN>"
 
 
@@ -131,20 +132,30 @@ Suivant le service lancé, différents onglets de configurations sont disponible
 Gestion des secrets 
 --------------------
 
-La création et la gestion des variables environnements se fait dans la page `Mes secrets <https://nubonyxia.incubateur.finances.rie.gouv.fr/my-secrets>`_.  Cette page se présente comme un explorateur de fichiers, avec la possibilité de stoker identifiants, mots de passes et de trier les variables définies dans des dossiers. 
+La création et la gestion des variables environnements se fait dans la page `Mes secrets <https://nubonyxia.incubateur.finances.rie.gouv.fr/my-secrets>`_.  Cette page se présente comme un explorateur de fichiers, avec la possibilité de stoker identifiants, mots de passes et de trier les variables définies dans des dossiers comme le montre l'image ci-contre. 
+
+.. image:: images/pageSecret.png
+  :width: 800
+  :alt: Alternative text
+
+
 
 * :python:`+ Nouveau dossier`
 * :python:`+ Nouveau secret`
 
-Chaque secret peut contenir plusieurs variables, constituées de paires de clés-valeurs.
+Chaque secret peut contenir plusieurs variables, constituées de paires de clés-valeurs (voir image ci-après)
 
 * :python:`+ Ajouter une variable`
+
+.. image:: images/secret2.png
+  :width: 800
+  :alt: Alternative text
 
 .. note:: 
 
 	Comme le montre l'image jointe, les clés commencent par :python:`$`, contiennent uniqueement lettre, chiffres et le cra t!re :python:`_`. Par convention les clés s'écrivent en majuscule.
 
-Une fois le secret crée avec ses variables, pour pouvoir l'uiliser dans un service, cliquer sur le bouton :python:`Utiliser dans un service`. La section :ref:`servicesConfig` montre ensuite comment configurer le service dans l'onglet :python:`Vault`
+Une fois le secret crée avec ces variables, pour pouvoir l'uiliser dans un service, cliquer sur le bouton :python:`Utiliser dans un service`. La section :ref:`servicesConfig` montre ensuite comment configurer le service dans l'onglet :python:`Vault`
 
 
 

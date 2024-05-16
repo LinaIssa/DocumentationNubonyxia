@@ -221,3 +221,64 @@ Un exemple de code :
 **Cas Usage 2** : Data Visualisation avec :python:`Superset` 
 ------------------------------------------
 
+Cette section présente quelques cas d’usage simple de :python:`Superset` et vous accompagne dans votre première utilisation. En particulier, la configuration du service sera détaillée. Il ne s’agit pas d'un guide extensif du service mais plutôt d'une prise en main de l'outil dans l’écosystème Nubonyxia. 
+
+Configuration de :python:`Superset`  
+########################
+
+Création d'une DataBase 
+***********************
+
+Il faut se rendre dans :menuselection:`Settings --> Data --> database Connections`. Puis cliquer sur :python:`+ database`. Dans la suite, nous allons connecter la Database au serveur de base de données :python:`PostgreSQL` disponible dans le catalogue de services. 
+Avant de poursuivre, vérifiez qu'un service :python:`PostgreSQL` est disponible dans `Mes services <insert url>`. 
+
+Ensuite, pour compléter les options de configuration sont les suivantes: 
+
+* **Host** : de la forme `postgresql-826506` 
+
+* **Port** : par exemple 5432
+
+* **Username**
+
+* **Password** 
+
+Pour les compléter, s'appuyer sur le **README** du service :python:`PostgreSQL` ouvert. 
+
+.. warning:: 
+
+  Pour autoriser le téléversement de fichiers CSV, se rendre dans :menuselection:`Dans Advanced-->Security` Puis cochez `Allow file uploads to database`
+
+Préparation d'un dataset 
+***********************
+Dans l’onglet :python:`Datasets` sont listés les datasets récupérés depuis une base de donnée ou importés. Il est possible de modifier les propriétés des colonnes d'un dataset dans :python:`Edit/Columns.
+
+* Définir une colonne métrique comme colonne à partir de requête SQL agrégeant des valeurs à partir de plusieurs colonnes comme SUM par exemple 
+* Modifier une colonne dans Calculates Columns avec des commandes SQL comme CAST(recovery_rate) as float
+
+.. warning::
+
+  Les fonctions d’agrégation ne sont pas autorisées dans `Calculated Columns`
+
+
+Production d'un Dashboard 
+########################
+
+:python:`Superset` autorise deux modes exploratoires : 
+
+* **Chart** qui offre un no code viz builder 
+* **SQL Lab** qui offre une interface SQL pour nettoyer, faire des jointures et préparer la donnée 
+
+Pour le premier, il suffit de cliquer sur le nom du dataset pour lancer la création d’un chart 
+Pour le second, se rendre dans SQL/SQL lab 
+Une fois son chart réalisé, l’enregistrer dans un dashboard 
+
+
+
+Collaborer sur :python:`Superset`: partage d'un Dashboard 
+#########################################################
+Gestion des utilisateurs 
+
+
+
+
+

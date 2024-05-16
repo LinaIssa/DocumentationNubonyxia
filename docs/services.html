@@ -278,16 +278,16 @@ Git</label><div class="sd-tab-content docutils">
 <input id="sd-tab-item-6" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-6">
 Vault</label><div class="sd-tab-content docutils">
-<p><a class="reference external" href="https://nubonyxia.incubateur.finances.rie.gouv.fr/account/vault">Vault</a> est le coffre fort de la plateforme. Si le service à lancer nécessite des variables d’environnement spécifiques, vous pouvez les injecter au service sans avoir à les écrire en clair dans votre code. La section <a class="reference internal" href="#gestionvault"><span class="std std-ref">Gestion des secrets</span></a> montre comment créer un secret dans la page <a class="reference external" href="https://nubonyxia.incubateur.finances.rie.gouv.fr/my-secrets">Mes secrets</a>.</p>
-<p>Une fois le secret crée et le chemin du secret copié dans le presse papier, il suffit de coller le chemin dans le champ afférent.</p>
-<ul class="simple">
-<li><p><cite>Secret</cite></p></li>
-</ul>
+<p><a class="reference external" href="https://nubonyxia.incubateur.finances.rie.gouv.fr/account/vault">Vault</a> est le coffre fort de la plateforme. Si le service à lancer nécessite des variables d’environnement spécifiques, vous pouvez les injecter au service sans avoir à les écrire en clair dans votre code. La section <a class="reference internal" href="#gestionvault"><span class="std std-ref">Gestion des secrets</span></a> montre comment créer un secret.</p>
+<p>Une fois le secret crée et le chemin du secret copié dans le presse papier, il suffit de coller le chemin dans le champ afférent, soit dans <cite>Secret</cite>.</p>
 <p>Pour vérifier que les variables ont bien été injectés dans le service, vous pouvez lancer les commandes suivantes dans un terminal:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">env</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lister toutes les variables d&#39;environnement disponibles</span>
+<span class="n">env</span>
 
+<span class="c1"># Afficher la valeur d&#39;une variable d&#39;environnement</span>
 <span class="n">echo</span> <span class="err">$</span><span class="n">MA_VARIABLE</span>
 
+<span class="c1"># Trouver toutes les variables d&#39;environnement qui contiennent un pattern donné</span>
 <span class="n">env</span> <span class="o">|</span> <span class="n">grep</span> <span class="o">-</span><span class="n">i</span> <span class="s2">&quot;&lt;PATTERN&gt;&quot;</span>
 </pre></div>
 </div>
@@ -296,20 +296,22 @@ Vault</label><div class="sd-tab-content docutils">
 </section>
 <section id="gestion-des-secrets">
 <span id="gestionvault"></span><h2>Gestion des secrets<a class="headerlink" href="#gestion-des-secrets" title="Link to this heading">#</a></h2>
-<p>La création et la gestion des variables environnements se fait dans la page <a class="reference external" href="https://nubonyxia.incubateur.finances.rie.gouv.fr/my-secrets">Mes secrets</a>.  Cette page se présente comme un explorateur de fichiers, avec la possibilité de stoker identifiants, mots de passes et de trier les variables définies dans des dossiers.</p>
+<p>La création et la gestion des variables environnements se fait dans la page <a class="reference external" href="https://nubonyxia.incubateur.finances.rie.gouv.fr/my-secrets">Mes secrets</a>.  Cette page se présente comme un explorateur de fichiers, avec la possibilité de stoker identifiants, mots de passes et de trier les variables définies dans des dossiers comme le montre l’image ci-contre.</p>
+<a class="reference internal image-reference" href="_images/pageSecret.png"><img alt="Alternative text" src="_images/pageSecret.png" style="width: 800px;" /></a>
 <ul class="simple">
 <li><p><code class="code highlight python docutils literal highlight-python"><span class="o">+</span> <span class="n">Nouveau</span> <span class="n">dossier</span></code></p></li>
 <li><p><code class="code highlight python docutils literal highlight-python"><span class="o">+</span> <span class="n">Nouveau</span> <span class="n">secret</span></code></p></li>
 </ul>
-<p>Chaque secret peut contenir plusieurs variables, constituées de paires de clés-valeurs.</p>
+<p>Chaque secret peut contenir plusieurs variables, constituées de paires de clés-valeurs (voir image ci-après)</p>
 <ul class="simple">
 <li><p><code class="code highlight python docutils literal highlight-python"><span class="o">+</span> <span class="n">Ajouter</span> <span class="n">une</span> <span class="n">variable</span></code></p></li>
 </ul>
+<a class="reference internal image-reference" href="_images/secret2.png"><img alt="Alternative text" src="_images/secret2.png" style="width: 800px;" /></a>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Comme le montre l’image jointe, les clés commencent par <code class="code highlight python docutils literal highlight-python"><span class="err">$</span></code>, contiennent uniqueement lettre, chiffres et le cra t!re <code class="code highlight python docutils literal highlight-python"><span class="n">_</span></code>. Par convention les clés s’écrivent en majuscule.</p>
 </div>
-<p>Une fois le secret crée avec ses variables, pour pouvoir l’uiliser dans un service, cliquer sur le bouton <code class="code highlight python docutils literal highlight-python"><span class="n">Utiliser</span> <span class="n">dans</span> <span class="n">un</span> <span class="n">service</span></code>. La section <a class="reference internal" href="#servicesconfig"><span class="std std-ref">Options de configurations</span></a> montre ensuite comment configurer le service dans l’onglet <code class="code highlight python docutils literal highlight-python"><span class="n">Vault</span></code></p>
+<p>Une fois le secret crée avec ces variables, pour pouvoir l’uiliser dans un service, cliquer sur le bouton <code class="code highlight python docutils literal highlight-python"><span class="n">Utiliser</span> <span class="n">dans</span> <span class="n">un</span> <span class="n">service</span></code>. La section <a class="reference internal" href="#servicesconfig"><span class="std std-ref">Options de configurations</span></a> montre ensuite comment configurer le service dans l’onglet <code class="code highlight python docutils literal highlight-python"><span class="n">Vault</span></code></p>
 </section>
 <section id="configurer-le-proxy">
 <h2>Configurer le proxy<a class="headerlink" href="#configurer-le-proxy" title="Link to this heading">#</a></h2>

@@ -375,6 +375,54 @@ Python</label><div class="sd-tab-content docutils">
 </section>
 <section id="cas-usage-2-data-visualisation-avec-superset">
 <h2><strong>Cas Usage 2</strong> : Data Visualisation avec <code class="code highlight python docutils literal highlight-python"><span class="n">Superset</span></code><a class="headerlink" href="#cas-usage-2-data-visualisation-avec-superset" title="Link to this heading">#</a></h2>
+<p>Cette section présente quelques cas d’usage simple de <code class="code highlight python docutils literal highlight-python"><span class="n">Superset</span></code> et vous accompagne dans votre première utilisation. En particulier, la configuration du service sera détaillée. Il ne s’agit pas d’un guide extensif du service mais plutôt d’une prise en main de l’outil dans l’écosystème Nubonyxia.</p>
+<section id="configuration-de-superset">
+<h3>Configuration de <code class="code highlight python docutils literal highlight-python"><span class="n">Superset</span></code><a class="headerlink" href="#configuration-de-superset" title="Link to this heading">#</a></h3>
+<section id="creation-d-une-database">
+<h4>Création d’une DataBase<a class="headerlink" href="#creation-d-une-database" title="Link to this heading">#</a></h4>
+<p>Il faut se rendre dans <span class="menuselection">Settings ‣ Data ‣ database Connections</span>. Puis cliquer sur <code class="code highlight python docutils literal highlight-python"><span class="o">+</span> <span class="n">database</span></code>. Dans la suite, nous allons connecter la Database au serveur de base de données <code class="code highlight python docutils literal highlight-python"><span class="n">PostgreSQL</span></code> disponible dans le catalogue de services.
+Avant de poursuivre, vérifiez qu’un service <code class="code highlight python docutils literal highlight-python"><span class="n">PostgreSQL</span></code> est disponible dans <cite>Mes services &lt;insert url&gt;</cite>.</p>
+<p>Ensuite, pour compléter les options de configuration sont les suivantes:</p>
+<ul class="simple">
+<li><p><strong>Host</strong> : de la forme <cite>postgresql-826506</cite></p></li>
+<li><p><strong>Port</strong> : par exemple 5432</p></li>
+<li><p><strong>Username</strong></p></li>
+<li><p><strong>Password</strong></p></li>
+</ul>
+<p>Pour les compléter, s’appuyer sur le <strong>README</strong> du service <code class="code highlight python docutils literal highlight-python"><span class="n">PostgreSQL</span></code> ouvert.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Pour autoriser le téléversement de fichiers CSV, se rendre dans <span class="menuselection">Dans Advanced‣Security</span> Puis cochez <cite>Allow file uploads to database</cite></p>
+</div>
+</section>
+<section id="preparation-d-un-dataset">
+<h4>Préparation d’un dataset<a class="headerlink" href="#preparation-d-un-dataset" title="Link to this heading">#</a></h4>
+<p>Dans l’onglet <code class="code highlight python docutils literal highlight-python"><span class="n">Datasets</span></code> sont listés les datasets récupérés depuis une base de donnée ou importés. Il est possible de modifier les propriétés des colonnes d’un dataset dans :python:<a href="#id4"><span class="problematic" id="id5">`</span></a>Edit/Columns.</p>
+<ul class="simple">
+<li><p>Définir une colonne métrique comme colonne à partir de requête SQL agrégeant des valeurs à partir de plusieurs colonnes comme SUM par exemple</p></li>
+<li><p>Modifier une colonne dans Calculates Columns avec des commandes SQL comme CAST(recovery_rate) as float</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Les fonctions d’agrégation ne sont pas autorisées dans <cite>Calculated Columns</cite></p>
+</div>
+</section>
+</section>
+<section id="production-d-un-dashboard">
+<h3>Production d’un Dashboard<a class="headerlink" href="#production-d-un-dashboard" title="Link to this heading">#</a></h3>
+<p><code class="code highlight python docutils literal highlight-python"><span class="n">Superset</span></code> autorise deux modes exploratoires :</p>
+<ul class="simple">
+<li><p><strong>Chart</strong> qui offre un no code viz builder</p></li>
+<li><p><strong>SQL Lab</strong> qui offre une interface SQL pour nettoyer, faire des jointures et préparer la donnée</p></li>
+</ul>
+<p>Pour le premier, il suffit de cliquer sur le nom du dataset pour lancer la création d’un chart
+Pour le second, se rendre dans SQL/SQL lab
+Une fois son chart réalisé, l’enregistrer dans un dashboard</p>
+</section>
+<section id="collaborer-sur-superset-partage-d-un-dashboard">
+<h3>Collaborer sur <code class="code highlight python docutils literal highlight-python"><span class="n">Superset</span></code>: partage d’un Dashboard<a class="headerlink" href="#collaborer-sur-superset-partage-d-un-dashboard" title="Link to this heading">#</a></h3>
+<p>Gestion des utilisateurs</p>
+</section>
 </section>
 </section>
 
@@ -448,7 +496,16 @@ Python</label><div class="sd-tab-content docutils">
 <li><a class="reference internal" href="#partage-d-une-application-r-shiny-depuis-nubonyxia">Partage d’une application R shiny depuis Nubonyxia</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#cas-usage-2-data-visualisation-avec-superset"><strong>Cas Usage 2</strong> : Data Visualisation avec <code class="code highlight python docutils literal highlight-python"><span class="n">Superset</span></code></a></li>
+<li><a class="reference internal" href="#cas-usage-2-data-visualisation-avec-superset"><strong>Cas Usage 2</strong> : Data Visualisation avec <code class="code highlight python docutils literal highlight-python"><span class="n">Superset</span></code></a><ul>
+<li><a class="reference internal" href="#configuration-de-superset">Configuration de <code class="code highlight python docutils literal highlight-python"><span class="n">Superset</span></code></a><ul>
+<li><a class="reference internal" href="#creation-d-une-database">Création d’une DataBase</a></li>
+<li><a class="reference internal" href="#preparation-d-un-dataset">Préparation d’un dataset</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#production-d-un-dashboard">Production d’un Dashboard</a></li>
+<li><a class="reference internal" href="#collaborer-sur-superset-partage-d-un-dashboard">Collaborer sur <code class="code highlight python docutils literal highlight-python"><span class="n">Superset</span></code>: partage d’un Dashboard</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
