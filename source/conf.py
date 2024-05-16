@@ -27,6 +27,8 @@ author = 'Bercy Hub'
 release = '0.1'
 highlight_options  = {'default': {'lexers.python.PythonLexer'},
                      }
+numfig = True  # to enagle image ref 
+
 
 
 
