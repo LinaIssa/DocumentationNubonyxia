@@ -78,7 +78,13 @@ avec **AWS_ACCESS_KEY_ID** correspond à l’Access Key fourni et **AWS_SECRET_A
 Utilisation des données depuis un service 
 ----------------------------------
 
-La connexion à son espace de stockage S3 depuis un service se fait grâce à un `token` d'accès. Ce dernier est intégré sous forme de `variable d'environnement` dans le service. 
+.. role:: r(code)
+   :language: r
+
+
+La connexion à son espace de stockage S3 depuis un service se fait grâce à un `token` d'accès. Ce dernier est pré-intégré sous forme de `variable d'environnement` dans le service. En plus du token, des librairies spécifiques sont nécessaires pour pouvoir intéragir avec des systèmes de fichiers de type S3: :r:`aws.s3` pour R et :python:`Boto3` ou :python:`S3Fs` pour python. 
+ 
+Des scripts sont fournis `ici <insert lien >`_ dans :menuselection:`Mon compte --> Connexion au stockage`. 
 
 .. warning::
         
@@ -86,7 +92,7 @@ La connexion à son espace de stockage S3 depuis un service se fait grâce à un
 
 
 
-
+.. _tokenMinio:
 
 .. tab-set::
 
@@ -122,7 +128,7 @@ La connexion à son espace de stockage S3 depuis un service se fait grâce à un
 
 	.. code:: python
        
-		BUCKET = "donnees-insee"
+		BUCKET = "my-data"
 		fs.ls(BUCKET)
 
 
@@ -132,8 +138,8 @@ La connexion à son espace de stockage S3 depuis un service se fait grâce à un
 	.. code:: python
        
 
-		BUCKET = "donnees-insee"
-		FILE_KEY_S3 = "BPE/2019/BPE_ENS.csv"
+		BUCKET = "my-data"
+		FILE_KEY_S3 = "the/path/to/myfile-in.csv"
 		FILE_PATH_S3 = BUCKET + "/" + FILE_KEY_S3
 
 		with fs.open(FILE_PATH_S3, mode="rb") as file_in:
@@ -145,7 +151,7 @@ La connexion à son espace de stockage S3 depuis un service se fait grâce à un
 	.. code:: python
   
 		BUCKET_OUT = "<mon_bucket>"
-		FILE_KEY_OUT_S3 = "mon_dossier/BPE_ENS.csv"
+		FILE_KEY_OUT_S3 = "mon_dossier/myfile-out.csv"
 		FILE_PATH_OUT_S3 = BUCKET_OUT + "/" + FILE_KEY_OUT_S3
 
 		with fs.open(FILE_PATH_OUT_S3, 'w') as file_out:

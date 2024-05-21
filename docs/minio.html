@@ -255,12 +255,13 @@ Voici un exemple, en utilisant la librairie <code class="xref py py-class docuti
 </section>
 <section id="utilisation-des-donnees-depuis-un-service">
 <h2>Utilisation des données depuis un service<a class="headerlink" href="#utilisation-des-donnees-depuis-un-service" title="Link to this heading">#</a></h2>
-<p>La connexion à son espace de stockage S3 depuis un service se fait grâce à un <cite>token</cite> d’accès. Ce dernier est intégré sous forme de <cite>variable d’environnement</cite> dans le service.</p>
+<p>La connexion à son espace de stockage S3 depuis un service se fait grâce à un <cite>token</cite> d’accès. Ce dernier est pré-intégré sous forme de <cite>variable d’environnement</cite> dans le service. En plus du token, des librairies spécifiques sont nécessaires pour pouvoir intéragir avec des systèmes de fichiers de type S3: <code class="code highlight r docutils literal highlight-r"><span class="n">aws.s3</span></code> pour R et <code class="code highlight python docutils literal highlight-python"><span class="n">Boto3</span></code> ou <code class="code highlight python docutils literal highlight-python"><span class="n">S3Fs</span></code> pour python.</p>
+<p>Des scripts sont fournis <a href="#id2"><span class="problematic" id="id3">`ici &lt;insert lien &gt;`_</span></a> dans <span class="menuselection">Mon compte ‣ Connexion au stockage</span>.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Le token d’accès à MinIO expire au bout de <strong>24 heures</strong>. Les variables d’environnement sont automatiquement mises à jour.</p>
 </div>
-<div class="sd-tab-set docutils">
+<div class="sd-tab-set docutils" id="tokenminio">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-0">
 R</label><div class="sd-tab-content docutils">
@@ -285,13 +286,13 @@ Python</label><div class="sd-tab-content docutils">
 </pre></div>
 </div>
 <p><strong>Pour lister les fichiers d’un bucket</strong>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">BUCKET</span> <span class="o">=</span> <span class="s2">&quot;donnees-insee&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">BUCKET</span> <span class="o">=</span> <span class="s2">&quot;my-data&quot;</span>
 <span class="n">fs</span><span class="o">.</span><span class="n">ls</span><span class="p">(</span><span class="n">BUCKET</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><strong>Pour importer des données</strong> en utilisant la librairie <code class="code highlight python docutils literal highlight-python"><span class="n">pandas</span></code> :</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">BUCKET</span> <span class="o">=</span> <span class="s2">&quot;donnees-insee&quot;</span>
-<span class="n">FILE_KEY_S3</span> <span class="o">=</span> <span class="s2">&quot;BPE/2019/BPE_ENS.csv&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">BUCKET</span> <span class="o">=</span> <span class="s2">&quot;my-data&quot;</span>
+<span class="n">FILE_KEY_S3</span> <span class="o">=</span> <span class="s2">&quot;the/path/to/myfile-in.csv&quot;</span>
 <span class="n">FILE_PATH_S3</span> <span class="o">=</span> <span class="n">BUCKET</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">FILE_KEY_S3</span>
 
 <span class="k">with</span> <span class="n">fs</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">FILE_PATH_S3</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_in</span><span class="p">:</span>
@@ -300,7 +301,7 @@ Python</label><div class="sd-tab-content docutils">
 </div>
 <p><strong>Pour exporter des données vers son bucket S3</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">BUCKET_OUT</span> <span class="o">=</span> <span class="s2">&quot;&lt;mon_bucket&gt;&quot;</span>
-<span class="n">FILE_KEY_OUT_S3</span> <span class="o">=</span> <span class="s2">&quot;mon_dossier/BPE_ENS.csv&quot;</span>
+<span class="n">FILE_KEY_OUT_S3</span> <span class="o">=</span> <span class="s2">&quot;mon_dossier/myfile-out.csv&quot;</span>
 <span class="n">FILE_PATH_OUT_S3</span> <span class="o">=</span> <span class="n">BUCKET_OUT</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">FILE_KEY_OUT_S3</span>
 
 <span class="k">with</span> <span class="n">fs</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">FILE_PATH_OUT_S3</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_out</span><span class="p">:</span>

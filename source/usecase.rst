@@ -219,7 +219,7 @@ Un exemple de code :
   shinyApp(ui, server)
 
 **Cas Usage 2** : Data Visualisation avec :python:`Superset` 
-------------------------------------------
+-------------------------------------------------------------
 
 Cette section présente quelques cas d’usage simple de :python:`Superset` et vous accompagne dans votre première utilisation. En particulier, la configuration du service sera détaillée. Il ne s’agit pas d'un guide extensif du service mais plutôt d'une prise en main de l'outil dans l’écosystème Nubonyxia. 
 
@@ -267,7 +267,7 @@ Préparation d'un dataset
 
 Dans l’onglet :python:`Datasets` sont listés les datasets récupérés depuis une base de donnée ou importés. Il est possible de modifier les propriétés des colonnes d'un dataset dans :python:`Edit/Columns`.
 
-* Définir une colonne métrique comme colonne à partir de requêtes SQL agrégeant des valeurs issues de plusieurs colonnes:  :sql:`SUM()`, :sql:`AVERAGE()`, etc. 
+* Définir une colonne métrique comme colonne à partir de requêtes SQL agrégeant des valeurs issues de plusieurs colonnes:  :sql:`SUM()`, :sql:`AVG()`, etc. 
 * Modifier une colonne dans **Calculates Columns** avec des commandes SQL telles que :sql:`CAST(recovery_rate) as float`
 
 .. warning::
@@ -295,6 +295,10 @@ Collaborer sur :python:`Superset`: partage d'un Dashboard
 #########################################################
 Gestion des utilisateurs 
 
+
+
+**Cas Usage 3** : IA Générative  
+-------------------------------
 
 
 

@@ -1,7 +1,7 @@
 Premiers pas avec Nubonyxia
 ============================
 
-Cette page offre une visite guidée de `Nubonyxia`_ et donne une desciption *pas à pas* des différentes étapes du lancement d'un service sur la plateforme. 
+Cette page offre une visite guidée de `Nubonyxia`_ et donne une description *pas à pas* des différentes étapes du lancement d'un service sur la plateforme. 
  
 
 1- Ajout du certificat dans le navigateur
@@ -20,26 +20,26 @@ Dans un premier temps, avant d’accéder à la plateforme, il est nécessaire d
 
 	.. tab-item:: avec Firefox 
 
-		* Aller dans le menu Paramètres, rechercher Certificats 
-		* Cliquer sur le bouton Afficher les certificats 
-		* Aller dans l'Onglet Autorités 
-		* Cliquer sur le bouton Importer et sélectionner le certificat bercyCA.crt	
+		* Aller dans le menu :menuselection:`Paramètres --> Certificats`
+		* Cliquer sur le bouton :python:`Afficher les certificats`
+		* Aller dans l'onglet :python:`Autorités`  
+		* Cliquer sur le bouton :python:`Importer` et sélectionner le certificat **bercyCA.crt**
 
 	.. tab-item:: avec Edge  
 
 		* Aller dans les paramètres du navigateur, chercher Certificats 
-		* Cliquer sur Gérer les certificats qui devrait ouvrir une fenêtre Windows
-		* Sélectionner l'onglet Autorités de certification racine de confiance 
-		* Importer le certificat bercyCA.crt
+		* Cliquer sur :python:`Gérer les certificats` qui devrait ouvrir une fenêtre Windows
+		* Sélectionner l'onglet Autorités de certification racine de confiance
+		* Importer le certificat **bercyCA.crt**
 
 2- Connexion à la plateforme 
 ----------------------------
 
 
-L'accès à la plateforme se fait en utilisant l'identifiant et mot de passe que l'on vous aura communiqué. Nous utilisons `keycloak <https://www.keycloak.org>`_ pour gérer l'authentification. 
+L'accès à la plateforme se fait en utilisant **l'identifiant** et le **mot de passe** fourni par l'équipe support de Nubonyxia. Nous utilisons `keycloak <https://www.keycloak.org>`_ pour gérer l'authentification. 
 
 .. note:: 
-	Nous travaillons actuellement à intégrer **agent connect** à la plateforme. Pour le moment, nous gérons à la main les comptes utilisateurs (pas de fédérateur d'identité).
+	Nous travaillons actuellement à intégrer **agent connect** à la plateforme. Pour le moment, en l'absence de fédérateur d'identité, nous gérons à la main les comptes utilisateurs.
 
 
 3- Vue générale de la plateforme 
@@ -65,7 +65,7 @@ A la disposition de l'utilisateur :
 .. dropdown:: un espace de stockage
     :animate: fade-in-slide-down 
 
-    `Nubonyxia`_ n'échappe pas à la tendance de fond observée dans la Data et le Cloud, qui consiste à séparer l'espace de stockage des données des services où elles sont traitées. Pour plus d'informations sur le bucket S3 basé sur `MinIO`_ mis à la disposition des utilisateurs, consulter cette :doc:`page <minio>`.   
+    `Nubonyxia`_ n'échappe pas à la tendance de fond observée dans la Data et le Cloud, qui consiste à séparer l'espace de stockage des données des services où elles sont traitées. Pour plus d'informations sur le bucket S3 basé sur `MinIO`_, consulter cette :doc:`page <minio>`.   
 
     Cette séparation entre l'espace de stockage des données et l'environnement où elles sont traitées offre plusieurs avantages : 
 
@@ -118,14 +118,14 @@ A la disposition de l'utilisateur :
 	Les services lancés par l'utilisateur apparaissent dans l'onglet :menuselection:`Mes services`. Il est possible de lancer à la demande plusieurs services à la fois.   
 
 	.. important:: 
-		Les services ont des tokens d'expiration. Lorsqu'ils ne sont plus utilisés, pensez à bien les supprimer, voir :doc:`guide des bonnes pratiques <methode>`. 
+		Certains tokens de configuration expirent au bout d'un certain temps, comme le token d'accès `MinIO`_ . Pour mettre à jour le token, il suffit de reprendre les scripts disponibles dans :menuselection:`Mon compte --> Connexion au stockage` (voir :ref:`tokenMinio` pour plus d'explications) et de les intégrer au service. Une autre option consiste simplement à supprimer le service, après sauvegarde de ses données dans `le bucket S3 <insert url>`_ d'une part et des codes dans une instance Git d'autre part. Consulter le :doc:`guide des bonnes pratiques <methode>` pour plus d'informations sur la méthodologie recommandée.  
 
 
 
 .. dropdown:: une connexion git intégrée
 	:animate: fade-in-slide-down
 
-	La sauvegarde des codes ainsi que la gestion des versions sont assurées par une instance **Git**. Le datalab de `Nubonyxia`_ facilite son implémentation en offrant une connexion à la *forge interministérielle* de la DGFiP. Cette dernière est hébergée sur une instance GitLab. La plateforme autorise également une connexion à GitHub. Nous recommendons toutefois l'utilisation de la `forge`_ pour stocker vos codes et déployer des applications afin de bénéficier du `RIE_ (ie, le réseau interministériel).
+	La sauvegarde des codes ainsi que la gestion des versions sont assurées par une instance **Git**. Le datalab de `Nubonyxia`_ facilite son implémentation en offrant une connexion à la *forge interministérielle* de la DGFiP. Cette dernière est hébergée sur une instance GitLab. La plateforme autorise également une connexion à GitHub. Nous recommendons toutefois l'utilisation de la `forge`_ pour stocker vos codes et déployer des applications afin de bénéficier du `RIE`_ (ie, le réseau interministériel).
 
 
 	
@@ -146,7 +146,7 @@ A la disposition de l'utilisateur :
 
 Nous avons mis à disposition sur la `forge`_ un repo nommé `Quick Start <https://forge.dgfip.finances.rie.gouv.fr/bercyhub/nubonyxia/quick-start>`_ avec des scripts de *data visualisation* prêt-à-être exécutés. 
 
-Pour lancer un service, il suffit de se rendre dans l'onglet :menuselection:`Catalogue de services`. Vous pouvez lancer le service IDE de votre choix. Le service lancé apparaît alors dans la page `Mes Services <https://nubonyxia.incubateur.finances.rie.gouv.fr/my-services>`_. L'accès au service se fait en cliquant sur le bouton :python:`Ouvrir`. Un mot de passe est alors fourni pour pouvoir accéder au service. Les informations relatives aux tokens peuvent être consultés en cliquant sur l'icône information en bas à gauche du service instancié. 
+Pour lancer un service, il suffit de se rendre dans l'onglet `Catalogue de services <>`_. Vous pouvez lancer le service IDE de votre choix. Le service lancé apparaît alors dans la page `Mes Services <https://nubonyxia.incubateur.finances.rie.gouv.fr/my-services>`_. L'accès au service se fait en cliquant sur le bouton :python:`Ouvrir`. Un mot de passe est alors fourni pour pouvoir accéder au service. Les informations relatives aux tokens peuvent être consultés en cliquant sur l'icône information en bas à gauche du service instancié. 
 
 .. important::
 	Il est possible de lancer différentes instances d'un même service. Ainsi on peut avoir différent services :python:`vscode` qui tournent en même temps sur la plateforme. Cela ne s'applique pas pour les services reposant sur des *permanent virtual circuit* (PVC) à l'instar des services de la catégorie **base de données** comme :python:`Postgresql`. Autrement dit, si un service :python:`Postgresql` est déjà ouvert, il faut d'abord le supprimer avant d'en lancer un nouveau. Il en est de même pour le service :python:`Superset`.
