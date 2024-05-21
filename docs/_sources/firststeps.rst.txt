@@ -45,7 +45,7 @@ L'accès à la plateforme se fait en utilisant l'identifiant et mot de passe que
 3- Vue générale de la plateforme 
 --------------------------------
 
-L'interface du datalab `Nubonyxia`_ est très largement inspirée de celle du `SSP Cloud`_. Son architecturelle fonctionnelle peut se résumer schématiquement comme le montre l'image :numref:`schema`.
+L'interface du datalab `Nubonyxia`_ est très largement inspirée de celle du `SSP Cloud`_. Son architecturelle fonctionnelle peut se résumer schématiquement comme le montre  :numref:`schema`.
 
 .. _schema:
 

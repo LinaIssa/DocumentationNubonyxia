@@ -232,7 +232,7 @@ Création d'une DataBase
 Il faut se rendre dans :menuselection:`Settings --> Data --> database Connections`. Puis cliquer sur :python:`+ database`. Dans la suite, nous allons connecter la Database au serveur de base de données :python:`PostgreSQL` disponible dans le catalogue de services. 
 Avant de poursuivre, vérifiez qu'un service :python:`PostgreSQL` est disponible dans `Mes services <insert url>`. 
 
-Ensuite, pour compléter les options de configuration sont les suivantes: 
+Ensuite, les options de configuration sont les suivantes: 
 
 * **Host** : de la forme `postgresql-826506` 
 
@@ -242,7 +242,17 @@ Ensuite, pour compléter les options de configuration sont les suivantes:
 
 * **Password** 
 
-Pour les compléter, s'appuyer sur le **README** du service :python:`PostgreSQL` ouvert. 
+Pour les compléter, s'appuyer sur le **README** du service :python:`PostgreSQL` ouvert, comme le montre :numref:`connectDataBase`.
+
+
+.. _connectDataBase:
+
+
+.. figure:: images/supersetConnection.png
+  :width: 800
+  :alt: Alternative text
+
+  **README** d'une instance PostgreSQL lancée sur la plateforme
 
 .. warning:: 
 
@@ -250,14 +260,21 @@ Pour les compléter, s'appuyer sur le **README** du service :python:`PostgreSQL`
 
 Préparation d'un dataset 
 ***********************
-Dans l’onglet :python:`Datasets` sont listés les datasets récupérés depuis une base de donnée ou importés. Il est possible de modifier les propriétés des colonnes d'un dataset dans :python:`Edit/Columns.
 
-* Définir une colonne métrique comme colonne à partir de requête SQL agrégeant des valeurs à partir de plusieurs colonnes comme SUM par exemple 
-* Modifier une colonne dans Calculates Columns avec des commandes SQL comme CAST(recovery_rate) as float
+.. role:: sql(code)
+   :language: sql
+
+
+Dans l’onglet :python:`Datasets` sont listés les datasets récupérés depuis une base de donnée ou importés. Il est possible de modifier les propriétés des colonnes d'un dataset dans :python:`Edit/Columns`.
+
+* Définir une colonne métrique comme colonne à partir de requêtes SQL agrégeant des valeurs issues de plusieurs colonnes:  :sql:`SUM()`, :sql:`AVERAGE()`, etc. 
+* Modifier une colonne dans **Calculates Columns** avec des commandes SQL telles que :sql:`CAST(recovery_rate) as float`
 
 .. warning::
 
   Les fonctions d’agrégation ne sont pas autorisées dans `Calculated Columns`
+
+
 
 
 Production d'un Dashboard 
@@ -265,11 +282,11 @@ Production d'un Dashboard
 
 :python:`Superset` autorise deux modes exploratoires : 
 
-* **Chart** qui offre un no code viz builder 
+* **Chart**, un *no-code viz-builder* qui permet la production de grahiques de façon interactive et agnostique vis à vis du code.  
 * **SQL Lab** qui offre une interface SQL pour nettoyer, faire des jointures et préparer la donnée 
 
-Pour le premier, il suffit de cliquer sur le nom du dataset pour lancer la création d’un chart 
-Pour le second, se rendre dans SQL/SQL lab 
+Pour le premier, il suffit de cliquer sur le nom du dataset pour lancer la création d’un chart.
+Pour le second, se rendre dans :menuselection:`SQL --> SQL lab`. 
 Une fois son chart réalisé, l’enregistrer dans un dashboard 
 
 

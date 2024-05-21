@@ -382,14 +382,20 @@ Python</label><div class="sd-tab-content docutils">
 <h4>Création d’une DataBase<a class="headerlink" href="#creation-d-une-database" title="Link to this heading">#</a></h4>
 <p>Il faut se rendre dans <span class="menuselection">Settings ‣ Data ‣ database Connections</span>. Puis cliquer sur <code class="code highlight python docutils literal highlight-python"><span class="o">+</span> <span class="n">database</span></code>. Dans la suite, nous allons connecter la Database au serveur de base de données <code class="code highlight python docutils literal highlight-python"><span class="n">PostgreSQL</span></code> disponible dans le catalogue de services.
 Avant de poursuivre, vérifiez qu’un service <code class="code highlight python docutils literal highlight-python"><span class="n">PostgreSQL</span></code> est disponible dans <cite>Mes services &lt;insert url&gt;</cite>.</p>
-<p>Ensuite, pour compléter les options de configuration sont les suivantes:</p>
+<p>Ensuite, les options de configuration sont les suivantes:</p>
 <ul class="simple">
 <li><p><strong>Host</strong> : de la forme <cite>postgresql-826506</cite></p></li>
 <li><p><strong>Port</strong> : par exemple 5432</p></li>
 <li><p><strong>Username</strong></p></li>
 <li><p><strong>Password</strong></p></li>
 </ul>
-<p>Pour les compléter, s’appuyer sur le <strong>README</strong> du service <code class="code highlight python docutils literal highlight-python"><span class="n">PostgreSQL</span></code> ouvert.</p>
+<p>Pour les compléter, s’appuyer sur le <strong>README</strong> du service <code class="code highlight python docutils literal highlight-python"><span class="n">PostgreSQL</span></code> ouvert, comme le montre <a class="reference internal" href="#connectdatabase"><span class="std std-numref">Fig. 2</span></a>.</p>
+<figure class="align-default" id="id4">
+<span id="connectdatabase"></span><a class="reference internal image-reference" href="_images/supersetConnection.png"><img alt="Alternative text" src="_images/supersetConnection.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-text"><strong>README</strong> d’une instance PostgreSQL lancée sur la plateforme</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Pour autoriser le téléversement de fichiers CSV, se rendre dans <span class="menuselection">Dans Advanced‣Security</span> Puis cochez <cite>Allow file uploads to database</cite></p>
@@ -397,10 +403,10 @@ Avant de poursuivre, vérifiez qu’un service <code class="code highlight pytho
 </section>
 <section id="preparation-d-un-dataset">
 <h4>Préparation d’un dataset<a class="headerlink" href="#preparation-d-un-dataset" title="Link to this heading">#</a></h4>
-<p>Dans l’onglet <code class="code highlight python docutils literal highlight-python"><span class="n">Datasets</span></code> sont listés les datasets récupérés depuis une base de donnée ou importés. Il est possible de modifier les propriétés des colonnes d’un dataset dans :python:<a href="#id4"><span class="problematic" id="id5">`</span></a>Edit/Columns.</p>
+<p>Dans l’onglet <code class="code highlight python docutils literal highlight-python"><span class="n">Datasets</span></code> sont listés les datasets récupérés depuis une base de donnée ou importés. Il est possible de modifier les propriétés des colonnes d’un dataset dans <code class="code highlight python docutils literal highlight-python"><span class="n">Edit</span><span class="o">/</span><span class="n">Columns</span></code>.</p>
 <ul class="simple">
-<li><p>Définir une colonne métrique comme colonne à partir de requête SQL agrégeant des valeurs à partir de plusieurs colonnes comme SUM par exemple</p></li>
-<li><p>Modifier une colonne dans Calculates Columns avec des commandes SQL comme CAST(recovery_rate) as float</p></li>
+<li><p>Définir une colonne métrique comme colonne à partir de requêtes SQL agrégeant des valeurs issues de plusieurs colonnes:  <code class="code highlight sql docutils literal highlight-sql"><span class="k">SUM</span><span class="p">()</span></code>, <code class="code highlight sql docutils literal highlight-sql"><span class="n">AVERAGE</span><span class="p">()</span></code>, etc.</p></li>
+<li><p>Modifier une colonne dans <strong>Calculates Columns</strong> avec des commandes SQL telles que <code class="code highlight sql docutils literal highlight-sql"><span class="k">CAST</span><span class="p">(</span><span class="n">recovery_rate</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nb">float</span></code></p></li>
 </ul>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -412,11 +418,11 @@ Avant de poursuivre, vérifiez qu’un service <code class="code highlight pytho
 <h3>Production d’un Dashboard<a class="headerlink" href="#production-d-un-dashboard" title="Link to this heading">#</a></h3>
 <p><code class="code highlight python docutils literal highlight-python"><span class="n">Superset</span></code> autorise deux modes exploratoires :</p>
 <ul class="simple">
-<li><p><strong>Chart</strong> qui offre un no code viz builder</p></li>
+<li><p><strong>Chart</strong>, un <em>no-code viz-builder</em> qui permet la production de grahiques de façon interactive et agnostique vis à vis du code.</p></li>
 <li><p><strong>SQL Lab</strong> qui offre une interface SQL pour nettoyer, faire des jointures et préparer la donnée</p></li>
 </ul>
-<p>Pour le premier, il suffit de cliquer sur le nom du dataset pour lancer la création d’un chart
-Pour le second, se rendre dans SQL/SQL lab
+<p>Pour le premier, il suffit de cliquer sur le nom du dataset pour lancer la création d’un chart.
+Pour le second, se rendre dans <span class="menuselection">SQL ‣ SQL lab</span>.
 Une fois son chart réalisé, l’enregistrer dans un dashboard</p>
 </section>
 <section id="collaborer-sur-superset-partage-d-un-dashboard">

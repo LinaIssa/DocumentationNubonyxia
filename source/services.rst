@@ -138,12 +138,12 @@ La création et la gestion des variables environnements se fait dans la page `Me
   :width: 800
   :alt: Alternative text
 
-
+Vous pouvez commencer par la création d'un dossier, suivie de la création d'un secret, ou bien créer directement votre secret: 
 
 * :python:`+ Nouveau dossier`
 * :python:`+ Nouveau secret`
 
-Chaque secret peut contenir plusieurs variables, constituées de paires de clés-valeurs (voir image ci-après)
+Ensuite, cshaque secret peut contenir plusieurs variables, constituées de paires de clés-valeurs (voir l'image ci-après)
 
 * :python:`+ Ajouter une variable`
 
