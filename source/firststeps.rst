@@ -118,7 +118,7 @@ A la disposition de l'utilisateur :
 	Les services lancés par l'utilisateur apparaissent dans l'onglet :menuselection:`Mes services`. Il est possible de lancer à la demande plusieurs services à la fois.   
 
 	.. important:: 
-		Certains tokens de configuration expirent au bout d'un certain temps, comme le token d'accès `MinIO`_ . Pour mettre à jour le token, il suffit de reprendre les scripts disponibles dans :menuselection:`Mon compte --> Connexion au stockage` (voir :ref:`tokenMinio` pour plus d'explications) et de les intégrer au service. Une autre option consiste simplement à supprimer le service, après sauvegarde de ses données dans `le bucket S3 <insert url>`_ d'une part et des codes dans une instance Git d'autre part. Consulter le :doc:`guide des bonnes pratiques <methode>` pour plus d'informations sur la méthodologie recommandée.  
+		Certains tokens de configuration expirent au bout d'un certain temps, comme le token d'accès `MinIO`_ . Pour mettre à jour le token, il suffit de reprendre les scripts disponibles dans :menuselection:`Mon compte --> Connexion au stockage` (voir :ref:`tokenMinio` pour plus d'explications) et de les intégrer au service. Une autre option consiste simplement à supprimer le service, après sauvegarde de ses données dans `le bucket S3 <https://nubonyxia.incubateur.finances.rie.gouv.fr/my-files/>`_ d'une part et les codes dans une instance Git d'autre part. Consulter le :doc:`guide des bonnes pratiques <methode>` pour plus d'informations sur la méthodologie recommandée.  
 
 
 
@@ -146,7 +146,7 @@ A la disposition de l'utilisateur :
 
 Nous avons mis à disposition sur la `forge`_ un repo nommé `Quick Start <https://forge.dgfip.finances.rie.gouv.fr/bercyhub/nubonyxia/quick-start>`_ avec des scripts de *data visualisation* prêt-à-être exécutés. 
 
-Pour lancer un service, il suffit de se rendre dans l'onglet `Catalogue de services <>`_. Vous pouvez lancer le service IDE de votre choix. Le service lancé apparaît alors dans la page `Mes Services <https://nubonyxia.incubateur.finances.rie.gouv.fr/my-services>`_. L'accès au service se fait en cliquant sur le bouton :python:`Ouvrir`. Un mot de passe est alors fourni pour pouvoir accéder au service. Les informations relatives aux tokens peuvent être consultés en cliquant sur l'icône information en bas à gauche du service instancié. 
+Pour lancer un service, il suffit de se rendre dans l'onglet `Catalogue de services <https://nubonyxia.incubateur.finances.rie.gouv.fr/my-services/>`_. Vous pouvez lancer le service IDE de votre choix. Le service lancé apparaît alors dans la page `Mes Services <https://nubonyxia.incubateur.finances.rie.gouv.fr/my-services>`_. L'accès au service se fait en cliquant sur le bouton :python:`Ouvrir`. Un mot de passe est alors fourni pour pouvoir accéder au service. Les informations relatives aux tokens peuvent être consultés en cliquant sur l'icône information en bas à gauche du service instancié. 
 
 .. important::
 	Il est possible de lancer différentes instances d'un même service. Ainsi on peut avoir différent services :python:`vscode` qui tournent en même temps sur la plateforme. Cela ne s'applique pas pour les services reposant sur des *permanent virtual circuit* (PVC) à l'instar des services de la catégorie **base de données** comme :python:`Postgresql`. Autrement dit, si un service :python:`Postgresql` est déjà ouvert, il faut d'abord le supprimer avant d'en lancer un nouveau. Il en est de même pour le service :python:`Superset`.

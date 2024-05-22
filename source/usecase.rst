@@ -230,7 +230,7 @@ Création d'une DataBase
 ***********************
 
 Il faut se rendre dans :menuselection:`Settings --> Data --> database Connections`. Puis cliquer sur :python:`+ database`. Dans la suite, nous allons connecter la Database au serveur de base de données :python:`PostgreSQL` disponible dans le catalogue de services. 
-Avant de poursuivre, vérifiez qu'un service :python:`PostgreSQL` est disponible dans `Mes services <insert url>`. 
+Avant de poursuivre, vérifiez qu'un service :python:`PostgreSQL` est disponible dans `Mes services <https://nubonyxia.incubateur.finances.rie.gouv.fr/my-services/>`_. 
 
 Ensuite, les options de configuration sont les suivantes: 
 
