@@ -282,14 +282,69 @@ Production d'un Dashboard
 
 :python:`Superset` autorise deux modes exploratoires : 
 
-* **Chart**, un *no-code viz-builder* qui permet la production de grahiques de façon interactive et agnostique vis à vis du code.  
-* **SQL Lab** qui offre une interface SQL pour nettoyer, faire des jointures et préparer la donnée 
+* **Chart**, un *no-code viz-builder* qui permet la production de grahiques de façon interactive et agnostique vis-à-vis du code.  
+* **SQL Lab** qui offre une interface SQL pour visualiser les datasets importés, faire des jointures et les préparer en vue de générer des *Charts* 
 
 Pour le premier, il suffit de cliquer sur le nom du dataset pour lancer la création d’un chart.
-Pour le second, se rendre dans :menuselection:`SQL --> SQL lab`. 
-Une fois son chart réalisé, l’enregistrer dans un dashboard 
+Pour le second, il faut se rendre dans :menuselection:`SQL --> SQL lab`. La requête SQL permet de générer un nouveau dataset qu'on peut enregistrer et qui peut servir à la création d'un *Chart*. 
+Une fois son chart réalisé, on peut l’enregistrer dans un *Dashboard*. Ce dernier permet d'explorer de façon dynamique et intéractive les différents graphiques ou *charts* crées à partir des *datasets*. 
+
+.. note::
+  Il est possible de télécharger le *dashboard* en pdf ou en image. A noter qu'il est préférable de le partager afin de garder l'interface intéractive (voir section :ref:`collab`)
+
+Illustration avec les données du Plan de Relance 
+************************************************
+
+Les données sur le `Plan de Relance <https://www.economie.gouv.fr/plan-de-relance>`_ sont ouvertes et disponibles sur la plateforme `data.economie.gouv <https://data.economie.gouv.fr/explore/dataset/plan-de-relance/table/>`_. 
+
+Il est possible d'importer un fichier csv dans la *database* en cliquant sur :python:`+` puis en sélectionnant dans le menu :menuselection:`Data --> Upload CSV to database`. Dans notre exemple, sur la fenêtre qui s'affiche, choisir comme :python:`Delimiter` **Other**. 
 
 
+On peut visualiser les données dans :python:`SQL Lab`. Pour ce faire il faut sélectionner la table de donnée importée dans le menu *See Table Schema*, comme l'illustre la figure :numref:`SQL`.
+
+.. _SQL:
+
+
+.. figure:: images/supersetSQL.png
+  :width: 800
+  :alt: Alternative text
+
+  Le SQL Lab de :python:`superset`
+
+
+
+Ensuite, la création de *charts* se fait de manière intéractive comme le montre la figure :numref:`Chart`. 
+
+.. _Chart:
+
+
+.. figure:: images/supersetCharts.png
+  :width: 800
+  :alt: Alternative text
+
+  Exemple d'un *chart*
+
+
+Enfin, on enregistre le *chart* dans un *dashboard* qu'on peut éditer et partager. 
+
+Voici un exemple de dashboard avec les données de data.gouv.economie sur le Plan de Relance: 
+
+
+.. figure:: images/superset.png
+  :width: 800
+  :alt: Alternative text
+
+  Exemple de dashboard 
+
+
+.. note::
+  Pour créer une carte, :python:`superset` nécessite les codes ISO-3166-2 des régions et départements, comme l'indique la 
+`documentation de superset <https://superset.apache.org/docs/configuration/country-map-tools/>`_ Pour créer la carte présente dans le dashboard figurant dans :numref: nous avons importée une table supplémentaire, construite à partir de plateforme en ligne de l'` ISO <https://www.iso.org/obp/ui/#iso:code:3166:FR>`_ que l'on a joint à la table initiale. 
+
+
+
+
+.. _collab:
 
 Collaborer sur :python:`Superset`: partage d'un Dashboard 
 #########################################################

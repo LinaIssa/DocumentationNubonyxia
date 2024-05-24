@@ -381,7 +381,7 @@ Python</label><div class="sd-tab-content docutils">
 <section id="creation-d-une-database">
 <h4>Création d’une DataBase<a class="headerlink" href="#creation-d-une-database" title="Link to this heading">#</a></h4>
 <p>Il faut se rendre dans <span class="menuselection">Settings ‣ Data ‣ database Connections</span>. Puis cliquer sur <code class="code highlight python docutils literal highlight-python"><span class="o">+</span> <span class="n">database</span></code>. Dans la suite, nous allons connecter la Database au serveur de base de données <code class="code highlight python docutils literal highlight-python"><span class="n">PostgreSQL</span></code> disponible dans le catalogue de services.
-Avant de poursuivre, vérifiez qu’un service <code class="code highlight python docutils literal highlight-python"><span class="n">PostgreSQL</span></code> est disponible dans <cite>Mes services &lt;insert url&gt;</cite>.</p>
+Avant de poursuivre, vérifiez qu’un service <code class="code highlight python docutils literal highlight-python"><span class="n">PostgreSQL</span></code> est disponible dans <a class="reference external" href="https://nubonyxia.incubateur.finances.rie.gouv.fr/my-services/">Mes services</a>.</p>
 <p>Ensuite, les options de configuration sont les suivantes:</p>
 <ul class="simple">
 <li><p><strong>Host</strong> : de la forme <cite>postgresql-826506</cite></p></li>
@@ -393,7 +393,7 @@ Avant de poursuivre, vérifiez qu’un service <code class="code highlight pytho
 <figure class="align-default" id="id4">
 <span id="connectdatabase"></span><a class="reference internal image-reference" href="_images/supersetConnection.png"><img alt="Alternative text" src="_images/supersetConnection.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-text"><strong>README</strong> d’une instance PostgreSQL lancée sur la plateforme</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text"><strong>README</strong> d’une instance PostgreSQL lancée sur la plateforme</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition warning">
@@ -418,15 +418,51 @@ Avant de poursuivre, vérifiez qu’un service <code class="code highlight pytho
 <h3>Production d’un Dashboard<a class="headerlink" href="#production-d-un-dashboard" title="Link to this heading">#</a></h3>
 <p><code class="code highlight python docutils literal highlight-python"><span class="n">Superset</span></code> autorise deux modes exploratoires :</p>
 <ul class="simple">
-<li><p><strong>Chart</strong>, un <em>no-code viz-builder</em> qui permet la production de grahiques de façon interactive et agnostique vis à vis du code.</p></li>
-<li><p><strong>SQL Lab</strong> qui offre une interface SQL pour nettoyer, faire des jointures et préparer la donnée</p></li>
+<li><p><strong>Chart</strong>, un <em>no-code viz-builder</em> qui permet la production de grahiques de façon interactive et agnostique vis-à-vis du code.</p></li>
+<li><p><strong>SQL Lab</strong> qui offre une interface SQL pour visualiser les datasets importés, faire des jointures et les préparer en vue de générer des <em>Charts</em></p></li>
 </ul>
 <p>Pour le premier, il suffit de cliquer sur le nom du dataset pour lancer la création d’un chart.
-Pour le second, se rendre dans <span class="menuselection">SQL ‣ SQL lab</span>.
-Une fois son chart réalisé, l’enregistrer dans un dashboard</p>
+Pour le second, il faut se rendre dans <span class="menuselection">SQL ‣ SQL lab</span>. La requête SQL permet de générer un nouveau dataset qu’on peut enregistrer et qui peut servir à la création d’un <em>Chart</em>.
+Une fois son chart réalisé, on peut l’enregistrer dans un <em>Dashboard</em>. Ce dernier permet d’explorer de façon dynamique et intéractive les différents graphiques ou <em>charts</em> crées à partir des <em>datasets</em>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Il est possible de télécharger le <em>dashboard</em> en pdf ou en image. A noter qu’il est préférable de le partager afin de garder l’interface intéractive (voir section <a class="reference internal" href="#collab"><span class="std std-ref">Collaborer sur Superset: partage d’un Dashboard</span></a>)</p>
+</div>
+<section id="illustration-avec-les-donnees-du-plan-de-relance">
+<h4>Illustration avec les données du Plan de Relance<a class="headerlink" href="#illustration-avec-les-donnees-du-plan-de-relance" title="Link to this heading">#</a></h4>
+<p>Les données sur le <a class="reference external" href="https://www.economie.gouv.fr/plan-de-relance">Plan de Relance</a> sont ouvertes et disponibles sur la plateforme <a class="reference external" href="https://data.economie.gouv.fr/explore/dataset/plan-de-relance/table/">data.economie.gouv</a>.</p>
+<p>Il est possible d’importer un fichier csv dans la <em>database</em> en cliquant sur <code class="code highlight python docutils literal highlight-python"><span class="o">+</span></code> puis en sélectionnant dans le menu <span class="menuselection">Data ‣ Upload CSV to database</span>. Dans notre exemple, sur la fenêtre qui s’affiche, choisir comme <code class="code highlight python docutils literal highlight-python"><span class="n">Delimiter</span></code> <strong>Other</strong>.</p>
+<p>On peut visualiser les données dans <code class="code highlight python docutils literal highlight-python"><span class="n">SQL</span> <span class="n">Lab</span></code>. Pour ce faire il faut sélectionner la table de donnée importée dans le menu <em>See Table Schema</em>, comme l’illustre la figure <code class="xref std std-numref docutils literal notranslate"><span class="pre">SQL</span></code>.</p>
+<figure class="align-default" id="id5">
+<span id="sql"></span><a class="reference internal image-reference" href="_images/supersetSQL.png"><img alt="Alternative text" src="_images/supersetSQL.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Le SQL Lab de <code class="code highlight python docutils literal highlight-python"><span class="n">superset</span></code></span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Ensuite, la création de <em>charts</em> se fait de manière intéractive comme le montre la figure <a class="reference internal" href="#chart"><span class="std std-numref">Fig. 3</span></a>.</p>
+<figure class="align-default" id="id6">
+<span id="chart"></span><a class="reference internal image-reference" href="_images/supersetCharts.png"><img alt="Alternative text" src="_images/supersetCharts.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Exemple d’un <em>chart</em></span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Enfin, on enregistre le <em>chart</em> dans un <em>dashboard</em> qu’on peut éditer et partager.</p>
+<p>Voici un exemple de dashboard avec les données de data.gouv.economie sur le Plan de Relance:</p>
+<figure class="align-default" id="id7">
+<a class="reference internal image-reference" href="_images/superset.png"><img alt="Alternative text" src="_images/superset.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-text">Exemple de dashboard</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Pour créer une carte, <code class="code highlight python docutils literal highlight-python"><span class="n">superset</span></code> nécessite les codes ISO-3166-2 des régions et départements, comme l’indique la</p>
+</div>
+<p><a class="reference external" href="https://superset.apache.org/docs/configuration/country-map-tools/">documentation de superset</a> Pour créer la carte présente dans le dashboard figurant dans :numref: nous avons importée une table supplémentaire, construite à partir de plateforme en ligne de l’` ISO &lt;<a class="reference external" href="https://www.iso.org/obp/ui/#iso:code:3166:FR">https://www.iso.org/obp/ui/#iso:code:3166:FR</a>&gt;`_ que l’on a joint à la table initiale.</p>
+</section>
 </section>
 <section id="collaborer-sur-superset-partage-d-un-dashboard">
-<h3>Collaborer sur <code class="code highlight python docutils literal highlight-python"><span class="n">Superset</span></code>: partage d’un Dashboard<a class="headerlink" href="#collaborer-sur-superset-partage-d-un-dashboard" title="Link to this heading">#</a></h3>
+<span id="collab"></span><h3>Collaborer sur <code class="code highlight python docutils literal highlight-python"><span class="n">Superset</span></code>: partage d’un Dashboard<a class="headerlink" href="#collaborer-sur-superset-partage-d-un-dashboard" title="Link to this heading">#</a></h3>
 <p>Gestion des utilisateurs</p>
 </section>
 </section>
@@ -511,7 +547,10 @@ Une fois son chart réalisé, l’enregistrer dans un dashboard</p>
 <li><a class="reference internal" href="#preparation-d-un-dataset">Préparation d’un dataset</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#production-d-un-dashboard">Production d’un Dashboard</a></li>
+<li><a class="reference internal" href="#production-d-un-dashboard">Production d’un Dashboard</a><ul>
+<li><a class="reference internal" href="#illustration-avec-les-donnees-du-plan-de-relance">Illustration avec les données du Plan de Relance</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#collaborer-sur-superset-partage-d-un-dashboard">Collaborer sur <code class="code highlight python docutils literal highlight-python"><span class="n">Superset</span></code>: partage d’un Dashboard</a></li>
 </ul>
 </li>
