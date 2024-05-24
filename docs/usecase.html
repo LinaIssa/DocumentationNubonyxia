@@ -432,14 +432,14 @@ Une fois son chart réalisé, on peut l’enregistrer dans un <em>Dashboard</em>
 <h4>Illustration avec les données du Plan de Relance<a class="headerlink" href="#illustration-avec-les-donnees-du-plan-de-relance" title="Link to this heading">#</a></h4>
 <p>Les données sur le <a class="reference external" href="https://www.economie.gouv.fr/plan-de-relance">Plan de Relance</a> sont ouvertes et disponibles sur la plateforme <a class="reference external" href="https://data.economie.gouv.fr/explore/dataset/plan-de-relance/table/">data.economie.gouv</a>.</p>
 <p>Il est possible d’importer un fichier csv dans la <em>database</em> en cliquant sur <code class="code highlight python docutils literal highlight-python"><span class="o">+</span></code> puis en sélectionnant dans le menu <span class="menuselection">Data ‣ Upload CSV to database</span>. Dans notre exemple, sur la fenêtre qui s’affiche, choisir comme <code class="code highlight python docutils literal highlight-python"><span class="n">Delimiter</span></code> <strong>Other</strong>.</p>
-<p>On peut visualiser les données dans <code class="code highlight python docutils literal highlight-python"><span class="n">SQL</span> <span class="n">Lab</span></code>. Pour ce faire il faut sélectionner la table de donnée importée dans le menu <em>See Table Schema</em>, comme l’illustre la figure <code class="xref std std-numref docutils literal notranslate"><span class="pre">SQL</span></code>.</p>
+<p>On peut visualiser les données dans <code class="code highlight python docutils literal highlight-python"><span class="n">SQL</span> <span class="n">Lab</span></code>. Pour ce faire il faut sélectionner la table de donnée importée dans le menu <em>See Table Schema</em>, comme l’illustre <a class="reference internal" href="#sql"><span class="std std-numref">Fig. 3</span></a>.</p>
 <figure class="align-default" id="id5">
 <span id="sql"></span><a class="reference internal image-reference" href="_images/supersetSQL.png"><img alt="Alternative text" src="_images/supersetSQL.png" style="width: 800px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 3 </span><span class="caption-text">Le SQL Lab de <code class="code highlight python docutils literal highlight-python"><span class="n">superset</span></code></span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Ensuite, la création de <em>charts</em> se fait de manière intéractive comme le montre la figure <a class="reference internal" href="#chart"><span class="std std-numref">Fig. 3</span></a>.</p>
+<p>Ensuite, la création de <em>charts</em> se fait de manière intéractive comme le montre la figure <a class="reference internal" href="#chart"><span class="std std-numref">Fig. 4</span></a>.</p>
 <figure class="align-default" id="id6">
 <span id="chart"></span><a class="reference internal image-reference" href="_images/supersetCharts.png"><img alt="Alternative text" src="_images/supersetCharts.png" style="width: 800px;" /></a>
 <figcaption>
@@ -449,16 +449,15 @@ Une fois son chart réalisé, on peut l’enregistrer dans un <em>Dashboard</em>
 <p>Enfin, on enregistre le <em>chart</em> dans un <em>dashboard</em> qu’on peut éditer et partager.</p>
 <p>Voici un exemple de dashboard avec les données de data.gouv.economie sur le Plan de Relance:</p>
 <figure class="align-default" id="id7">
-<a class="reference internal image-reference" href="_images/superset.png"><img alt="Alternative text" src="_images/superset.png" style="width: 800px;" /></a>
+<span id="dashboard"></span><a class="reference internal image-reference" href="_images/superset.png"><img alt="Alternative text" src="_images/superset.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-text">Exemple de dashboard</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Exemple de dashboard</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Pour créer une carte, <code class="code highlight python docutils literal highlight-python"><span class="n">superset</span></code> nécessite les codes ISO-3166-2 des régions et départements, comme l’indique la</p>
+<p>Pour créer une carte, <code class="code highlight python docutils literal highlight-python"><span class="n">superset</span></code> nécessite les codes ISO-3166-2 des régions et départements, comme l’indique la <a class="reference external" href="https://superset.apache.org/docs/configuration/country-map-tools/">documentation de superset</a>. Pour créer la carte présente dans le dashboard figurant dans <a class="reference internal" href="#dashboard"><span class="std std-numref">Fig. 5</span></a>, nous avons importée une table supplémentaire, construite à partir de plateforme en ligne <a class="reference external" href="https://www.iso.org/obp/ui/#iso:code:3166:FR">ISO</a> que l’on a joint à la table initiale.</p>
 </div>
-<p><a class="reference external" href="https://superset.apache.org/docs/configuration/country-map-tools/">documentation de superset</a> Pour créer la carte présente dans le dashboard figurant dans :numref: nous avons importée une table supplémentaire, construite à partir de plateforme en ligne de l’` ISO &lt;<a class="reference external" href="https://www.iso.org/obp/ui/#iso:code:3166:FR">https://www.iso.org/obp/ui/#iso:code:3166:FR</a>&gt;`_ que l’on a joint à la table initiale.</p>
 </section>
 </section>
 <section id="collaborer-sur-superset-partage-d-un-dashboard">

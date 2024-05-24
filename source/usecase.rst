@@ -300,7 +300,7 @@ Les données sur le `Plan de Relance <https://www.economie.gouv.fr/plan-de-relan
 Il est possible d'importer un fichier csv dans la *database* en cliquant sur :python:`+` puis en sélectionnant dans le menu :menuselection:`Data --> Upload CSV to database`. Dans notre exemple, sur la fenêtre qui s'affiche, choisir comme :python:`Delimiter` **Other**. 
 
 
-On peut visualiser les données dans :python:`SQL Lab`. Pour ce faire il faut sélectionner la table de donnée importée dans le menu *See Table Schema*, comme l'illustre la figure :numref:`SQL`.
+On peut visualiser les données dans :python:`SQL Lab`. Pour ce faire il faut sélectionner la table de donnée importée dans le menu *See Table Schema*, comme l'illustre :numref:`SQL`.
 
 .. _SQL:
 
@@ -329,7 +329,7 @@ Enfin, on enregistre le *chart* dans un *dashboard* qu'on peut éditer et partag
 
 Voici un exemple de dashboard avec les données de data.gouv.economie sur le Plan de Relance: 
 
-
+.. _Dashboard:
 .. figure:: images/superset.png
   :width: 800
   :alt: Alternative text
@@ -338,8 +338,7 @@ Voici un exemple de dashboard avec les données de data.gouv.economie sur le Pla
 
 
 .. note::
-  Pour créer une carte, :python:`superset` nécessite les codes ISO-3166-2 des régions et départements, comme l'indique la 
-`documentation de superset <https://superset.apache.org/docs/configuration/country-map-tools/>`_ Pour créer la carte présente dans le dashboard figurant dans :numref: nous avons importée une table supplémentaire, construite à partir de plateforme en ligne de l'` ISO <https://www.iso.org/obp/ui/#iso:code:3166:FR>`_ que l'on a joint à la table initiale. 
+  Pour créer une carte, :python:`superset` nécessite les codes ISO-3166-2 des régions et départements, comme l'indique la `documentation de superset <https://superset.apache.org/docs/configuration/country-map-tools/>`_. Pour créer la carte présente dans le dashboard figurant dans :numref:`Dashboard`, nous avons importée une table supplémentaire, construite à partir de plateforme en ligne `ISO <https://www.iso.org/obp/ui/#iso:code:3166:FR>`_ que l'on a joint à la table initiale. 
 
 
 
