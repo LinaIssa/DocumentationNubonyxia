@@ -347,8 +347,44 @@ Voici un exemple de dashboard avec les données de data.gouv.economie sur le Pla
 
 Collaborer sur :python:`Superset`: partage d'un Dashboard 
 #########################################################
-Gestion des utilisateurs 
 
+Le service :python:`Superset` permet la **gestion des utilisateurs** pour les productions du service. Ainsi, il est possible de définir les propriétés d'accès aux différents *dashboards* et *datasets* en déterminant les utilisateurs qui pourront collaborer ou simplement consulter. 
+
+Pour ajouter un nouvel utilisateur du service, il faut se rendre dans :menuselection:`Settings --> List Users`, ce qui amène à la page 
+:numref:`Users`. Cliquer ensuite sur :python:`Add a new record` pour ajouter un nouvel utilisateur. Comme le montre :numref:`addUser`, on peut attribuer un *role* à un utilisateur. 
+
+
+.. _addUser:
+
+.. figure:: images/SupersetAddUser.png
+   :width: 45%
+
+   Ajout d'un utilisateur 
+
+
+.. _Users:
+
+.. figure:: images/SupersetgestionUser.png
+   :width: 45%
+
+   Gestion des utilisateurs 
+
+
+.. note::
+  Pour connaître la différence entre les différents *roles*, se rendre dans :menuselection:`Settings --> List Roles`. Il y est également possible de modifier les attributs associés et de définir un nouveau *role*. 
+
+
+
+Dans :python:`Dashboard`, placer la souris sous le champ :python:`Action` puis cliquer sur l'icône pour modifier. Une nouvelle fenêtre apparaît (voir :numref:`DashboardShare`) dans laquelle on peut ajouter le nouvel utilisateur défini précédemment comme :python:`Owners`. Ce dernier pourra alors collaborer sur la réalisation du *Dashboard*. 
+
+
+.. _DashboardShare:
+
+.. figure:: images/SupersetDashboardShare.png
+  :width: 800
+  :alt: Alternative text
+
+  Modification des propriétés du *Dashboard*
 
 
 **Cas Usage 3** : IA Générative  

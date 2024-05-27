@@ -462,7 +462,32 @@ Une fois son chart réalisé, on peut l’enregistrer dans un <em>Dashboard</em>
 </section>
 <section id="collaborer-sur-superset-partage-d-un-dashboard">
 <span id="collab"></span><h3>Collaborer sur <code class="code highlight python docutils literal highlight-python"><span class="n">Superset</span></code>: partage d’un Dashboard<a class="headerlink" href="#collaborer-sur-superset-partage-d-un-dashboard" title="Link to this heading">#</a></h3>
-<p>Gestion des utilisateurs</p>
+<p>Le service <code class="code highlight python docutils literal highlight-python"><span class="n">Superset</span></code> permet la <strong>gestion des utilisateurs</strong> pour les productions du service. Ainsi, il est possible de définir les propriétés d’accès aux différents <em>dashboards</em> et <em>datasets</em> en déterminant les utilisateurs qui pourront collaborer ou simplement consulter.</p>
+<p>Pour ajouter un nouvel utilisateur du service, il faut se rendre dans <span class="menuselection">Settings ‣ List Users</span>, ce qui amène à la page
+<a class="reference internal" href="#users"><span class="std std-numref">Fig. 7</span></a>. Cliquer ensuite sur <code class="code highlight python docutils literal highlight-python"><span class="n">Add</span> <span class="n">a</span> <span class="n">new</span> <span class="n">record</span></code> pour ajouter un nouvel utilisateur. Comme le montre <a class="reference internal" href="#adduser"><span class="std std-numref">Fig. 6</span></a>, on peut attribuer un <em>role</em> à un utilisateur.</p>
+<figure class="align-default" id="id8">
+<span id="adduser"></span><a class="reference internal image-reference" href="_images/SupersetAddUser.png"><img alt="_images/SupersetAddUser.png" src="_images/SupersetAddUser.png" style="width: 45%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Ajout d’un utilisateur</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id9">
+<span id="users"></span><a class="reference internal image-reference" href="_images/SupersetgestionUser.png"><img alt="_images/SupersetgestionUser.png" src="_images/SupersetgestionUser.png" style="width: 45%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Gestion des utilisateurs</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Pour connaître la différence entre les différents <em>roles</em>, se rendre dans <span class="menuselection">Settings ‣ List Roles</span>. Il y est également possible de modifier les attributs associés et de définir un nouveau <em>role</em>.</p>
+</div>
+<p>Dans <code class="code highlight python docutils literal highlight-python"><span class="n">Dashboard</span></code>, placer la souris sous le champ <code class="code highlight python docutils literal highlight-python"><span class="n">Action</span></code> puis cliquer sur l’icône pour modifier. Une nouvelle fenêtre apparaît (voir <a class="reference internal" href="#dashboardshare"><span class="std std-numref">Fig. 8</span></a>) dans laquelle on peut ajouter le nouvel utilisateur défini précédemment comme <code class="code highlight python docutils literal highlight-python"><span class="n">Owners</span></code>. Ce dernier pourra alors collaborer sur la réalisation du <em>Dashboard</em>.</p>
+<figure class="align-default" id="id10">
+<span id="dashboardshare"></span><a class="reference internal image-reference" href="_images/SupersetDashboardShare.png"><img alt="Alternative text" src="_images/SupersetDashboardShare.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Modification des propriétés du <em>Dashboard</em></span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 </section>
 <section id="cas-usage-3-ia-generative">
