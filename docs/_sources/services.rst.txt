@@ -39,7 +39,7 @@ Suivant le service lancé, différents onglets de configurations sont disponible
 
 		* `PersonalInitArgs`: options correspondant aux variables :python:`$1` :python:`$2` dans le script init
 
-		Par exemple, si *PersonalInitArgs* corresponde à :python:`fichier1.txt fichier2.txt` et que le script init soit le suivant: 
+		Par exemple, si *PersonalInitArgs* correspond à :python:`fichier1.txt fichier2.txt` et que le script init soit le suivant: 
 
 		.. code:: bash
 
@@ -58,7 +58,7 @@ Suivant le service lancé, différents onglets de configurations sont disponible
 		* CPU
 		* RAM
 
-		.. note:: 
+		.. warning:: 
 
 			Les ressources du cluster étant mutualisées, il est de bon ton de réserver les ressources adaptées à ses besoins et son cas d'usage. 
 
@@ -78,7 +78,7 @@ Suivant le service lancé, différents onglets de configurations sont disponible
 
 		Il est possible de partager de manière ponctuelle un service lancé à un autre agent. Pour ce faire, il faut décocher *Enable IP protection* et *Enable network policy*. 
 
-		.. note::
+		.. important::
 
 			L'utilisation simultannée d'un service est impossible. Une seule personne à la fois peut se connecter à un service.
 

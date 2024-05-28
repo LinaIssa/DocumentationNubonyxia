@@ -6,12 +6,13 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Cas d’usages Nubonyxia" href="usecase.html" /><link rel="prev" title="Guide des bonnes pratiques" href="methode.html" />
 
     <!-- Generated with Sphinx 7.2.6 and Furo 2024.01.29 -->
-        <title>Configuration des services - Nubonyxia</title>
+        <title>Configuration des services - </title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=a5c4661c" />
     <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=36a5483c" />
+    <link rel="stylesheet" type="text/css" href="_static/mycss.css?v=4c50a842" />
     
     
 
@@ -125,7 +126,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">Nubonyxia</div></a>
+      <a href="index.html"><div class="brand"> </div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -151,7 +152,7 @@
     <img class="sidebar-logo" src="_static/logo_Nubonyxia.png" alt="Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">Nubonyxia</span>
+  <span class="sidebar-brand-text"> </span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -221,7 +222,7 @@ S3</label><div class="sd-tab-content docutils">
 <input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-1">
 Kubernetes</label><div class="sd-tab-content docutils">
-<p>Pour pouvoir utiliser les commandes <strong class="program">kubectl</strong>, il faut sélectionner le role <em>admin</em>. Par défaut, <em>role</em> est sur <em>viewer</em>. Cela peut être utile lorsque l’on souhaite par exemple vérifier l’état des pods. Consulter la section <span class="xref std std-ref">commandKubectl</span> pour avoir un aperçu des commandes que vous pouvez exécuter.</p>
+<p>Pour pouvoir utiliser les commandes <strong class="program">kubectl</strong>, il faut sélectionner le role <em>admin</em>. Par défaut, <em>role</em> est sur <em>viewer</em>. Cela peut être utile lorsque l’on souhaite par exemple vérifier l’état des pods. Consulter la section <a class="reference internal" href="usecase.html#commandkubectl"><span class="std std-ref">Commande pour debugger</span></a> pour avoir un aperçu des commandes que vous pouvez exécuter.</p>
 </div>
 <input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-2">
@@ -231,7 +232,7 @@ Init</label><div class="sd-tab-content docutils">
 <li><p><cite>PersonalInit</cite>: lien vers un script shell.</p></li>
 <li><p><cite>PersonalInitArgs</cite>: options correspondant aux variables <code class="code highlight python docutils literal highlight-python"><span class="err">$</span><span class="mi">1</span></code> <code class="code highlight python docutils literal highlight-python"><span class="err">$</span><span class="mi">2</span></code> dans le script init</p></li>
 </ul>
-<p>Par exemple, si <em>PersonalInitArgs</em> corresponde à <code class="code highlight python docutils literal highlight-python"><span class="n">fichier1</span><span class="o">.</span><span class="n">txt</span> <span class="n">fichier2</span><span class="o">.</span><span class="n">txt</span></code> et que le script init soit le suivant:</p>
+<p>Par exemple, si <em>PersonalInitArgs</em> correspond à <code class="code highlight python docutils literal highlight-python"><span class="n">fichier1</span><span class="o">.</span><span class="n">txt</span> <span class="n">fichier2</span><span class="o">.</span><span class="n">txt</span></code> et que le script init soit le suivant:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 touch<span class="w"> </span><span class="nv">$1</span>
 touch<span class="w"> </span><span class="nv">$2</span>
@@ -247,8 +248,8 @@ Ressources</label><div class="sd-tab-content docutils">
 <li><p>CPU</p></li>
 <li><p>RAM</p></li>
 </ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
 <p>Les ressources du cluster étant mutualisées, il est de bon ton de réserver les ressources adaptées à ses besoins et son cas d’usage.</p>
 </div>
 </div>
@@ -261,8 +262,8 @@ Security</label><div class="sd-tab-content docutils">
 <li><p><cite>Enable Network Policy</cite></p></li>
 </ul>
 <p>Il est possible de partager de manière ponctuelle un service lancé à un autre agent. Pour ce faire, il faut décocher <em>Enable IP protection</em> et <em>Enable network policy</em>.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
 <p>L’utilisation simultannée d’un service est impossible. Une seule personne à la fois peut se connecter à un service.</p>
 </div>
 <div class="admonition note">

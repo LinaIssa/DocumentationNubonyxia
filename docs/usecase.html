@@ -6,12 +6,13 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="prev" title="Configuration des services" href="services.html" />
 
     <!-- Generated with Sphinx 7.2.6 and Furo 2024.01.29 -->
-        <title>Cas d’usages Nubonyxia - Nubonyxia</title>
+        <title>Cas d’usages Nubonyxia - </title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=a5c4661c" />
     <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=36a5483c" />
+    <link rel="stylesheet" type="text/css" href="_static/mycss.css?v=4c50a842" />
     
     
 
@@ -125,7 +126,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">Nubonyxia</div></a>
+      <a href="index.html"><div class="brand"> </div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -151,7 +152,7 @@
     <img class="sidebar-logo" src="_static/logo_Nubonyxia.png" alt="Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">Nubonyxia</span>
+  <span class="sidebar-brand-text"> </span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -329,8 +330,8 @@ cat<span class="w"> </span><span class="s">&lt;&lt;EOF &gt; dockerconfig.json</s
 <p>Une fois tous les prérequis remplis, la pipeline devrait se lancer automatiquement. Il est possible de voir son exécution dans l’onglet “Build” puis “Pipelines”. Si tout se passe bien, chaque étape sera marquée d’une coche verte. Sinon, se reporter à la partie suivante.</p>
 </section>
 <section id="commande-pour-debugger">
-<h3>Commande pour debugger<a class="headerlink" href="#commande-pour-debugger" title="Link to this heading">#</a></h3>
-<div class="highlight-bash notranslate" id="commandkubectl"><div class="highlight"><pre><span></span>kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w">                          </span><span class="c1">#pour voir les pods en fonctionnement</span>
+<span id="commandkubectl"></span><h3>Commande pour debugger<a class="headerlink" href="#commande-pour-debugger" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w">                          </span><span class="c1">#pour voir les pods en fonctionnement</span>
 kubectl<span class="w"> </span>delete<span class="w"> </span>pod<span class="w"> </span>&lt;name_pod&gt;<span class="w">              </span><span class="c1">#pour supprimer un pod</span>
 kubectl<span class="w"> </span>get<span class="w"> </span>deployment<span class="w">                    </span><span class="c1">#pour voir les déploiements</span>
 kubectl<span class="w"> </span>delete<span class="w"> </span>deployment<span class="w"> </span>deployment_name<span class="w"> </span><span class="c1">#pour supprimer un déploiement</span>
@@ -380,113 +381,122 @@ kubectl<span class="w"> </span>logs<span class="w"> </span>pod_name<span class="
 </section>
 <section id="cas-usage-2-data-visualisation-avec-superset">
 <h2><strong>Cas Usage 2</strong> : Data Visualisation avec <code class="code highlight python docutils literal highlight-python"><span class="n">Superset</span></code><a class="headerlink" href="#cas-usage-2-data-visualisation-avec-superset" title="Link to this heading">#</a></h2>
-<p>Cette section présente quelques cas d’usage simple de <code class="code highlight python docutils literal highlight-python"><span class="n">Superset</span></code> et vous accompagne dans votre première utilisation. En particulier, la configuration du service sera détaillée. Il ne s’agit pas d’un guide extensif du service mais plutôt d’une prise en main de l’outil dans l’écosystème Nubonyxia.</p>
+<p>Cette section présente quelques cas d’usage simple de <code class="code highlight python docutils literal highlight-python"><span class="n">Superset</span></code> et vous accompagne dans votre première utilisation. En particulier, la configuration du service sera détaillée. Il ne s’agit pas d’un guide extensif du service mais plutôt d’une prise en main de l’outil dans l’écosystème de <a class="reference external" href="https://nubonyxia.incubateur.finances.rie.gouv.fr">Nubonyxia</a>.</p>
 <section id="configuration-de-superset">
 <h3>Configuration de <code class="code highlight python docutils literal highlight-python"><span class="n">Superset</span></code><a class="headerlink" href="#configuration-de-superset" title="Link to this heading">#</a></h3>
 <section id="creation-d-une-database">
 <h4>Création d’une DataBase<a class="headerlink" href="#creation-d-une-database" title="Link to this heading">#</a></h4>
-<p>Il faut se rendre dans <span class="menuselection">Settings ‣ Data ‣ database Connections</span>. Puis cliquer sur <code class="code highlight python docutils literal highlight-python"><span class="o">+</span> <span class="n">database</span></code>. Dans la suite, nous allons connecter la Database au serveur de base de données <code class="code highlight python docutils literal highlight-python"><span class="n">PostgreSQL</span></code> disponible dans le catalogue de services.
-Avant de poursuivre, vérifiez qu’un service <code class="code highlight python docutils literal highlight-python"><span class="n">PostgreSQL</span></code> est disponible dans <a class="reference external" href="https://nubonyxia.incubateur.finances.rie.gouv.fr/my-services/">Mes services</a>.</p>
+<p>Il faut se rendre dans <span class="menuselection">Settings ‣ Data ‣ Database Connections</span>. Puis cliquer sur <code class="code highlight python docutils literal highlight-python"><span class="o">+</span> <span class="n">database</span></code>. Dans la suite, nous allons connecter la <em>Database</em> au serveur de base de données <code class="code highlight python docutils literal highlight-python"><span class="n">PostgreSQL</span></code> disponible dans le catalogue de services.
+Avant de poursuivre, vérifiez qu’un service <code class="code highlight python docutils literal highlight-python"><span class="n">PostgreSQL</span></code> est lancé dans <a class="reference external" href="https://nubonyxia.incubateur.finances.rie.gouv.fr/my-services/">Mes services</a>.</p>
 <p>Ensuite, les options de configuration sont les suivantes:</p>
 <ul class="simple">
-<li><p><strong>Host</strong> : de la forme <cite>postgresql-826506</cite></p></li>
-<li><p><strong>Port</strong> : par exemple 5432</p></li>
+<li><p><strong>Host</strong>, de la forme <cite>postgresql-826506</cite></p></li>
+<li><p><strong>Port</strong>, par exemple 5432</p></li>
 <li><p><strong>Username</strong></p></li>
 <li><p><strong>Password</strong></p></li>
 </ul>
-<p>Pour les compléter, s’appuyer sur le <strong>README</strong> du service <code class="code highlight python docutils literal highlight-python"><span class="n">PostgreSQL</span></code> ouvert, comme le montre <a class="reference internal" href="#connectdatabase"><span class="std std-numref">Fig. 2</span></a>.</p>
+<p>Pour les compléter, il faut s’appuyer sur le <strong>README</strong> du service <code class="code highlight python docutils literal highlight-python"><span class="n">PostgreSQL</span></code>, comme le montre <a class="reference internal" href="#connectdatabase"><span class="std std-numref">Fig. 2</span></a>.</p>
 <figure class="align-default" id="id4">
 <span id="connectdatabase"></span><a class="reference internal image-reference" href="_images/supersetConnection.png"><img alt="Alternative text" src="_images/supersetConnection.png" style="width: 800px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 2 </span><span class="caption-text"><strong>README</strong> d’une instance PostgreSQL lancée sur la plateforme</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Pour autoriser le téléversement de fichiers CSV, se rendre dans <span class="menuselection">Dans Advanced‣Security</span> Puis cochez <cite>Allow file uploads to database</cite></p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Pour autoriser le téléversement de fichiers CSV, se rendre dans <span class="menuselection">Advanced‣Security</span> Puis cochez <cite>Allow file uploads to database</cite>.</p>
 </div>
 </section>
 <section id="preparation-d-un-dataset">
 <h4>Préparation d’un dataset<a class="headerlink" href="#preparation-d-un-dataset" title="Link to this heading">#</a></h4>
 <p>Dans l’onglet <code class="code highlight python docutils literal highlight-python"><span class="n">Datasets</span></code> sont listés les datasets récupérés depuis une base de donnée ou importés. Il est possible de modifier les propriétés des colonnes d’un dataset dans <code class="code highlight python docutils literal highlight-python"><span class="n">Edit</span><span class="o">/</span><span class="n">Columns</span></code>.</p>
 <ul class="simple">
-<li><p>Définir une colonne métrique comme colonne à partir de requêtes SQL agrégeant des valeurs issues de plusieurs colonnes:  <code class="code highlight sql docutils literal highlight-sql"><span class="k">SUM</span><span class="p">()</span></code>, <code class="code highlight sql docutils literal highlight-sql"><span class="k">AVG</span><span class="p">()</span></code>, etc.</p></li>
+<li><p>Définir une colonne métrique à partir de requêtes SQL agrégeant des valeurs issues de plusieurs colonnes:  <code class="code highlight sql docutils literal highlight-sql"><span class="k">SUM</span><span class="p">()</span></code>, <code class="code highlight sql docutils literal highlight-sql"><span class="k">AVG</span><span class="p">()</span></code>, etc.</p></li>
 <li><p>Modifier une colonne dans <strong>Calculates Columns</strong> avec des commandes SQL telles que <code class="code highlight sql docutils literal highlight-sql"><span class="k">CAST</span><span class="p">(</span><span class="n">recovery_rate</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nb">float</span></code></p></li>
 </ul>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p>Les fonctions d’agrégation ne sont pas autorisées dans <cite>Calculated Columns</cite></p>
 </div>
 </section>
 </section>
 <section id="production-d-un-dashboard">
 <h3>Production d’un Dashboard<a class="headerlink" href="#production-d-un-dashboard" title="Link to this heading">#</a></h3>
-<p><code class="code highlight python docutils literal highlight-python"><span class="n">Superset</span></code> autorise deux modes exploratoires :</p>
+<p><code class="code highlight python docutils literal highlight-python"><span class="n">Superset</span></code> autorise deux modes d’exploration des données:</p>
 <ul class="simple">
 <li><p><strong>Chart</strong>, un <em>no-code viz-builder</em> qui permet la production de grahiques de façon interactive et agnostique vis-à-vis du code.</p></li>
-<li><p><strong>SQL Lab</strong> qui offre une interface SQL pour visualiser les datasets importés, faire des jointures et les préparer en vue de générer des <em>Charts</em></p></li>
+<li><p><strong>SQL Lab</strong> qui offre une interface SQL pour visualiser les datasets importés, faire des jointures et les préparer en vue de générer des <em>Charts</em>.</p></li>
 </ul>
 <p>Pour le premier, il suffit de cliquer sur le nom du dataset pour lancer la création d’un chart.
-Pour le second, il faut se rendre dans <span class="menuselection">SQL ‣ SQL lab</span>. La requête SQL permet de générer un nouveau dataset qu’on peut enregistrer et qui peut servir à la création d’un <em>Chart</em>.
-Une fois son chart réalisé, on peut l’enregistrer dans un <em>Dashboard</em>. Ce dernier permet d’explorer de façon dynamique et intéractive les différents graphiques ou <em>charts</em> crées à partir des <em>datasets</em>.</p>
+Pour le second, il faut se rendre dans <span class="menuselection">SQL ‣ SQL lab</span>. La requête SQL permet de générer un nouveau dataset qu’on peut enregistrer et qui peut servir à la création d’un <em>chart</em>.</p>
+<p>Une fois son <em>chart</em> réalisé, on peut l’enregistrer dans un <em>Dashboard</em>. Ce dernier permet d’explorer de façon dynamique et intéractive les différents graphiques ou <em>charts</em> crées à partir des <em>datasets</em>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Il est possible de télécharger le <em>dashboard</em> en pdf ou en image. A noter qu’il est préférable de le partager afin de garder l’interface intéractive (voir section <a class="reference internal" href="#collab"><span class="std std-ref">Collaborer sur Superset: partage d’un Dashboard</span></a>)</p>
+<p>Il est possible de télécharger le <em>dashboard</em> en pdf ou en image. A noter qu’il est préférable de le partager afin de garder l’interface intéractive (voir section <a class="reference internal" href="#collab"><span class="std std-ref">Collaboration sur Superset: partage d’un tableau de bord</span></a>)</p>
 </div>
 <section id="illustration-avec-les-donnees-du-plan-de-relance">
 <h4>Illustration avec les données du Plan de Relance<a class="headerlink" href="#illustration-avec-les-donnees-du-plan-de-relance" title="Link to this heading">#</a></h4>
 <p>Les données sur le <a class="reference external" href="https://www.economie.gouv.fr/plan-de-relance">Plan de Relance</a> sont ouvertes et disponibles sur la plateforme <a class="reference external" href="https://data.economie.gouv.fr/explore/dataset/plan-de-relance/table/">data.economie.gouv</a>.</p>
-<p>Il est possible d’importer un fichier csv dans la <em>database</em> en cliquant sur <code class="code highlight python docutils literal highlight-python"><span class="o">+</span></code> puis en sélectionnant dans le menu <span class="menuselection">Data ‣ Upload CSV to database</span>. Dans notre exemple, sur la fenêtre qui s’affiche, choisir comme <code class="code highlight python docutils literal highlight-python"><span class="n">Delimiter</span></code> <strong>Other</strong>.</p>
-<p>On peut visualiser les données dans <code class="code highlight python docutils literal highlight-python"><span class="n">SQL</span> <span class="n">Lab</span></code>. Pour ce faire il faut sélectionner la table de donnée importée dans le menu <em>See Table Schema</em>, comme l’illustre <a class="reference internal" href="#sql"><span class="std std-numref">Fig. 3</span></a>.</p>
+<p>Il est possible d’importer un fichier csv dans la <em>database</em> en cliquant sur <code class="code highlight python docutils literal highlight-python"><span class="o">+</span></code> puis en sélectionnant dans le menu <span class="menuselection">Data ‣ Upload CSV to database</span>. Une fenêtre apparaît alors pour rentrer les propriétés du dataset importé. Dans notre example chosi, il faudra définir comme <code class="code highlight python docutils literal highlight-python"><span class="n">Delimiter</span></code> Other.</p>
+<p>Ensuite, on peut visualiser les données dans <code class="code highlight python docutils literal highlight-python"><span class="n">SQL</span> <span class="n">Lab</span></code>. Pour ce faire, il faut sélectionner la table de donnée importée dans le menu <em>See Table Schema</em>, comme l’illustre <a class="reference internal" href="#sql"><span class="std std-numref">Fig. 3</span></a>.</p>
 <figure class="align-default" id="id5">
 <span id="sql"></span><a class="reference internal image-reference" href="_images/supersetSQL.png"><img alt="Alternative text" src="_images/supersetSQL.png" style="width: 800px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 3 </span><span class="caption-text">Le SQL Lab de <code class="code highlight python docutils literal highlight-python"><span class="n">superset</span></code></span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Ensuite, la création de <em>charts</em> se fait de manière intéractive comme le montre la figure <a class="reference internal" href="#chart"><span class="std std-numref">Fig. 4</span></a>.</p>
+<p>Enfin, la création de <em>charts</em> se fait de manière intéractive, comme le montre la figure <a class="reference internal" href="#chart"><span class="std std-numref">Fig. 4</span></a>.</p>
 <figure class="align-default" id="id6">
 <span id="chart"></span><a class="reference internal image-reference" href="_images/supersetCharts.png"><img alt="Alternative text" src="_images/supersetCharts.png" style="width: 800px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 4 </span><span class="caption-text">Exemple d’un <em>chart</em></span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Enfin, on enregistre le <em>chart</em> dans un <em>dashboard</em> qu’on peut éditer et partager.</p>
-<p>Voici un exemple de dashboard avec les données de data.gouv.economie sur le Plan de Relance:</p>
+<p>Pour finir, on enregistre le <em>chart</em> dans un <em>dashboard</em> qu’on peut éditer et partager.</p>
+<p>Voici un exemple de dashboard avec les données de <a class="reference external" href="https://data.economie.gouv.fr/explore/dataset/plan-de-relance/table/">data.gouv.economie</a> sur le Plan de Relance:</p>
 <figure class="align-default" id="id7">
 <span id="dashboard"></span><a class="reference internal image-reference" href="_images/superset.png"><img alt="Alternative text" src="_images/superset.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Exemple de dashboard</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Un exemple de <em>dashboard</em></span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Pour créer une carte, <code class="code highlight python docutils literal highlight-python"><span class="n">superset</span></code> nécessite les codes ISO-3166-2 des régions et départements, comme l’indique la <a class="reference external" href="https://superset.apache.org/docs/configuration/country-map-tools/">documentation de superset</a>. Pour créer la carte présente dans le dashboard figurant dans <a class="reference internal" href="#dashboard"><span class="std std-numref">Fig. 5</span></a>, nous avons importée une table supplémentaire, construite à partir de plateforme en ligne <a class="reference external" href="https://www.iso.org/obp/ui/#iso:code:3166:FR">ISO</a> que l’on a joint à la table initiale.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Pour créer une carte, <code class="code highlight python docutils literal highlight-python"><span class="n">superset</span></code> nécessite les codes <strong>ISO-3166-2</strong> des régions et départements, comme l’indique la <a class="reference external" href="https://superset.apache.org/docs/configuration/country-map-tools/">documentation de superset</a>. Pour créer la carte présente dans le dashboard figurant dans <a class="reference internal" href="#dashboard"><span class="std std-numref">Fig. 5</span></a>, nous avons importée une table supplémentaire, construite à partir de la plateforme en ligne <a class="reference external" href="https://www.iso.org/obp/ui/#iso:code:3166:FR">ISO</a> que l’on a joint à la table initiale.</p>
 </div>
 </section>
 </section>
-<section id="collaborer-sur-superset-partage-d-un-dashboard">
-<span id="collab"></span><h3>Collaborer sur <code class="code highlight python docutils literal highlight-python"><span class="n">Superset</span></code>: partage d’un Dashboard<a class="headerlink" href="#collaborer-sur-superset-partage-d-un-dashboard" title="Link to this heading">#</a></h3>
-<p>Le service <code class="code highlight python docutils literal highlight-python"><span class="n">Superset</span></code> permet la <strong>gestion des utilisateurs</strong> pour les productions du service. Ainsi, il est possible de définir les propriétés d’accès aux différents <em>dashboards</em> et <em>datasets</em> en déterminant les utilisateurs qui pourront collaborer ou simplement consulter.</p>
-<p>Pour ajouter un nouvel utilisateur du service, il faut se rendre dans <span class="menuselection">Settings ‣ List Users</span>, ce qui amène à la page
-<a class="reference internal" href="#users"><span class="std std-numref">Fig. 7</span></a>. Cliquer ensuite sur <code class="code highlight python docutils literal highlight-python"><span class="n">Add</span> <span class="n">a</span> <span class="n">new</span> <span class="n">record</span></code> pour ajouter un nouvel utilisateur. Comme le montre <a class="reference internal" href="#adduser"><span class="std std-numref">Fig. 6</span></a>, on peut attribuer un <em>role</em> à un utilisateur.</p>
-<figure class="align-default" id="id8">
-<span id="adduser"></span><a class="reference internal image-reference" href="_images/SupersetAddUser.png"><img alt="_images/SupersetAddUser.png" src="_images/SupersetAddUser.png" style="width: 45%;" /></a>
+<section id="collaboration-sur-superset-partage-d-un-tableau-de-bord">
+<span id="collab"></span><h3>Collaboration sur <code class="code highlight python docutils literal highlight-python"><span class="n">Superset</span></code>: partage d’un tableau de bord<a class="headerlink" href="#collaboration-sur-superset-partage-d-un-tableau-de-bord" title="Link to this heading">#</a></h3>
+<p>Le service <code class="code highlight python docutils literal highlight-python"><span class="n">Superset</span></code> permet la <strong>gestion des utilisateurs</strong> sur les productions du service. Ainsi, il est possible de définir les propriétés d’accès aux différents <em>dashboards</em> et <em>datasets</em> en déterminant les utilisateurs qui pourront collaborer ou simplement consulter.</p>
+<p>Pour ajouter un nouvel utilisateur au service, il faut se rendre dans <span class="menuselection">Settings ‣ List Users</span>, ce qui amène à la page
+montré dans <a class="reference internal" href="#adduser"><span class="std std-numref">Fig. 6</span></a>. Cliquer ensuite sur <code class="code highlight python docutils literal highlight-python"><span class="n">Add</span> <span class="n">a</span> <span class="n">new</span> <span class="n">record</span></code> pour ajouter un nouvel utilisateur. Comme le montre <a class="reference internal" href="#users"><span class="std std-numref">Fig. 7</span></a>, on peut attribuer un <em>role</em> à un utilisateur.</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><figure class="align-default" id="id8">
+<span id="users"></span><a class="reference internal image-reference" href="_images/SupersetgestionUser.png"><img alt="_images/SupersetgestionUser.png" src="_images/SupersetgestionUser.png" style="width: 150%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Ajout d’un utilisateur</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Gestion des utilisateurs</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-default" id="id9">
-<span id="users"></span><a class="reference internal image-reference" href="_images/SupersetgestionUser.png"><img alt="_images/SupersetgestionUser.png" src="_images/SupersetgestionUser.png" style="width: 45%;" /></a>
+</td>
+<td><figure class="align-default" id="id9">
+<span id="adduser"></span><a class="reference internal image-reference" href="_images/SupersetAddUser.png"><img alt="_images/SupersetAddUser.png" src="_images/SupersetAddUser.png" style="width: 150%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Gestion des utilisateurs</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Ajout d’un utilisateur</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
 <p>Pour connaître la différence entre les différents <em>roles</em>, se rendre dans <span class="menuselection">Settings ‣ List Roles</span>. Il y est également possible de modifier les attributs associés et de définir un nouveau <em>role</em>.</p>
 </div>
-<p>Dans <code class="code highlight python docutils literal highlight-python"><span class="n">Dashboard</span></code>, placer la souris sous le champ <code class="code highlight python docutils literal highlight-python"><span class="n">Action</span></code> puis cliquer sur l’icône pour modifier. Une nouvelle fenêtre apparaît (voir <a class="reference internal" href="#dashboardshare"><span class="std std-numref">Fig. 8</span></a>) dans laquelle on peut ajouter le nouvel utilisateur défini précédemment comme <code class="code highlight python docutils literal highlight-python"><span class="n">Owners</span></code>. Ce dernier pourra alors collaborer sur la réalisation du <em>Dashboard</em>.</p>
+<p>Ensuite, dans <code class="code highlight python docutils literal highlight-python"><span class="n">Dashboard</span></code>, placer la souris sous le champ <code class="code highlight python docutils literal highlight-python"><span class="n">Action</span></code> puis cliquer sur l’icône pour modifier. Une nouvelle fenêtre apparaît (voir <a class="reference internal" href="#dashboardshare"><span class="std std-numref">Fig. 8</span></a>) dans laquelle on peut ajouter le nouvel utilisateur défini précédemment comme <strong>Owners</strong>. Ce dernier pourra alors collaborer sur la réalisation du <em>Dashboard</em>.</p>
 <figure class="align-default" id="id10">
 <span id="dashboardshare"></span><a class="reference internal image-reference" href="_images/SupersetDashboardShare.png"><img alt="Alternative text" src="_images/SupersetDashboardShare.png" style="width: 800px;" /></a>
 <figcaption>
@@ -580,7 +590,7 @@ Une fois son chart réalisé, on peut l’enregistrer dans un <em>Dashboard</em>
 <li><a class="reference internal" href="#illustration-avec-les-donnees-du-plan-de-relance">Illustration avec les données du Plan de Relance</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#collaborer-sur-superset-partage-d-un-dashboard">Collaborer sur <code class="code highlight python docutils literal highlight-python"><span class="n">Superset</span></code>: partage d’un Dashboard</a></li>
+<li><a class="reference internal" href="#collaboration-sur-superset-partage-d-un-tableau-de-bord">Collaboration sur <code class="code highlight python docutils literal highlight-python"><span class="n">Superset</span></code>: partage d’un tableau de bord</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#cas-usage-3-ia-generative"><strong>Cas Usage 3</strong> : IA Générative</a></li>

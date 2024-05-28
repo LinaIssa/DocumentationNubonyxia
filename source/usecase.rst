@@ -162,9 +162,10 @@ Exécution de la pipeline
 
 Une fois tous les prérequis remplis, la pipeline devrait se lancer automatiquement. Il est possible de voir son exécution dans l'onglet "Build" puis "Pipelines". Si tout se passe bien, chaque étape sera marquée d'une coche verte. Sinon, se reporter à la partie suivante.
 
+.. _commandKubectl:
+
 Commande pour debugger 
 ########################
-.. _commandKubectl:
 
 .. code:: bash
   
@@ -177,6 +178,7 @@ Commande pour debugger
 
 Partage d'une application R shiny depuis `Nubonyxia`_
 ######################################################
+
 Pour partager rapidement une application RShiny, il est possible de lancer un *server* depuis son service **RStudio** et de partager une URL.
 
 Pour cela, il faut :
@@ -219,7 +221,7 @@ Un exemple de code :
 **Cas Usage 2** : Data Visualisation avec :python:`Superset` 
 -------------------------------------------------------------
 
-Cette section présente quelques cas d’usage simple de :python:`Superset` et vous accompagne dans votre première utilisation. En particulier, la configuration du service sera détaillée. Il ne s’agit pas d'un guide extensif du service mais plutôt d'une prise en main de l'outil dans l’écosystème Nubonyxia. 
+Cette section présente quelques cas d’usage simple de :python:`Superset` et vous accompagne dans votre première utilisation. En particulier, la configuration du service sera détaillée. Il ne s’agit pas d'un guide extensif du service mais plutôt d'une prise en main de l'outil dans l’écosystème de `Nubonyxia`_. 
 
 Configuration de :python:`Superset`  
 ########################
@@ -227,20 +229,20 @@ Configuration de :python:`Superset`
 Création d'une DataBase 
 ***********************
 
-Il faut se rendre dans :menuselection:`Settings --> Data --> database Connections`. Puis cliquer sur :python:`+ database`. Dans la suite, nous allons connecter la Database au serveur de base de données :python:`PostgreSQL` disponible dans le catalogue de services. 
-Avant de poursuivre, vérifiez qu'un service :python:`PostgreSQL` est disponible dans `Mes services <https://nubonyxia.incubateur.finances.rie.gouv.fr/my-services/>`_. 
+Il faut se rendre dans :menuselection:`Settings --> Data --> Database Connections`. Puis cliquer sur :python:`+ database`. Dans la suite, nous allons connecter la *Database* au serveur de base de données :python:`PostgreSQL` disponible dans le catalogue de services. 
+Avant de poursuivre, vérifiez qu'un service :python:`PostgreSQL` est lancé dans `Mes services <https://nubonyxia.incubateur.finances.rie.gouv.fr/my-services/>`_. 
 
 Ensuite, les options de configuration sont les suivantes: 
 
-* **Host** : de la forme `postgresql-826506` 
+* **Host**, de la forme `postgresql-826506` 
 
-* **Port** : par exemple 5432
+* **Port**, par exemple 5432
 
-* **Username**
+* **Username** 
 
 * **Password** 
 
-Pour les compléter, s'appuyer sur le **README** du service :python:`PostgreSQL` ouvert, comme le montre :numref:`connectDataBase`.
+Pour les compléter, il faut s'appuyer sur le **README** du service :python:`PostgreSQL`, comme le montre :numref:`connectDataBase`.
 
 
 .. _connectDataBase:
@@ -252,9 +254,9 @@ Pour les compléter, s'appuyer sur le **README** du service :python:`PostgreSQL`
 
   **README** d'une instance PostgreSQL lancée sur la plateforme
 
-.. warning:: 
+.. important:: 
 
-  Pour autoriser le téléversement de fichiers CSV, se rendre dans :menuselection:`Dans Advanced-->Security` Puis cochez `Allow file uploads to database`
+  Pour autoriser le téléversement de fichiers CSV, se rendre dans :menuselection:`Advanced-->Security` Puis cochez `Allow file uploads to database`.
 
 Préparation d'un dataset 
 ***********************
@@ -265,10 +267,10 @@ Préparation d'un dataset
 
 Dans l’onglet :python:`Datasets` sont listés les datasets récupérés depuis une base de donnée ou importés. Il est possible de modifier les propriétés des colonnes d'un dataset dans :python:`Edit/Columns`.
 
-* Définir une colonne métrique comme colonne à partir de requêtes SQL agrégeant des valeurs issues de plusieurs colonnes:  :sql:`SUM()`, :sql:`AVG()`, etc. 
+* Définir une colonne métrique à partir de requêtes SQL agrégeant des valeurs issues de plusieurs colonnes:  :sql:`SUM()`, :sql:`AVG()`, etc. 
 * Modifier une colonne dans **Calculates Columns** avec des commandes SQL telles que :sql:`CAST(recovery_rate) as float`
 
-.. warning::
+.. Note::
 
   Les fonctions d’agrégation ne sont pas autorisées dans `Calculated Columns`
 
@@ -278,14 +280,15 @@ Dans l’onglet :python:`Datasets` sont listés les datasets récupérés depuis
 Production d'un Dashboard 
 ########################
 
-:python:`Superset` autorise deux modes exploratoires : 
+:python:`Superset` autorise deux modes d'exploration des données: 
 
 * **Chart**, un *no-code viz-builder* qui permet la production de grahiques de façon interactive et agnostique vis-à-vis du code.  
-* **SQL Lab** qui offre une interface SQL pour visualiser les datasets importés, faire des jointures et les préparer en vue de générer des *Charts* 
+* **SQL Lab** qui offre une interface SQL pour visualiser les datasets importés, faire des jointures et les préparer en vue de générer des *Charts*.
 
 Pour le premier, il suffit de cliquer sur le nom du dataset pour lancer la création d’un chart.
-Pour le second, il faut se rendre dans :menuselection:`SQL --> SQL lab`. La requête SQL permet de générer un nouveau dataset qu'on peut enregistrer et qui peut servir à la création d'un *Chart*. 
-Une fois son chart réalisé, on peut l’enregistrer dans un *Dashboard*. Ce dernier permet d'explorer de façon dynamique et intéractive les différents graphiques ou *charts* crées à partir des *datasets*. 
+Pour le second, il faut se rendre dans :menuselection:`SQL --> SQL lab`. La requête SQL permet de générer un nouveau dataset qu'on peut enregistrer et qui peut servir à la création d'un *chart*.
+
+Une fois son *chart* réalisé, on peut l’enregistrer dans un *Dashboard*. Ce dernier permet d'explorer de façon dynamique et intéractive les différents graphiques ou *charts* crées à partir des *datasets*. 
 
 .. note::
   Il est possible de télécharger le *dashboard* en pdf ou en image. A noter qu'il est préférable de le partager afin de garder l'interface intéractive (voir section :ref:`collab`)
@@ -295,10 +298,10 @@ Illustration avec les données du Plan de Relance
 
 Les données sur le `Plan de Relance <https://www.economie.gouv.fr/plan-de-relance>`_ sont ouvertes et disponibles sur la plateforme `data.economie.gouv <https://data.economie.gouv.fr/explore/dataset/plan-de-relance/table/>`_. 
 
-Il est possible d'importer un fichier csv dans la *database* en cliquant sur :python:`+` puis en sélectionnant dans le menu :menuselection:`Data --> Upload CSV to database`. Dans notre exemple, sur la fenêtre qui s'affiche, choisir comme :python:`Delimiter` **Other**. 
+Il est possible d'importer un fichier csv dans la *database* en cliquant sur :python:`+` puis en sélectionnant dans le menu :menuselection:`Data --> Upload CSV to database`. Une fenêtre apparaît alors pour rentrer les propriétés du dataset importé. Dans notre example chosi, il faudra définir comme :python:`Delimiter` Other. 
 
 
-On peut visualiser les données dans :python:`SQL Lab`. Pour ce faire il faut sélectionner la table de donnée importée dans le menu *See Table Schema*, comme l'illustre :numref:`SQL`.
+Ensuite, on peut visualiser les données dans :python:`SQL Lab`. Pour ce faire, il faut sélectionner la table de donnée importée dans le menu *See Table Schema*, comme l'illustre :numref:`SQL`.
 
 .. _SQL:
 
@@ -311,7 +314,7 @@ On peut visualiser les données dans :python:`SQL Lab`. Pour ce faire il faut s�
 
 
 
-Ensuite, la création de *charts* se fait de manière intéractive comme le montre la figure :numref:`Chart`. 
+Enfin, la création de *charts* se fait de manière intéractive, comme le montre la figure :numref:`Chart`. 
 
 .. _Chart:
 
@@ -323,57 +326,59 @@ Ensuite, la création de *charts* se fait de manière intéractive comme le mont
   Exemple d'un *chart*
 
 
-Enfin, on enregistre le *chart* dans un *dashboard* qu'on peut éditer et partager. 
+Pour finir, on enregistre le *chart* dans un *dashboard* qu'on peut éditer et partager. 
 
-Voici un exemple de dashboard avec les données de data.gouv.economie sur le Plan de Relance: 
+Voici un exemple de dashboard avec les données de `data.gouv.economie <https://data.economie.gouv.fr/explore/dataset/plan-de-relance/table/>`_ sur le Plan de Relance: 
 
 .. _Dashboard:
 .. figure:: images/superset.png
   :width: 800
   :alt: Alternative text
 
-  Exemple de dashboard 
+  Un exemple de *dashboard* 
 
 
-.. note::
-  Pour créer une carte, :python:`superset` nécessite les codes ISO-3166-2 des régions et départements, comme l'indique la `documentation de superset <https://superset.apache.org/docs/configuration/country-map-tools/>`_. Pour créer la carte présente dans le dashboard figurant dans :numref:`Dashboard`, nous avons importée une table supplémentaire, construite à partir de plateforme en ligne `ISO <https://www.iso.org/obp/ui/#iso:code:3166:FR>`_ que l'on a joint à la table initiale. 
+.. important::
+  Pour créer une carte, :python:`superset` nécessite les codes **ISO-3166-2** des régions et départements, comme l'indique la `documentation de superset <https://superset.apache.org/docs/configuration/country-map-tools/>`_. Pour créer la carte présente dans le dashboard figurant dans :numref:`Dashboard`, nous avons importée une table supplémentaire, construite à partir de la plateforme en ligne `ISO <https://www.iso.org/obp/ui/#iso:code:3166:FR>`_ que l'on a joint à la table initiale. 
 
 
 
 
 .. _collab:
 
-Collaborer sur :python:`Superset`: partage d'un Dashboard 
-#########################################################
+Collaboration sur :python:`Superset`: partage d'un tableau de bord 
+##################################################################
 
-Le service :python:`Superset` permet la **gestion des utilisateurs** pour les productions du service. Ainsi, il est possible de définir les propriétés d'accès aux différents *dashboards* et *datasets* en déterminant les utilisateurs qui pourront collaborer ou simplement consulter. 
+Le service :python:`Superset` permet la **gestion des utilisateurs** sur les productions du service. Ainsi, il est possible de définir les propriétés d'accès aux différents *dashboards* et *datasets* en déterminant les utilisateurs qui pourront collaborer ou simplement consulter. 
 
-Pour ajouter un nouvel utilisateur du service, il faut se rendre dans :menuselection:`Settings --> List Users`, ce qui amène à la page 
-:numref:`Users`. Cliquer ensuite sur :python:`Add a new record` pour ajouter un nouvel utilisateur. Comme le montre :numref:`addUser`, on peut attribuer un *role* à un utilisateur. 
+Pour ajouter un nouvel utilisateur au service, il faut se rendre dans :menuselection:`Settings --> List Users`, ce qui amène à la page 
+montré dans :numref:`addUser`. Cliquer ensuite sur :python:`Add a new record` pour ajouter un nouvel utilisateur. Comme le montre :numref:`Users`, on peut attribuer un *role* à un utilisateur. 
 
+.. list-table:: 
 
-.. _addUser:
+  * - .. _Users:
 
-.. figure:: images/SupersetAddUser.png
-   :width: 45%
+      .. figure:: images/SupersetgestionUser.png
+        :width: 150%
 
-   Ajout d'un utilisateur 
-
-
-.. _Users:
-
-.. figure:: images/SupersetgestionUser.png
-   :width: 45%
-
-   Gestion des utilisateurs 
+        Gestion des utilisateurs
 
 
-.. note::
+    - .. _addUser:
+
+      .. figure:: images/SupersetAddUser.png
+        :width: 150%
+
+        Ajout d'un utilisateur 
+
+
+
+.. important::
   Pour connaître la différence entre les différents *roles*, se rendre dans :menuselection:`Settings --> List Roles`. Il y est également possible de modifier les attributs associés et de définir un nouveau *role*. 
 
 
 
-Dans :python:`Dashboard`, placer la souris sous le champ :python:`Action` puis cliquer sur l'icône pour modifier. Une nouvelle fenêtre apparaît (voir :numref:`DashboardShare`) dans laquelle on peut ajouter le nouvel utilisateur défini précédemment comme :python:`Owners`. Ce dernier pourra alors collaborer sur la réalisation du *Dashboard*. 
+Ensuite, dans :python:`Dashboard`, placer la souris sous le champ :python:`Action` puis cliquer sur l'icône pour modifier. Une nouvelle fenêtre apparaît (voir :numref:`DashboardShare`) dans laquelle on peut ajouter le nouvel utilisateur défini précédemment comme **Owners**. Ce dernier pourra alors collaborer sur la réalisation du *Dashboard*. 
 
 
 .. _DashboardShare:

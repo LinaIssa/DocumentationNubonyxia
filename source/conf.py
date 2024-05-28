@@ -54,12 +54,12 @@ exclude_patterns = []
 # a list of builtin themes.
 
 #
-html_theme = 'furo'
+html_theme = 'furo' #pydata-sphinx-theme
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_title = 'Nubonyxia'
+html_title = ' '
 
 html_theme_options = {
     "icon_links": [
@@ -72,6 +72,9 @@ html_theme_options = {
             
             # Icon class (if "type": "fontawesome"), or path to local image (if "type": "local")
             "icon": "fa-brands fa-square-gitlab",
+
+#            "announcement"    : "", to make an announcement
+
             
             # The type of image to be used (see below for details)
             "type": "fontawesome",
@@ -82,16 +85,22 @@ html_theme_options = {
         
         # Alt text for blind people
         "alt_text"    : "Nubonyxia Documentation - Home",
-        "text"        : "Nubonyxia",
         "image_light" : "_static/logo_Nubonyxia.png",
         "image_dark"  : "_static/logo_Nubonyxia.png",
     },
-    
     "show_nav_level"  : 2
 }
-html_logo = "images/logo_Nubonyxia.png"
+# Workaround to rmove sidebar when using pydata-sphinx-theme
+#html_sidebars = {
+#    "firststeps": [],
+#    "methode": [],
+#    "minio": [],
+#    "services": [],
+#    "usecase": []
+#}
 
-  
+html_logo = "images/logo_Nubonyxia.png"
+html_css_files   = ["mycss.css"]
 html_static_path = ['_static']
 
 # Add any Sphinx extension module names here, as strings. They can be
@@ -99,6 +108,7 @@ html_static_path = ['_static']
 # ones.
 extensions = [
     'sphinx_design',
+    'sphinx.ext.autosectionlabel',
     'sphinx.ext.duration',
     'sphinx.ext.doctest',
     'sphinx.ext.autodoc',
@@ -106,6 +116,10 @@ extensions = [
   #  'sphinxcontrib.osexample',
     'sphinx_tabs.tabs'
 ]
+
+autosectionlabel_prefix_document = True
+
+
 rst_prolog = """
 .. role:: python(code)
   :language: python
