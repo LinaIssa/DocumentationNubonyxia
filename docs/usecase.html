@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="prev" title="Configuration des services" href="services.html" />
 
     <!-- Generated with Sphinx 7.2.6 and Furo 2024.01.29 -->
-        <title>Cas d’usages Nubonyxia - Nubonyxia 0.1 documentation</title>
+        <title>Cas d’usages Nubonyxia - Nubonyxia</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=a5c4661c" />
@@ -125,7 +125,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">Nubonyxia 0.1 documentation</div></a>
+      <a href="index.html"><div class="brand">Nubonyxia</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -147,8 +147,11 @@
       
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="_static/logo_Nubonyxia.png" alt="Logo"/>
+  </div>
   
-  <span class="sidebar-brand-text">Nubonyxia 0.1 documentation</span>
+  <span class="sidebar-brand-text">Nubonyxia</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -302,20 +305,20 @@ Python</label><div class="sd-tab-content docutils">
 <section id="configuration-kubernetes">
 <h4>3. Configuration Kubernetes<a class="headerlink" href="#configuration-kubernetes" title="Link to this heading">#</a></h4>
 <p>Il faut ajouter un secret dans <a class="reference external" href="https://kubernetes.io/fr/">Kubernetes</a>. Pour cela, ouvrir un service <strong>VSCode</strong> dans Onyxia, en prenant soin dans l’onglet <span class="menuselection">Kubernetes</span> de choisir le mode admin. Puis ouvrir un terminal dans VSCode et exécuter les commandes suivantes:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">HARBOR_AUTH</span><span class="o">=</span><span class="err">$</span><span class="p">(</span><span class="n">echo</span> <span class="o">-</span><span class="n">n</span> <span class="s2">&quot;HARBOR_USERNAME:HARBOR_PASSWORD&quot;</span> <span class="o">|</span> <span class="n">base64</span><span class="p">)</span>
-<span class="n">cat</span> <span class="o">&lt;&lt;</span><span class="n">EOF</span> <span class="o">&gt;</span> <span class="n">dockerconfig</span><span class="o">.</span><span class="n">json</span>
-<span class="p">{</span><span class="s2">&quot;auths&quot;</span><span class="p">:</span>
-  <span class="p">{</span><span class="s2">&quot;harbor.lab.incubateur.finances.rie.gouv.fr&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;auth&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;HARBOR_AUTH&gt;&quot;</span><span class="p">}</span>
-<span class="p">}}</span>
-<span class="n">EOF</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">HARBOR_AUTH</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;HARBOR_USERNAME:HARBOR_PASSWORD&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>base64<span class="k">)</span>
+cat<span class="w"> </span><span class="s">&lt;&lt;EOF &gt; dockerconfig.json</span>
+<span class="s">{&quot;auths&quot;:</span>
+<span class="s">  {&quot;harbor.lab.incubateur.finances.rie.gouv.fr&quot;: {&quot;auth&quot;: &quot;&lt;HARBOR_AUTH&gt;&quot;}</span>
+<span class="s">}}</span>
+<span class="s">EOF</span>
 </pre></div>
 </div>
 <p>en remplaçant <code class="code highlight python docutils literal highlight-python"><span class="n">HARBOR_USERNAME</span></code> et <code class="code highlight python docutils literal highlight-python"><span class="n">HARBOR_PASSWORD</span></code> par leurs valeurs. Puis :</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">kubectl</span> <span class="n">create</span> <span class="n">secret</span> <span class="n">generic</span> <span class="n">registries</span> \
-<span class="o">--</span><span class="n">from</span><span class="o">-</span><span class="n">literal</span><span class="o">=</span><span class="n">AWS_DEFAULT_REGION</span><span class="o">=</span><span class="n">us</span><span class="o">-</span><span class="n">east</span><span class="o">-</span><span class="mi">1</span> \
-<span class="o">--</span><span class="n">from</span><span class="o">-</span><span class="n">literal</span><span class="o">=</span><span class="n">AWS_S3_ENDPOINT</span><span class="o">=</span><span class="s2">&quot;minio.lab.incubateur.finances.rie.gouv.fr&quot;</span> \
-<span class="o">--</span><span class="n">from</span><span class="o">-</span><span class="n">literal</span><span class="o">=</span><span class="n">AWS_ACCESS_KEY_ID</span><span class="o">=</span><span class="s2">&quot;MyAccessKey&quot;</span> \
-<span class="o">--</span><span class="n">from</span><span class="o">-</span><span class="n">literal</span><span class="o">=</span><span class="n">AWS_SECRET_ACCESS_KEY</span><span class="o">=</span><span class="s2">&quot;MySecretKey&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>generic<span class="w"> </span>registries<span class="w"> </span><span class="se">\</span>
+--from-literal<span class="o">=</span><span class="nv">AWS_DEFAULT_REGION</span><span class="o">=</span>us-east-1<span class="w"> </span><span class="se">\</span>
+--from-literal<span class="o">=</span><span class="nv">AWS_S3_ENDPOINT</span><span class="o">=</span><span class="s2">&quot;minio.lab.incubateur.finances.rie.gouv.fr&quot;</span><span class="w"> </span><span class="se">\</span>
+--from-literal<span class="o">=</span><span class="nv">AWS_ACCESS_KEY_ID</span><span class="o">=</span><span class="s2">&quot;MyAccessKey&quot;</span><span class="w"> </span><span class="se">\</span>
+--from-literal<span class="o">=</span><span class="nv">AWS_SECRET_ACCESS_KEY</span><span class="o">=</span><span class="s2">&quot;MySecretKey&quot;</span>
 </pre></div>
 </div>
 <p>où <strong>MyAccessKey</strong> et <strong>AWS_SECRET_ACCESS_KE</strong> correspondent aux clés <a class="reference external" href="https://minio-console.lab.incubateur.finances.rie.gouv.fr/">MinIO</a> crées lors de sa première connexion, voir la section <a class="reference internal" href="minio.html#miniokeys"><span class="std std-ref">Création des clés d’accès à MinIO</span></a>.</p>
@@ -327,11 +330,13 @@ Python</label><div class="sd-tab-content docutils">
 </section>
 <section id="commande-pour-debugger">
 <h3>Commande pour debugger<a class="headerlink" href="#commande-pour-debugger" title="Link to this heading">#</a></h3>
-<p id="commandkubectl"><strong class="command">kubectl get pods</strong> pour voir les pods en fonctionnement</p>
-<p><strong class="command">kubectl delete pod &lt;nom_pod&gt;</strong> pour supprimer un pod</p>
-<p><strong class="command">kubectl get deployment</strong> pour voir les déploiements</p>
-<p><strong class="command">kubectl delete deployment deployment_name</strong> pour supprimer un déploiement</p>
-<p><strong class="command">kubectl logs pod_name</strong> pour voir les logs d’un pod.</p>
+<div class="highlight-bash notranslate" id="commandkubectl"><div class="highlight"><pre><span></span>kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w">                          </span><span class="c1">#pour voir les pods en fonctionnement</span>
+kubectl<span class="w"> </span>delete<span class="w"> </span>pod<span class="w"> </span>&lt;name_pod&gt;<span class="w">              </span><span class="c1">#pour supprimer un pod</span>
+kubectl<span class="w"> </span>get<span class="w"> </span>deployment<span class="w">                    </span><span class="c1">#pour voir les déploiements</span>
+kubectl<span class="w"> </span>delete<span class="w"> </span>deployment<span class="w"> </span>deployment_name<span class="w"> </span><span class="c1">#pour supprimer un déploiement</span>
+kubectl<span class="w"> </span>logs<span class="w"> </span>pod_name<span class="w">                     </span><span class="c1">#pour voir les logs d&#39;un pod.</span>
+</pre></div>
+</div>
 </section>
 <section id="partage-d-une-application-r-shiny-depuis-nubonyxia">
 <h3>Partage d’une application R shiny depuis <a class="reference external" href="https://nubonyxia.incubateur.finances.rie.gouv.fr">Nubonyxia</a><a class="headerlink" href="#partage-d-une-application-r-shiny-depuis-nubonyxia" title="Link to this heading">#</a></h3>

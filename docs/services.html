@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Cas d’usages Nubonyxia" href="usecase.html" /><link rel="prev" title="Guide des bonnes pratiques" href="methode.html" />
 
     <!-- Generated with Sphinx 7.2.6 and Furo 2024.01.29 -->
-        <title>Configuration des services - Nubonyxia 0.1 documentation</title>
+        <title>Configuration des services - Nubonyxia</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=a5c4661c" />
@@ -125,7 +125,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">Nubonyxia 0.1 documentation</div></a>
+      <a href="index.html"><div class="brand">Nubonyxia</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -147,8 +147,11 @@
       
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="_static/logo_Nubonyxia.png" alt="Logo"/>
+  </div>
   
-  <span class="sidebar-brand-text">Nubonyxia 0.1 documentation</span>
+  <span class="sidebar-brand-text">Nubonyxia</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -229,9 +232,9 @@ Init</label><div class="sd-tab-content docutils">
 <li><p><cite>PersonalInitArgs</cite>: options correspondant aux variables <code class="code highlight python docutils literal highlight-python"><span class="err">$</span><span class="mi">1</span></code> <code class="code highlight python docutils literal highlight-python"><span class="err">$</span><span class="mi">2</span></code> dans le script init</p></li>
 </ul>
 <p>Par exemple, si <em>PersonalInitArgs</em> corresponde à <code class="code highlight python docutils literal highlight-python"><span class="n">fichier1</span><span class="o">.</span><span class="n">txt</span> <span class="n">fichier2</span><span class="o">.</span><span class="n">txt</span></code> et que le script init soit le suivant:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
-<span class="n">touch</span> <span class="err">$</span><span class="mi">1</span>
-<span class="n">touch</span> <span class="err">$</span><span class="mi">2</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+touch<span class="w"> </span><span class="nv">$1</span>
+touch<span class="w"> </span><span class="nv">$2</span>
 </pre></div>
 </div>
 <p>alors le script va créer les fichiers <code class="code highlight python docutils literal highlight-python"><span class="n">fichier1</span><span class="o">.</span><span class="n">txt</span></code> et <code class="code highlight python docutils literal highlight-python"><span class="n">fichier2</span><span class="o">.</span><span class="n">txt</span></code> grâce à la commande <strong class="program">touch</strong></p>
@@ -281,14 +284,14 @@ Vault</label><div class="sd-tab-content docutils">
 <p><a class="reference external" href="https://nubonyxia.incubateur.finances.rie.gouv.fr/account/vault">Vault</a> est le coffre fort de la plateforme. Si le service à lancer nécessite des variables d’environnement spécifiques, vous pouvez les injecter au service sans avoir à les écrire en clair dans votre code. La section <a class="reference internal" href="#gestionvault"><span class="std std-ref">Gestion des secrets</span></a> montre comment créer un secret.</p>
 <p>Une fois le secret crée et le chemin du secret copié dans le presse papier, il suffit de coller le chemin dans le champ afférent, soit dans <cite>Secret</cite>.</p>
 <p>Pour vérifier que les variables ont bien été injectés dans le service, vous pouvez lancer les commandes suivantes dans un terminal:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lister toutes les variables d&#39;environnement disponibles</span>
-<span class="n">env</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lister toutes les variables d&#39;environnement disponibles</span>
+env
 
 <span class="c1"># Afficher la valeur d&#39;une variable d&#39;environnement</span>
-<span class="n">echo</span> <span class="err">$</span><span class="n">MA_VARIABLE</span>
+<span class="nb">echo</span><span class="w"> </span><span class="nv">$MA_VARIABLE</span>
 
 <span class="c1"># Trouver toutes les variables d&#39;environnement qui contiennent un pattern donné</span>
-<span class="n">env</span> <span class="o">|</span> <span class="n">grep</span> <span class="o">-</span><span class="n">i</span> <span class="s2">&quot;&lt;PATTERN&gt;&quot;</span>
+env<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;&lt;PATTERN&gt;&quot;</span>
 </pre></div>
 </div>
 </div>

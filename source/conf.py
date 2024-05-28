@@ -27,7 +27,7 @@ author = 'Bercy Hub'
 release = '0.1'
 highlight_options  = {'default': {'lexers.python.PythonLexer'},
                      }
-numfig = True  # to enagle image ref 
+numfig = True  # to enable image ref 
 
 
 
@@ -52,12 +52,46 @@ exclude_patterns = []
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
+
 #
 html_theme = 'furo'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
+html_title = 'Nubonyxia'
+
+html_theme_options = {
+    "icon_links": [
+        {
+            # Label for this link
+            "name": "GitLab",
+            
+            # URL where the link will redirect
+            "url": "https://forge.dgfip.finances.rie.gouv.fr/bercyhub/nubonyxia/DocumentationNubonyxia",
+            
+            # Icon class (if "type": "fontawesome"), or path to local image (if "type": "local")
+            "icon": "fa-brands fa-square-gitlab",
+            
+            # The type of image to be used (see below for details)
+            "type": "fontawesome",
+        }],
+    "logo_only": True,
+    
+    "logo": {
+        
+        # Alt text for blind people
+        "alt_text"    : "Nubonyxia Documentation - Home",
+        "text"        : "Nubonyxia",
+        "image_light" : "_static/logo_Nubonyxia.png",
+        "image_dark"  : "_static/logo_Nubonyxia.png",
+    },
+    
+    "show_nav_level"  : 2
+}
+html_logo = "images/logo_Nubonyxia.png"
+
+  
 html_static_path = ['_static']
 
 # Add any Sphinx extension module names here, as strings. They can be

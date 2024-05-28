@@ -55,7 +55,7 @@ Si aucun runner n'est détecté, il faut en créer un. Pour cela, depuis la plat
 
 
 2. Configuration GitLab
-**************
+***********************
 
 a. Variables de projet
 ++++++++++++++++++++++
@@ -136,7 +136,7 @@ d. Dockerfile
 Il faut ajouter un secret dans `Kubernetes <https://kubernetes.io/fr/>`_. Pour cela, ouvrir un service **VSCode** dans Onyxia, en prenant soin dans l'onglet :menuselection:`Kubernetes` de choisir le mode admin. Puis ouvrir un terminal dans VSCode et exécuter les commandes suivantes: 
 
 
-.. code:: python
+.. code:: bash
 
     HARBOR_AUTH=$(echo -n "HARBOR_USERNAME:HARBOR_PASSWORD" | base64)
     cat <<EOF > dockerconfig.json
@@ -147,7 +147,7 @@ Il faut ajouter un secret dans `Kubernetes <https://kubernetes.io/fr/>`_. Pour c
 
 en remplaçant :python:`HARBOR_USERNAME` et :python:`HARBOR_PASSWORD` par leurs valeurs. Puis : 
 
-.. code:: python
+.. code:: bash
 
   kubectl create secret generic registries \
   --from-literal=AWS_DEFAULT_REGION=us-east-1 \
@@ -166,15 +166,13 @@ Commande pour debugger
 ########################
 .. _commandKubectl:
 
-:command:`kubectl get pods` pour voir les pods en fonctionnement
-
-:command:`kubectl delete pod <nom_pod>` pour supprimer un pod
-
-:command:`kubectl get deployment` pour voir les déploiements
-
-:command:`kubectl delete deployment deployment_name` pour supprimer un déploiement
-
-:command:`kubectl logs pod_name` pour voir les logs d'un pod.
+.. code:: bash
+  
+  kubectl get pods                          #pour voir les pods en fonctionnement
+  kubectl delete pod <name_pod>              #pour supprimer un pod
+  kubectl get deployment                    #pour voir les déploiements
+  kubectl delete deployment deployment_name #pour supprimer un déploiement
+  kubectl logs pod_name                     #pour voir les logs d'un pod.
 
 
 Partage d'une application R shiny depuis `Nubonyxia`_

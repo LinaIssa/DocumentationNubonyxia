@@ -2,7 +2,10 @@ Premiers pas avec Nubonyxia
 ============================
 
 Cette page offre une visite guidée de `Nubonyxia`_ et donne une description *pas à pas* des différentes étapes du lancement d'un service sur la plateforme. 
- 
+
+.. role:: bash(code)
+
+    :language: bash 
 
 1- Ajout du certificat dans le navigateur
 -----------------------------------------
@@ -161,7 +164,8 @@ L'interface Onyxia permet de configurer le service que l'on va lancer comme le m
 
 Après avoir renseigné son token d'accès Gitlab dans le datalab (voir section :ref:`gitConfig`), l'utilisateur peut directement cloner le repo en s'identifiant avec son token stocké sous forme de variable d'environnement :python:`$GIT_PERSONAL_ACCESS_TOKEN` à l'aide de la ligne de commande suivante :  
 
-.. code:: python
+
+.. code:: bash
 
 	git clone https://<gitlab-user>:$GIT_PERSONAL_ACCESS_TOKEN@forge.dgfip.finances.rie.gouv.fr/<owner>/<repo>.git
 

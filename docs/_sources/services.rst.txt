@@ -41,7 +41,7 @@ Suivant le service lancé, différents onglets de configurations sont disponible
 
 		Par exemple, si *PersonalInitArgs* corresponde à :python:`fichier1.txt fichier2.txt` et que le script init soit le suivant: 
 
-		.. code:: python
+		.. code:: bash
 
   			#!/bin/bash
 			touch $1
@@ -113,7 +113,7 @@ Suivant le service lancé, différents onglets de configurations sont disponible
 
 		Pour vérifier que les variables ont bien été injectés dans le service, vous pouvez lancer les commandes suivantes dans un terminal: 
 
-		.. code:: python
+		.. code:: bash
 
 			# Lister toutes les variables d'environnement disponibles
 			env 

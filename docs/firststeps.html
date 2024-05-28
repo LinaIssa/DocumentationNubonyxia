@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Stockage de données dans Nubonyxia" href="minio.html" /><link rel="prev" title="Bienvenue dans la documentation de Nubonyxia!" href="index.html" />
 
     <!-- Generated with Sphinx 7.2.6 and Furo 2024.01.29 -->
-        <title>Premiers pas avec Nubonyxia - Nubonyxia 0.1 documentation</title>
+        <title>Premiers pas avec Nubonyxia - Nubonyxia</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=a5c4661c" />
@@ -125,7 +125,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">Nubonyxia 0.1 documentation</div></a>
+      <a href="index.html"><div class="brand">Nubonyxia</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -147,8 +147,11 @@
       
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="_static/logo_Nubonyxia.png" alt="Logo"/>
+  </div>
   
-  <span class="sidebar-brand-text">Nubonyxia 0.1 documentation</span>
+  <span class="sidebar-brand-text">Nubonyxia</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -346,7 +349,7 @@ Se référer à la section <a class="reference internal" href="services.html#ges
 <p>Les <strong>tokens S3</strong> et <strong>git</strong> sont déjà pré-configurés.</p>
 </div>
 <p>Après avoir renseigné son token d’accès Gitlab dans le datalab (voir section <a class="reference internal" href="methode.html#gitconfig"><span class="std std-ref">Configuration du Git pour la première fois</span></a>), l’utilisateur peut directement cloner le repo en s’identifiant avec son token stocké sous forme de variable d’environnement <code class="code highlight python docutils literal highlight-python"><span class="err">$</span><span class="n">GIT_PERSONAL_ACCESS_TOKEN</span></code> à l’aide de la ligne de commande suivante :</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//&lt;</span><span class="n">gitlab</span><span class="o">-</span><span class="n">user</span><span class="o">&gt;</span><span class="p">:</span><span class="err">$</span><span class="n">GIT_PERSONAL_ACCESS_TOKEN</span><span class="nd">@forge</span><span class="o">.</span><span class="n">dgfip</span><span class="o">.</span><span class="n">finances</span><span class="o">.</span><span class="n">rie</span><span class="o">.</span><span class="n">gouv</span><span class="o">.</span><span class="n">fr</span><span class="o">/&lt;</span><span class="n">owner</span><span class="o">&gt;/&lt;</span><span class="n">repo</span><span class="o">&gt;.</span><span class="n">git</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://&lt;gitlab-user&gt;:<span class="nv">$GIT_PERSONAL_ACCESS_TOKEN</span>@forge.dgfip.finances.rie.gouv.fr/&lt;owner&gt;/&lt;repo&gt;.git
 </pre></div>
 </div>
 <p>où <strong class="program">&lt;owner&gt;</strong> et <strong class="program">&lt;repo&gt;</strong> sont à remplacer respectivement par le nom d’utilisateur et le nom du repo Git.</p>
