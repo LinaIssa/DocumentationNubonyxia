@@ -61,7 +61,7 @@ a. Variables de projet
 ++++++++++++++++++++++
 Il faut créer la variable :python:`VAULT_TOKEN` depuis le menu :menuselection:`Settings --> CI/CD --> Variables` de votre projet GitLab : 
 
-- :python:`VAULT_TOKEN` correspond à la valeur **Vault Token** précisée dans :menuselection:`Mon compte --> Vault` de la plateforme `NubOnyxia`_. Cochez `protected` et `masked`.
+- :python:`VAULT_TOKEN` correspond à la valeur **Vault Token** précisée dans :menuselection:`Mon compte --> Vault` de la plateforme `NubOnyxia`_. Cochez `masked` et laissez `protected` vide.
 
 b. Fichier :file:`gitlab-ci.yml`
 +++++++++++++++++++++++++++++++++
@@ -139,9 +139,9 @@ Il faut ajouter un secret dans `Kubernetes <https://kubernetes.io/fr/>`_. Pour c
 .. code:: bash
 
     HARBOR_AUTH=$(echo -n "HARBOR_USERNAME:HARBOR_PASSWORD" | base64)
-    cat <<EOF > dockerconfig.json
+    cat << EOF > docker.json
     {"auths":
-      {"harbor.lab.incubateur.finances.rie.gouv.fr": {"auth": "<HARBOR_AUTH>"}
+      {"harbor.lab.incubateur.finances.rie.gouv.fr": {"auth": "$HARBOR_AUTH"}
     }}
     EOF
 

@@ -247,7 +247,7 @@ Il suffit de forker le repo qui vous intéresse et d’ajouter vos scripts dans 
 <h5>a. Variables de projet<a class="headerlink" href="#a-variables-de-projet" title="Link to this heading">#</a></h5>
 <p>Il faut créer la variable <code class="code highlight python docutils literal highlight-python"><span class="n">VAULT_TOKEN</span></code> depuis le menu <span class="menuselection">Settings ‣ CI/CD ‣ Variables</span> de votre projet GitLab :</p>
 <ul class="simple">
-<li><p><code class="code highlight python docutils literal highlight-python"><span class="n">VAULT_TOKEN</span></code> correspond à la valeur <strong>Vault Token</strong> précisée dans <span class="menuselection">Mon compte ‣ Vault</span> de la plateforme <a class="reference external" href="https://nubonyxia.incubateur.finances.rie.gouv.fr">NubOnyxia</a>. Cochez <cite>protected</cite> et <cite>masked</cite>.</p></li>
+<li><p><code class="code highlight python docutils literal highlight-python"><span class="n">VAULT_TOKEN</span></code> correspond à la valeur <strong>Vault Token</strong> précisée dans <span class="menuselection">Mon compte ‣ Vault</span> de la plateforme <a class="reference external" href="https://nubonyxia.incubateur.finances.rie.gouv.fr">NubOnyxia</a>. Cochez <cite>masked</cite> et laissez <cite>protected</cite> vide.</p></li>
 </ul>
 </section>
 <section id="b-fichier-gitlab-ci-yml">
@@ -307,9 +307,9 @@ Python</label><div class="sd-tab-content docutils">
 <h4>3. Configuration Kubernetes<a class="headerlink" href="#configuration-kubernetes" title="Link to this heading">#</a></h4>
 <p>Il faut ajouter un secret dans <a class="reference external" href="https://kubernetes.io/fr/">Kubernetes</a>. Pour cela, ouvrir un service <strong>VSCode</strong> dans Onyxia, en prenant soin dans l’onglet <span class="menuselection">Kubernetes</span> de choisir le mode admin. Puis ouvrir un terminal dans VSCode et exécuter les commandes suivantes:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">HARBOR_AUTH</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;HARBOR_USERNAME:HARBOR_PASSWORD&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>base64<span class="k">)</span>
-cat<span class="w"> </span><span class="s">&lt;&lt;EOF &gt; dockerconfig.json</span>
+cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt; docker.json</span>
 <span class="s">{&quot;auths&quot;:</span>
-<span class="s">  {&quot;harbor.lab.incubateur.finances.rie.gouv.fr&quot;: {&quot;auth&quot;: &quot;&lt;HARBOR_AUTH&gt;&quot;}</span>
+<span class="s">  {&quot;harbor.lab.incubateur.finances.rie.gouv.fr&quot;: {&quot;auth&quot;: &quot;$HARBOR_AUTH&quot;}</span>
 <span class="s">}}</span>
 <span class="s">EOF</span>
 </pre></div>

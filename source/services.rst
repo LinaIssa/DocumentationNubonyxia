@@ -53,14 +53,14 @@ Suivant le service lancé, différents onglets de configurations sont disponible
 
 	.. tab-item:: Ressources  
 
-		Déplacer le curseur pour définir la plage de ressources souhaitée 
+		Déplacer le curseur pour définir la plage de ressources souhaitée en termes de: 
 
 		* CPU
 		* RAM
 
 		.. warning:: 
 
-			Les ressources du cluster étant mutualisées, il est de bon ton de réserver les ressources adaptées à ses besoins et son cas d'usage. 
+			Les ressources du cluster étant mutualisées, il est de bon ton de réserver les ressources adaptées à ses besoins et à son cas d'usage. 
 
 
 	.. tab-item:: Networking 
