@@ -54,12 +54,12 @@ exclude_patterns = []
 # a list of builtin themes.
 
 #
-html_theme = 'furo' #pydata-sphinx-theme
+html_theme = 'pydata_sphinx_theme' #pydata-sphinx-theme
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_title = ' '
+html_title = 'nubonyxia'
 
 html_theme_options = {
     "icon_links": [
@@ -73,22 +73,24 @@ html_theme_options = {
             # Icon class (if "type": "fontawesome"), or path to local image (if "type": "local")
             "icon": "fa-brands fa-square-gitlab",
 
-#            "announcement"    : "", to make an announcement
-
-            
-            # The type of image to be used (see below for details)
-            "type": "fontawesome",
+            "type": "fontawesome"
         }],
-    "logo_only": True,
-    
     "logo": {
         
         # Alt text for blind people
         "alt_text"    : "Nubonyxia Documentation - Home",
+        "text": "Nubonyxia",
         "image_light" : "_static/logo_Nubonyxia.png",
         "image_dark"  : "_static/logo_Nubonyxia.png",
     },
-    "show_nav_level"  : 2
+    "announcement" : "🔈 Nubonyxia passe désormais en V7 d'Onyxia! Rendez vous <a href='https:/documentation-nubonyxia.lab.incubateur.finances.rie.gouv.fr/changelog.html'>ici</a> pour en savoir plus 👀",
+            
+            # The type of image to be used (see below for details)
+    
+    "logo_only": True,
+    
+    
+    "show_nav_level"  : 0
 }
 # Workaround to rmove sidebar when using pydata-sphinx-theme
 #html_sidebars = {
@@ -102,6 +104,15 @@ html_theme_options = {
 html_logo = "images/logo_Nubonyxia.png"
 html_css_files   = ["mycss.css"]
 html_static_path = ['_static']
+html_sidebars = {
+    'firststeps': [],
+    'minio'     :[],
+    'methode': [],
+    'services': [], 
+    'usecase':[],
+    'changelog':[]
+    
+}
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
@@ -116,9 +127,14 @@ extensions = [
   #  'sphinxcontrib.osexample',
     'sphinx_tabs.tabs'
 ]
+# The full version, including alpha/beta/rc tags
+release            = '0.8'
+templates_path     = ['_templates']
+exclude_patterns   = []
 
 autosectionlabel_prefix_document = True
 
+html_collapsible_definitions = True
 
 rst_prolog = """
 .. role:: python(code)
