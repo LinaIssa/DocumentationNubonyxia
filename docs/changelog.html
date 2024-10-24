@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Guide des bonnes pratiques &#8212; nubonyxia</title>
+    <title>Changelog Onyxia &#8212; nubonyxia</title>
   
   
   
@@ -42,11 +42,10 @@
     <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/design-tabs.js?v=36754332"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'methode';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'changelog';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Configuration des services" href="services.html" />
-    <link rel="prev" title="Stockage de données dans Nubonyxia" href="minio.html" />
+    <link rel="prev" title="Cas d’usages Nubonyxia" href="usecase.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -161,8 +160,8 @@
                     </li>
                 
 
-                    <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="#">
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="methode.html">
                         Guide des bonnes pratiques
                       </a>
                     </li>
@@ -187,8 +186,8 @@
                 </button>
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="changelog.html">
+                    <li class="nav-item current active">
+                      <a class="nav-link dropdown-item nav-internal" href="#">
                         Changelog Onyxia
                       </a>
                     </li>
@@ -308,8 +307,8 @@ document.write(`
                     </li>
                 
 
-                    <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="#">
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="methode.html">
                         Guide des bonnes pratiques
                       </a>
                     </li>
@@ -334,8 +333,8 @@ document.write(`
                 </button>
                 <ul id="pst-nav-more-links-2" class="dropdown-menu">
                     
-                    <li class="nav-item">
-                      <a class="nav-link dropdown-item nav-internal" href="changelog.html">
+                    <li class="nav-item current active">
+                      <a class="nav-link dropdown-item nav-internal" href="#">
                         Changelog Onyxia
                       </a>
                     </li>
@@ -416,7 +415,7 @@ document.write(`
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
-    <li class="breadcrumb-item active" aria-current="page">Guide des...</li>
+    <li class="breadcrumb-item active" aria-current="page">Changelog Onyxia</li>
   </ul>
 </nav>
 </div>
@@ -433,26 +432,12 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="guide-des-bonnes-pratiques">
-<h1>Guide des bonnes pratiques<a class="headerlink" href="#guide-des-bonnes-pratiques" title="Link to this heading">#</a></h1>
-<section id="gestion-de-versions-avec-git">
-<h2>Gestion de versions avec Git<a class="headerlink" href="#gestion-de-versions-avec-git" title="Link to this heading">#</a></h2>
-<section id="configuration-du-git-pour-la-premiere-fois">
-<span id="gitconfig"></span><h3>Configuration du Git pour la première fois<a class="headerlink" href="#configuration-du-git-pour-la-premiere-fois" title="Link to this heading">#</a></h3>
-<p>Afin de pouvoir synchroniser ses codes avec un dépôt distant, il faut tout d’abord connecter <a class="reference external" href="https://nubonyxia.incubateur.finances.rie.gouv.fr">Nubonyxia</a> à un compte Git. La création d’un compte sur une forge Git est donc indispensable si l’on veut bénéficier de ce service.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Il est possible de créer un compte sur la forge Git de son choix, soit la forge interministérielle <a class="reference external" href="https://forge.dgfip.finances.rie.gouv.fr/">GitLab</a>  accessible via <a class="reference external" href="https://www.renater.fr/projets-et-partenariats/projets-specifiques/le-reseau-interministeriel-de-letat-rie/">RIE</a>, soit la forge <a class="reference external" href="https://github.com/signup">GitHub</a> exposé sur internet.</p>
+  <section id="changelog-onyxia">
+<h1>Changelog Onyxia<a class="headerlink" href="#changelog-onyxia" title="Link to this heading">#</a></h1>
+<img src="https://img.shields.io/badge/version-7.0-red"><div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Nubonyxia fait peau neuve avec cette <strong>nouvelle version v7.0</strong> d’<a class="reference external" href="https://github.com/InseeFrLab/onyxia/blob/v7.0.0/helm-chart/README.md#configuration">Onyxia</a>! Parmi les nouveautés, l’apparition d’un <strong>header</strong> et d’<strong>un mode exploratoire des données</strong>. L’Explorateur de Données s’invite dans la barre verticale. Ce dernier permet d’afficher aussi bien les données stockées dans l’espace fichier mais aussi les données disponibles sur internet, en renseignant l’adresse url (exemple avec ce <a class="reference external" href="https://static.data.gouv.fr/resources/recensement-de-la-population-fichiers-detail-individus-localises-au-canton-ou-ville-2020-1/20231023-122841/fd-indcvi-2020.parquet">lien de données</a> ). Pour en savoir plus, rendez-vous sur le changelog d’Onyxia disponible <a class="reference external" href="https://github.com/InseeFrLab/onyxia/compare/v7.14.1...v7.14.2">ici</a>.</p>
 </div>
-<p>1 - <strong>création d’un token à partir de son compte git</strong> : Sur son compte Git, générer un jeton d’accès personnel ou <cite>token</cite> permettant l’authentification auprès de la forge. Une fois généré, le token n’apparait qu’une seule fois. Il faudra alors bien le noter.</p>
-<p>2 - <strong>configuration de git sur la plateforme</strong>: Sur sa plateforme <a class="reference external" href="https://nubonyxia.incubateur.finances.rie.gouv.fr">Nubonyxia</a>, se rendre dans l’onglet <span class="menuselection">Mon Compte ‣ Services Externes ‣ Configuration Git</span> et renseigner ses identifiants Git et le token. Ainsi, ce dernier sera accessible aux services lancés sur la plateforme.</p>
-<a class="reference internal image-reference" href="_images/configGIT.png"><img alt="Alternative text" src="_images/configGIT.png" style="width: 800px;" /></a>
-</section>
-<section id="utilisation-de-git-avec-les-services-du-datalab">
-<span id="gitservice"></span><h3>Utilisation de Git avec les services du Datalab<a class="headerlink" href="#utilisation-de-git-avec-les-services-du-datalab" title="Link to this heading">#</a></h3>
-<a class="reference internal image-reference" href="_images/configService.png"><img alt="Alternative text" src="_images/configService.png" style="width: 800px;" /></a>
-</section>
-</section>
 </section>
 
 
@@ -466,22 +451,13 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="minio.html"
+       href="usecase.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Stockage de données dans Nubonyxia</p>
+        <p class="prev-next-title">Cas d’usages Nubonyxia</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="services.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Configuration des services</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -494,25 +470,9 @@ document.write(`
 
 
   <div class="sidebar-secondary-item">
-<div
-    id="pst-page-navigation-heading-2"
-    class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> On this page
-  </div>
-  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gestion-de-versions-avec-git">Gestion de versions avec Git</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-du-git-pour-la-premiere-fois">Configuration du Git pour la première fois</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#utilisation-de-git-avec-les-services-du-datalab">Utilisation de Git avec les services du Datalab</a></li>
-</ul>
-</li>
-</ul>
-  </nav></div>
-
-  <div class="sidebar-secondary-item">
 
   <div class="tocsection sourcelink">
-    <a href="_sources/methode.rst.txt">
+    <a href="_sources/changelog.rst.txt">
       <i class="fa-solid fa-file-lines"></i> Show Source
     </a>
   </div>
