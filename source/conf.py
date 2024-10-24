@@ -83,7 +83,7 @@ html_theme_options = {
         "image_light" : "_static/logo_Nubonyxia.png",
         "image_dark"  : "_static/logo_Nubonyxia.png",
     },
-    "announcement" : "🔈 Nubonyxia passe désormais en V7 d'Onyxia! Rendez vous <a href='https:/documentation-nubonyxia.lab.incubateur.finances.rie.gouv.fr/changelog.html'>ici</a> pour en savoir plus 👀",
+    "announcement" : "🔈 Nubonyxia passe désormais en V7 d'Onyxia! Rendez-vous <a href='https:/documentation-nubonyxia.lab.incubateur.finances.rie.gouv.fr/changelog.html'>ici</a> pour en savoir plus 👀",
             
             # The type of image to be used (see below for details)
     
