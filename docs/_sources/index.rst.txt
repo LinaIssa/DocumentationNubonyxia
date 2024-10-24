@@ -33,6 +33,7 @@ Contents
    methode
    services 
    usecase
+   changelog
 
 
 

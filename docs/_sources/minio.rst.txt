@@ -84,7 +84,7 @@ Utilisation des données depuis un service
 
 La connexion à son espace de stockage S3 depuis un service se fait grâce à un `token` d'accès. Ce dernier est pré-intégré sous forme de `variable d'environnement` dans le service. En plus du token, des librairies spécifiques sont nécessaires pour pouvoir intéragir avec des systèmes de fichiers de type S3: :r:`aws.s3` pour R et :python:`Boto3` ou :python:`S3Fs` pour python. 
  
-Des scripts sont fournis `ici <insert lien >`_ dans :menuselection:`Mon compte --> Connexion au stockage`. 
+Des scripts sont fournis `ici <https://nubonyxia.incubateur.finances.rie.gouv.fr/account/storage>`_ dans :menuselection:`Mon compte --> Connexion au stockage`. 
 
 .. warning::
         
